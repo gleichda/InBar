@@ -11,5 +11,9 @@
 	<%@include file="navigation.jsp" %>
 	</nav>
 	<h1>Ihre Bar konnte leider nicht gefunden werden.</h1>
+	
+	<footer>
+		<%@include file="fusszeile.jsp" %>
+	</footer>
 </body>
 </html>

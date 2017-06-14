@@ -14,5 +14,9 @@
 	
 	<h1>Ihr Login war erfolgreich</h1>
 	<h2>Herzlich Willkommen ${baruser.barname}</h2>
+	
+	<footer>
+		<%@include file="fusszeile.jsp" %>
+	</footer>
 </body>
 </html>

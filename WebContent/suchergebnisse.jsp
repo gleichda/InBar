@@ -24,6 +24,10 @@
 			<br>Musikart ${status.count}: ${art}
 		</c:forEach>
 	</c:if>
+	
+	<footer>
+		<%@include file="fusszeile.jsp" %>
+	</footer>
 </body>
 
 </html>

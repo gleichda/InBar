@@ -14,5 +14,8 @@
 	<h1>Sie sind nicht eingeloggt</h1>
 	<p> Bitte loggen Sie sich ein, um mit der Aktion fortzufahren.</p>
 	
+	<footer>
+		<%@include file="fusszeile.jsp" %>
+	</footer>	
 </body>
 </html>

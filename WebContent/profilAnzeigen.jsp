@@ -16,6 +16,9 @@
 		<h1>Dein Profil</h1>
 	</c:if>
 	Username: ${user.username}
-
+	
+	<footer>
+		<%@include file="fusszeile.jsp" %>
+	</footer>
 </body>
 </html>

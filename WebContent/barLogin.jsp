@@ -33,14 +33,7 @@
 	</article>
 
 	<footer>
-		<table class="foot">
-			<tr>
-				<td>Datenschutz</td>
-				<td>Kontakt</td>
-				<td>Impressum</td>
-			</tr>
-		</table>
-
+		<%@include file="fusszeile.jsp" %>
 	</footer>
 </body>
 </html>

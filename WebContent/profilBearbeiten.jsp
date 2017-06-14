@@ -14,5 +14,9 @@
 		<p>Passwort: <input type="password" name="passwort"> </p>
 		<button id="aendern" type="submit">Absenden</button>
 	</form>
+	
+	<footer>
+		<%@include file="fusszeile.jsp" %>
+	</footer>
 </body>
 </html>

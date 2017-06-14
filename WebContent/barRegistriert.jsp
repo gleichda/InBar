@@ -22,5 +22,8 @@
 	<br> ${baruser.mbeschreibung}
 	<br> ${baruser.lbeschreibung}
 
+	<footer>
+		<%@include file="fusszeile.jsp" %>
+	</footer>
 </body>
 </html>

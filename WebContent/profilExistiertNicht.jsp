@@ -11,5 +11,9 @@
 		<%@include file="navigation.jsp"%>
 	</nav>
 	<h1>Das von Ihnen aufgerufene Profil exisitiert nicht</h1>
+
+	<footer>
+		<%@include file="fusszeile.jsp" %>
+	</footer>
 </body>
 </html>
