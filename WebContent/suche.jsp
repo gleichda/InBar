@@ -34,5 +34,8 @@
 
 		<button name="suchen" type="submit">Suchen</button>
 	</form>
+	<footer>
+		<jsp:include page="fusszeile.jsp"/>
+	</footer>
 </body>
 </html>
