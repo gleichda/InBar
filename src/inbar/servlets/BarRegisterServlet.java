@@ -137,6 +137,7 @@ public class BarRegisterServlet extends HttpServlet {
 						generatedKeys);
 				PreparedStatement barAdminStatement = con.prepareStatement("INSERT INTO bar_zu_user(userid, barid) VALUES (?, ?)")) {
 			
+			//TODO bar_zu_bild-Tabelle in der Datenbank erstellen
 			barCreationStatement.setString(1, baruser.getVorname());
 			barCreationStatement.setString(2, baruser.getNachname());
 			barCreationStatement.setString(3, baruser.getChefmail());
