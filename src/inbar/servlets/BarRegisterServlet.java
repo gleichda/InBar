@@ -1,24 +1,30 @@
 package inbar.servlets;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import javax.sql.DataSource;
 
 import inbar.beans.BarBean;
 import inbar.beans.UserBean;
 
 @WebServlet("/BarRegisterServlet")
+@MultipartConfig
 public class BarRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -40,6 +46,10 @@ public class BarRegisterServlet extends HttpServlet {
 		// System.out.println(read);
 
 		UserBean user = (UserBean) session.getAttribute("selfUser");
+		
+
+		
+		
 		if (user != null) {
 
 			try (Connection con = ds.getConnection();
@@ -54,6 +64,22 @@ public class BarRegisterServlet extends HttpServlet {
 					// Benutzer fuer die Session speichern
 					BarBean baruser = new BarBean();
 
+					// Bildbehandlung
+					Part filepart = request.getPart("image");
+					baruser.setBildname(filepart.getSubmittedFileName());
+					
+					try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
+							InputStream in = filepart.getInputStream()){
+						int i=0;
+						while ((i= in.read()) != -1) {
+							baos.write(i);
+						}
+						baruser.setBild(baos.toByteArray());
+						baos.flush();
+					} catch (IOException ex){
+						throw new ServletException(ex.getMessage());
+					}
+					
 					baruser.setBarname(request.getParameter("barname"));
 					baruser.setVorname(request.getParameter("vorname"));
 					baruser.setNachname(request.getParameter("nachname"));
@@ -103,7 +129,7 @@ public class BarRegisterServlet extends HttpServlet {
 		 * user.getPassword() + ")";
 		 */
 		
-		String[] generatedKeys = new String[] {"barid"};  //Aus Skript JDBC Folie 12 ï¿½bernommen
+		String[] generatedKeys = new String[] {"barid"};  //Aus Skript JDBC Folie 12 übernommen
 		
 		try (Connection con = ds.getConnection();
 				PreparedStatement barCreationStatement = con.prepareStatement(
@@ -132,6 +158,8 @@ public class BarRegisterServlet extends HttpServlet {
 			barAdminStatement.setInt(1, user.getUserid());
 			barAdminStatement.setInt(2, baruser.getBarid());
 			barAdminStatement.executeUpdate();
+			
+			//TODO: Bild und BildID hinzufügen und übertragen
 		}
 
 		catch (Exception e) {
