@@ -46,12 +46,9 @@ public class Suchservlet extends HttpServlet {
 		int musikart = Integer.parseInt(request.getParameter("musikart"));
 		String suchbegriff = request.getParameter("suchbegriff");
 		String suchart = request.getParameter("suchart");
-		//TODO: alle debug System out entfernen
-		System.out.println("Suchservlet aufgerufen: Suchart: " + suchart);
 
 		switch (suchart.toLowerCase()) {
 		case "bar":
-			System.out.println("case Bar");
 			List<BarBean> barsList = new ArrayList<BarBean>();
 			try (Connection con = ds.getConnection();
 					PreparedStatement statement = con.prepareStatement(
@@ -62,21 +59,28 @@ public class Suchservlet extends HttpServlet {
 				statement.setString(2, "%" + suchbegriff + "%");
 				ResultSet rs = statement.executeQuery();
 				while (rs.next()) {
-					System.out.println("bar hinzugefuegt");
 					BarBean bar = new BarBean();
 					bar.setBarid(rs.getInt("bar.barid"));
 					bar.setBarname(rs.getString("bar.barname"));
-					// TODO: bar vervollstaendigen
+					bar.setVorname(rs.getString("bar.vorname"));
+					bar.setNachname(rs.getString("bar.nachname"));
+					bar.setChefmail(rs.getString("bar.chefmail"));
+					bar.setStrasse(rs.getString("bar.strasse"));
+					bar.setHausnummer(rs.getString("bar.hausnummer"));
+					bar.setPlz(rs.getString("bar.plz"));
+					bar.setOrt(rs.getString("bar.ort"));
+					bar.setBarmail(rs.getString("bar.barmail"));
+					bar.setBbeschreibung(rs.getString("bar.bbeschreibung"));
+					bar.setMbeschreibung(rs.getString("bar.mbeschreibung"));
+					bar.setLbeschreibung(rs.getString("bar.lbeschreibung"));
 					barsList.add(bar);
 				}
 				if (!barsList.isEmpty()) {
-					System.out.println("BarsList laenge: " + barsList.size());
 					request.setAttribute("suchergebnisse", barsList);
 
 					RequestDispatcher dispatcher = request.getRequestDispatcher("suchergebnisse.jsp");
 					dispatcher.forward(request, response);
 				} else {
-					System.out.println("Bars List leer");
 					RequestDispatcher dispatcher = request.getRequestDispatcher("barExistiertNicht.jsp");
 					dispatcher.forward(request, response);
 				}

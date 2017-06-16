@@ -27,12 +27,6 @@
 			for="event">Event</label><br>
 
 		<p>Musikart:</p>
-		<!-- Checkbox zur Auswahl der Musikart
-		<input type="checkbox" name="musikart" id="m1" value="Metal">
-		<label for="m1">Metal </label><br> <input type="checkbox"
-			name="musikart" id="m2" value="Techno"> <label for="m2">Techno
-		</label><br> <input type="checkbox" name="musikart" id="m3"
-			value="HipHop"> <label for="m3">HipHop </label><br> -->
 		<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/inbar" user="root" />
 		<sql:query dataSource="${ds}" var="musikarten">SELECT * FROM musikarten;</sql:query>
 		
