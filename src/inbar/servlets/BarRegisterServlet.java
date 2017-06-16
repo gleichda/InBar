@@ -53,7 +53,8 @@ public class BarRegisterServlet extends HttpServlet {
 		if (user != null) {
 
 			try (Connection con = ds.getConnection();
-					PreparedStatement statement = con.prepareStatement("SELECT * from bar where barname LIKE ?"))
+					PreparedStatement statement = con.prepareStatement("SELECT * from bar where barname LIKE ?");
+					PreparedStatement bildStatement = con.prepareStatement("SELECT * from bild where bild LIKE ?"))
 
 			{
 				statement.setString(1, request.getParameter("barname"));
@@ -99,9 +100,11 @@ public class BarRegisterServlet extends HttpServlet {
 					baruser.setLbeschreibung(request.getParameter("lbeschreibung"));
 
 					System.out.println(user.getNachname());
-					barUserSpeichern(baruser, user, bild);
+					bildSpeichern(bild);
+					barUserSpeichern(baruser, user);
 
 					session.setAttribute("baruser", baruser);
+					
 
 					final RequestDispatcher dispatcher = request.getRequestDispatcher("barRegistriert.jsp");
 					dispatcher.forward(request, response);
@@ -121,7 +124,28 @@ public class BarRegisterServlet extends HttpServlet {
 		}
 	}
 
-	private void barUserSpeichern(BarBean baruser, UserBean user, BildBean bild) throws ServletException {
+	private void bildSpeichern(BildBean bild) throws ServletException{
+			String[] generatedKeys = new String[] {"bildid"};
+			//TODO Meiner Vermutung nach funktioniert dieser Try nicht, bzw. in der FM springt er in das catch
+			try (Connection con = ds.getConnection();
+					PreparedStatement bildStatement = con.prepareStatement(
+							"INSERT INTO bild(bild) VALUES (?)",generatedKeys)){
+				ResultSet rs = bildStatement.getGeneratedKeys();
+				rs.first();
+					bild.setBildid(rs.getInt(1));
+					
+				//bildStatement.setBytes(1, bild.getBild());
+				bildStatement.executeUpdate();				
+
+			}
+
+			catch (Exception e) {
+				throw new ServletException(e.getMessage());
+			}
+					
+	}
+
+	private void barUserSpeichern(BarBean baruser, UserBean user) throws ServletException {
 
 		/*
 		 * String writeString =
@@ -131,15 +155,13 @@ public class BarRegisterServlet extends HttpServlet {
 		 * user.getPassword() + ")";
 		 */
 		
-		String[] generatedKeys = new String[] {"barid, bildid"};  //Aus Skript JDBC Folie 12 ï¿½bernommen
+		String[] generatedKeys = new String[] {"barid"};  //Aus Skript JDBC Folie 12 ï¿½bernommen
 		
 		try (Connection con = ds.getConnection();
 				PreparedStatement barCreationStatement = con.prepareStatement(
 						"INSERT INTO bar(vorname, nachname, chefmail, strasse, hausnummer, plz ,ort ,barmail ,barname, bbeschreibung, mbeschreibung, lbeschreibung) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
 						generatedKeys);
-				PreparedStatement barAdminStatement = con.prepareStatement("INSERT INTO bar_zu_user(userid, barid) VALUES (?, ?)");
-				PreparedStatement bildStatement = con.prepareStatement(("INSERT INTO bild(bild) VALUES (?)"), generatedKeys);
-				PreparedStatement barBildStatement = con.prepareStatement("INSERT INTO bar_zu_bild(barid, bildid) VALUES (?,?)")){
+				PreparedStatement barAdminStatement = con.prepareStatement("INSERT INTO bar_zu_user(userid, barid) VALUES (?, ?)")){
 			
 			//TODO bar_zu_bild-Tabelle in der Datenbank erstellen
 			barCreationStatement.setString(1, baruser.getVorname());
@@ -157,26 +179,17 @@ public class BarRegisterServlet extends HttpServlet {
 			barCreationStatement.executeUpdate();
 
 			
-			//TODO: In Zeile 134 habe ich doch eigentlich ein String-Array mit zwei Spalten gemacht? Wieso bekomme ich hier die Meldung "Out of range"?
+
 			ResultSet rs = barCreationStatement.getGeneratedKeys();
 			rs.first();
 				baruser.setBarid(rs.getInt(1));
-				bild.setBildid(rs.getInt(2));
 
 				
 			//Zuweisung des aktuell angemeldeten Benutzers zu der angelegten Bar
 			barAdminStatement.setInt(1, user.getUserid());
 			barAdminStatement.setInt(2, baruser.getBarid());
 			barAdminStatement.executeUpdate();
-			
-			//Bild hinzufügen	
-			bildStatement.setBytes(1, bild.getBild());
-			bildStatement.executeUpdate();
-			
-			//TODO: Bild und BildID hinzufï¿½gen und ï¿½bertragen
-			barBildStatement.setInt(1, baruser.getBarid());
-			barBildStatement.setInt(1, bild.getBildid());
-			barBildStatement.executeUpdate();
+
 		}
 
 		catch (Exception e) {
