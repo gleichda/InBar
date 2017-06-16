@@ -59,6 +59,8 @@ public class BarRegisterServlet extends HttpServlet {
 			{
 				statement.setString(1, request.getParameter("barname"));
 				ResultSet rs = statement.executeQuery();
+
+
 				// pruefen ob der Benutzername schon existiert
 				if (!rs.first()) {
 
@@ -126,14 +128,19 @@ public class BarRegisterServlet extends HttpServlet {
 
 	private void bildSpeichern(BildBean bild) throws ServletException{
 			String[] generatedKeys = new String[] {"bildid"};
-			//TODO Meiner Vermutung nach funktioniert dieser Try nicht, bzw. in der FM springt er in das catch
+			int i = 1;
+			//System.out.println(bild.getBildname());
+			//System.out.println(generatedKeys[i]);	
+			//TODO Ursache für den Fehler ist das leere rsBild, Weis aber nicht, wie ich das beheben kann
 			try (Connection con = ds.getConnection();
 					PreparedStatement bildStatement = con.prepareStatement(
 							"INSERT INTO bild(bild) VALUES (?)",generatedKeys)){
-				ResultSet rs = bildStatement.getGeneratedKeys();
-				rs.first();
-					bild.setBildid(rs.getInt(1));
-					
+				//hier ist der Fehler
+				ResultSet rsBild = bildStatement.getGeneratedKeys();
+				
+				rsBild.first();
+					bild.setBildid(rsBild.getInt(1));
+					System.out.println(bild.getBildname());	
 				//bildStatement.setBytes(1, bild.getBild());
 				bildStatement.executeUpdate();				
 
