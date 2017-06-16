@@ -134,7 +134,9 @@ public class BarRegisterServlet extends HttpServlet {
 				PreparedStatement barCreationStatement = con.prepareStatement(
 						"INSERT INTO bar(vorname, nachname, chefmail, strasse, hausnummer, plz ,ort ,barmail ,barname, bbeschreibung, mbeschreibung, lbeschreibung) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
 						generatedKeys);
-				PreparedStatement barAdminStatement = con.prepareStatement("INSERT INTO bar_zu_user(userid, barid) VALUES (?, ?)")) {
+				PreparedStatement barAdminStatement = con.prepareStatement("INSERT INTO bar_zu_user(userid, barid) VALUES (?, ?)");
+				PreparedStatement bildStatement = con.prepareStatement("INSERT INTO bild(bild) VALUES (?)");
+				PreparedStatement barBildStatement = con.prepareStatement("INSERT INTO bar_zu_bild(barid, bildid) VALUES (?,?)")){
 			
 			//TODO bar_zu_bild-Tabelle in der Datenbank erstellen
 			barCreationStatement.setString(1, baruser.getVorname());
@@ -154,12 +156,20 @@ public class BarRegisterServlet extends HttpServlet {
 			ResultSet rs = barCreationStatement.getGeneratedKeys();
 			rs.first();
 				baruser.setBarid(rs.getInt(1));
-			
+				
+			//Zuweisung des aktuell angemeldeten Benutzers zu der angelegten Bar
 			barAdminStatement.setInt(1, user.getUserid());
 			barAdminStatement.setInt(2, baruser.getBarid());
 			barAdminStatement.executeUpdate();
 			
+			//Bild hinzufügen
+			bildStatement.setBytes(1, baruser.getBild());
+			bildStatement.executeUpdate();
+			
 			//TODO: Bild und BildID hinzufï¿½gen und ï¿½bertragen
+			barBildStatement.setInt(1, baruser.getBarid());
+			barBildStatement.setInt(1, baruser.getBildid());
+			barBildStatement.executeUpdate();
 		}
 
 		catch (Exception e) {

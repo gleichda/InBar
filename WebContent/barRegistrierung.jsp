@@ -18,7 +18,7 @@
 		<h2>Registrierung für Bars</h2>
 		<p>Das ist die Registrierungs-Seite, auf der Sie ihre Bar anmelden können.<br> Bitte beachten Sie das dieser Dienst kostenpflichtig ist.</p>
 		
-		<form class=" registrierung" action="BarRegisterServlet" method="post">
+		<form class=" registrierung" action="BarRegisterServlet" method="post" enctype="multipart/form-data">
 			<p>
 				Name der Bar: <input type="text" name="barname" value="">
 				<br> Der Name der Bar wird automatisch zum Login-Namen
@@ -57,6 +57,9 @@
 				Beschreiben Sie, wie Ihre Bar erreicht werden kann: <br>
 				<input type="text" name="lbeschreibung" value="Lagebeschreibung"> <br>
 				
+			</p>
+			
+			<p> <input type="file" name="bild" id="bild" accept="image/*" required>
 			</p>	
 
 			<button id="reg_daten" type="submit">

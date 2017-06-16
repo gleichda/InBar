@@ -10,9 +10,9 @@
 			<li><a href="eventSuche.jsp"> Events suchen</a></li>
 			<li><a href="userSuche.jsp"> User suchen</a></li>
 		</ul> </li>
-			<li><a href="Login.jsp"> Login</a></li>
-			<li><a href="Logout">Logout</a>
-			<li><a href="ProfilAnzeigen"> MeinProfil</a></li>
+			<li><a href="login.jsp"> Login</a></li>
+			<li><a href="logout">Logout</a>
+			<li><a href="profilAnzeigen"> MeinProfil</a></li>
 			<li><a href="barRegistrierung.jsp">Bar anlegen</a></li>
 		<li><a href="kontakt.html"> Kontakt</a></li>
 	</ul>

@@ -21,6 +21,7 @@
 	<br> ${baruser.bbeschreibung}
 	<br> ${baruser.mbeschreibung}
 	<br> ${baruser.lbeschreibung}
+	<br> ${baruser.bild}
 
 	<footer>
 		<%@include file="fusszeile.jsp" %>
