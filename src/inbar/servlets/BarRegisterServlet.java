@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -129,7 +128,7 @@ public class BarRegisterServlet extends HttpServlet {
 		 * user.getPassword() + ")";
 		 */
 		
-		String[] generatedKeys = new String[] {"barid"};  //Aus Skript JDBC Folie 12 übernommen
+		String[] generatedKeys = new String[] {"barid"};  //Aus Skript JDBC Folie 12 ï¿½bernommen
 		
 		try (Connection con = ds.getConnection();
 				PreparedStatement barCreationStatement = con.prepareStatement(
@@ -160,7 +159,7 @@ public class BarRegisterServlet extends HttpServlet {
 			barAdminStatement.setInt(2, baruser.getBarid());
 			barAdminStatement.executeUpdate();
 			
-			//TODO: Bild und BildID hinzufügen und übertragen
+			//TODO: Bild und BildID hinzufï¿½gen und ï¿½bertragen
 		}
 
 		catch (Exception e) {
