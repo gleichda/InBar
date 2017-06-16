@@ -20,9 +20,9 @@ public class BarBean implements Serializable{
 	private String bbeschreibung;
 	private String mbeschreibung;
 	private String lbeschreibung;
-	private String bildname;
-	private int bildid;
-	private byte[] bild;
+	//private String bildname;
+	//private int bildid;
+	//private byte[] bild;
 	
 	
 	//Getter/Setter Barname
@@ -126,7 +126,7 @@ public class BarBean implements Serializable{
 	public void setLbeschreibung(String lbeschreibung) {
 		this.lbeschreibung = lbeschreibung;
 	}
-	public String getBildname() {
+/*	public String getBildname() {
 		return bildname;
 	}
 	public void setBildname(String bildname) {
@@ -143,7 +143,7 @@ public class BarBean implements Serializable{
 	}
 	public void setBildid(int bildid) {
 		this.bildid = bildid;
-	}
+	}*/
 
 
 

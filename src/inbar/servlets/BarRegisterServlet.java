@@ -21,6 +21,7 @@ import javax.sql.DataSource;
 
 import inbar.beans.BarBean;
 import inbar.beans.UserBean;
+import inbar.beans.BildBean;
 
 @WebServlet("/BarRegisterServlet")
 @MultipartConfig
@@ -63,9 +64,11 @@ public class BarRegisterServlet extends HttpServlet {
 					// Benutzer fuer die Session speichern
 					BarBean baruser = new BarBean();
 
+					BildBean bild = new BildBean();
+					
 					// Bildbehandlung
-					Part filepart = request.getPart("image");
-					baruser.setBildname(filepart.getSubmittedFileName());
+					Part filepart = request.getPart("bild");
+					bild.setBildname(filepart.getSubmittedFileName());
 					
 					try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
 							InputStream in = filepart.getInputStream()){
@@ -73,7 +76,7 @@ public class BarRegisterServlet extends HttpServlet {
 						while ((i= in.read()) != -1) {
 							baos.write(i);
 						}
-						baruser.setBild(baos.toByteArray());
+						bild.setBild(baos.toByteArray());
 						baos.flush();
 					} catch (IOException ex){
 						throw new ServletException(ex.getMessage());
@@ -96,7 +99,7 @@ public class BarRegisterServlet extends HttpServlet {
 					baruser.setLbeschreibung(request.getParameter("lbeschreibung"));
 
 					System.out.println(user.getNachname());
-					barUserSpeichern(baruser, user);
+					barUserSpeichern(baruser, user, bild);
 
 					session.setAttribute("baruser", baruser);
 
@@ -118,7 +121,7 @@ public class BarRegisterServlet extends HttpServlet {
 		}
 	}
 
-	private void barUserSpeichern(BarBean baruser, UserBean user) throws ServletException {
+	private void barUserSpeichern(BarBean baruser, UserBean user, BildBean bild) throws ServletException {
 
 		/*
 		 * String writeString =
@@ -128,14 +131,14 @@ public class BarRegisterServlet extends HttpServlet {
 		 * user.getPassword() + ")";
 		 */
 		
-		String[] generatedKeys = new String[] {"barid"};  //Aus Skript JDBC Folie 12 ï¿½bernommen
+		String[] generatedKeys = new String[] {"barid, bildid"};  //Aus Skript JDBC Folie 12 ï¿½bernommen
 		
 		try (Connection con = ds.getConnection();
 				PreparedStatement barCreationStatement = con.prepareStatement(
 						"INSERT INTO bar(vorname, nachname, chefmail, strasse, hausnummer, plz ,ort ,barmail ,barname, bbeschreibung, mbeschreibung, lbeschreibung) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
 						generatedKeys);
 				PreparedStatement barAdminStatement = con.prepareStatement("INSERT INTO bar_zu_user(userid, barid) VALUES (?, ?)");
-				PreparedStatement bildStatement = con.prepareStatement("INSERT INTO bild(bild) VALUES (?)");
+				PreparedStatement bildStatement = con.prepareStatement(("INSERT INTO bild(bild) VALUES (?)"), generatedKeys);
 				PreparedStatement barBildStatement = con.prepareStatement("INSERT INTO bar_zu_bild(barid, bildid) VALUES (?,?)")){
 			
 			//TODO bar_zu_bild-Tabelle in der Datenbank erstellen
@@ -153,22 +156,26 @@ public class BarRegisterServlet extends HttpServlet {
 			barCreationStatement.setString(12, baruser.getLbeschreibung());
 			barCreationStatement.executeUpdate();
 
+			
+			//TODO: In Zeile 134 habe ich doch eigentlich ein String-Array mit zwei Spalten gemacht? Wieso bekomme ich hier die Meldung "Out of range"?
 			ResultSet rs = barCreationStatement.getGeneratedKeys();
 			rs.first();
 				baruser.setBarid(rs.getInt(1));
+				bild.setBildid(rs.getInt(2));
+
 				
 			//Zuweisung des aktuell angemeldeten Benutzers zu der angelegten Bar
 			barAdminStatement.setInt(1, user.getUserid());
 			barAdminStatement.setInt(2, baruser.getBarid());
 			barAdminStatement.executeUpdate();
 			
-			//Bild hinzufügen
-			bildStatement.setBytes(1, baruser.getBild());
+			//Bild hinzufügen	
+			bildStatement.setBytes(1, bild.getBild());
 			bildStatement.executeUpdate();
 			
 			//TODO: Bild und BildID hinzufï¿½gen und ï¿½bertragen
 			barBildStatement.setInt(1, baruser.getBarid());
-			barBildStatement.setInt(1, baruser.getBildid());
+			barBildStatement.setInt(1, bild.getBildid());
 			barBildStatement.executeUpdate();
 		}
 
