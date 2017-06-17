@@ -24,7 +24,7 @@
 
 		<form class="login" method="post" action="LoginServlet">
 			<p>
-				Benutzername: <input type="text" name="benutzer">
+				Benutzername: <input type="text" name="benutzer" autofocus>
 			</p>
 			<p>
 				Passwort: <input type="password" name="passwort">
