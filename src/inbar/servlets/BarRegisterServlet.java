@@ -131,13 +131,15 @@ public class BarRegisterServlet extends HttpServlet {
 			//int i = 1;
 			//System.out.println(bild.getBildname());
 			//System.out.println(generatedKeys[i]);	
-			//TODO Ursache für den Fehler ist das leere rs, Weis aber nicht, wie ich das beheben kann
+			//TODO Ursache fï¿½r den Fehler ist das leere rs, Weis aber nicht, wie ich das beheben kann
+			//Du hast den query nie ausgefuert.
 			try (Connection con = ds.getConnection();
 					PreparedStatement bildStatement = con.prepareStatement(
 							"INSERT INTO bild(bildbyte) VALUES ()",generatedKeys)){
 				System.out.println(bild.getBildname());	
 				//hier ist der Fehler
-				ResultSet rs = bildStatement.getGeneratedKeys();			
+				//ResultSet rs = bildStatement.getGeneratedKeys();
+				ResultSet rs = bildStatement.executeQuery();
 				rs.first();
 					bild.setBildid(rs.getInt(1));
 
