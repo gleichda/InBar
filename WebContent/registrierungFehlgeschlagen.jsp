@@ -11,7 +11,14 @@
 		<%@include file="./fragments/header.jsp" %>
 	</header>
 	<nav>
-		<jsp:include page="./fragments/navigation.jsp"/>
+		<c:choose>
+		<c:when test="${not empty selfUser.vorname}"> 
+			<jsp:include page="./fragments/navigationEingeloggt.jsp"/>
+		</c:when>
+		<c:otherwise>
+					<jsp:include page ="./fragments/navigation.jsp"/>
+		</c:otherwise>
+		</c:choose>		
 	</nav>
 	
 	<h1>Registrierung Fehlgeschlagen</h1>
