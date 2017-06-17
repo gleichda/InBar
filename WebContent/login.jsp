@@ -2,7 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<link href="default.css" rel="stylesheet">
+<link href="./css/navStyle.css" type = "text/css" rel="stylesheet">
+<link href="./css/style.css" type="text/css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>IN-Bars Login</title>
 </head>
@@ -10,18 +11,18 @@
 	<header>
 		<%@include file="./fragments/header.jsp"%>
 	</header>
-	
-		<nav>
-			<c:choose>
-				<c:when test="${not empty selfUser.vorname}">
-					<jsp:include page="./fragments/navigationEingeloggt.jsp" />
-				</c:when>
-				<c:otherwise>
-					<jsp:include page="./fragments/navigation.jsp" />
-				</c:otherwise>
-			</c:choose>
-		</nav>
 
+	<nav class="navbereich">
+		<c:choose>
+			<c:when test="${not empty selfUser.vorname}">
+				<jsp:include page="./fragments/navigationEingeloggt.jsp" />
+			</c:when>
+			<c:otherwise>
+				<jsp:include page="./fragments/navigation.jsp" />
+			</c:otherwise>
+		</c:choose>
+	</nav>
+	<div class="main">
 		<article>
 			<h2>Login</h2>
 			<p>Das ist die Login-Seite</p>
@@ -44,7 +45,7 @@
 					Registrieren</a>
 			</p>
 		</article>
-	
+	</div>
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp"%>
 	</footer>
