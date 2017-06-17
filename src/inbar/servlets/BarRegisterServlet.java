@@ -131,7 +131,7 @@ public class BarRegisterServlet extends HttpServlet {
 			//int i = 1;
 			//System.out.println(bild.getBildname());
 			//System.out.println(generatedKeys[i]);	
-			//TODO Ursache für den Fehler ist das leere rsBild, Weis aber nicht, wie ich das beheben kann
+			//TODO Ursache für den Fehler ist das leere rs, Weis aber nicht, wie ich das beheben kann
 			try (Connection con = ds.getConnection();
 					PreparedStatement bildStatement = con.prepareStatement(
 							"INSERT INTO bild(bildbyte) VALUES ()",generatedKeys)){
