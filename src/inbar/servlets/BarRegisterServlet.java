@@ -54,36 +54,36 @@ public class BarRegisterServlet extends HttpServlet {
 
 			try (Connection con = ds.getConnection();
 					PreparedStatement statement = con.prepareStatement("SELECT * from bar where barname LIKE ?");
-					PreparedStatement bildStatement = con.prepareStatement("SELECT * from bild where bild LIKE ?"))
+					PreparedStatement bildStatement = con.prepareStatement("SELECT * from bild where bildid LIKE ?"))
 
 			{
 				statement.setString(1, request.getParameter("barname"));
 				ResultSet rs = statement.executeQuery();
+				
 
-
-				// pruefen ob der Benutzername schon existiert
+				// pruefen ob der Barname schon existiert
 				if (!rs.first()) {
 
-					// Benutzer fuer die Session speichern
+					// Bar fuer die Session speichern
 					BarBean baruser = new BarBean();
-
 					BildBean bild = new BildBean();
-					
-					// Bildbehandlung
-					Part filepart = request.getPart("bild");
-					bild.setBildname(filepart.getSubmittedFileName());
-					
-					try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
-							InputStream in = filepart.getInputStream()){
-						int i=0;
-						while ((i= in.read()) != -1) {
-							baos.write(i);
+											
+						// Bildbehandlung
+						Part filepart = request.getPart("bild");
+						bild.setBildname(filepart.getSubmittedFileName());
+						
+						try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
+								InputStream in = filepart.getInputStream()){
+							int i=0;
+							while ((i= in.read()) != -1) {
+								baos.write(i);
+							}
+							bild.setBild(baos.toByteArray());
+							baos.flush();
+						} catch (IOException ex){
+							throw new ServletException(ex.getMessage());
 						}
-						bild.setBild(baos.toByteArray());
-						baos.flush();
-					} catch (IOException ex){
-						throw new ServletException(ex.getMessage());
-					}
+					
 					
 					baruser.setBarname(request.getParameter("barname"));
 					baruser.setVorname(request.getParameter("vorname"));
@@ -128,22 +128,21 @@ public class BarRegisterServlet extends HttpServlet {
 
 	private void bildSpeichern(BildBean bild) throws ServletException{
 			String[] generatedKeys = new String[] {"bildid"};
-			int i = 1;
+			//int i = 1;
 			//System.out.println(bild.getBildname());
 			//System.out.println(generatedKeys[i]);	
 			//TODO Ursache für den Fehler ist das leere rsBild, Weis aber nicht, wie ich das beheben kann
 			try (Connection con = ds.getConnection();
 					PreparedStatement bildStatement = con.prepareStatement(
-							"INSERT INTO bild(bild) VALUES (?)",generatedKeys)){
+							"INSERT INTO bild(bildbyte) VALUES ()",generatedKeys)){
+				System.out.println(bild.getBildname());	
 				//hier ist der Fehler
-				ResultSet rsBild = bildStatement.getGeneratedKeys();
-				
-				rsBild.first();
-					bild.setBildid(rsBild.getInt(1));
-					System.out.println(bild.getBildname());	
+				ResultSet rs = bildStatement.getGeneratedKeys();			
+				rs.first();
+					bild.setBildid(rs.getInt(1));
+
 				//bildStatement.setBytes(1, bild.getBild());
 				bildStatement.executeUpdate();				
-
 			}
 
 			catch (Exception e) {
@@ -196,7 +195,8 @@ public class BarRegisterServlet extends HttpServlet {
 			barAdminStatement.setInt(1, user.getUserid());
 			barAdminStatement.setInt(2, baruser.getBarid());
 			barAdminStatement.executeUpdate();
-
+			
+			
 		}
 
 		catch (Exception e) {
