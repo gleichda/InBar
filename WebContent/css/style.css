@@ -1,16 +1,27 @@
 @CHARSET "UTF-8";
 
 *{
-	
+	background-color: #0B173B;
+	color: #F6E3CE;
+	font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
+
+}
+
+body {
+	display: flex;
+	flex-direction: column;
 }
 
 header {
+	order:1;
 	
 }
-nav {
-	float: left;	
+
+.main {
+	display: flex;
+	order:3;
 }
 
 footer{
-	
+	order:4;
 }
