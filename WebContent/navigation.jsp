@@ -4,7 +4,7 @@
 <nav>
 	<ul>
 		<li><a href="startseite.jsp"> Startseite</a></li>
-		<li><a href="suche.html"> Suche</a></li>
+		<li><a href="suche.jsp"> Suche</a></li>
 		<li><ul>
 			<li><a href="barSuche.jsp"> Bars suchen</a></li>
 			<li><a href="eventSuche.jsp"> Events suchen</a></li>
