@@ -8,11 +8,10 @@
 </head>
 <body>
 	<header>
-		<h1 id="logo">INBars</h1>
+		<%@include file="./fragments/header.jsp" %>
 	</header>
-
 	<nav>
-	<jsp:include page="navigation.jsp"/>
+		<jsp:include page="./fragments/navigation.jsp"/>
 	</nav>
 
 	<article>
@@ -23,7 +22,7 @@
 	</article>
 
 	<footer>
-		<%@include file="fusszeile.jsp" %>
+		<%@include file="./fragments/fusszeile.jsp" %>
 	</footer>
 </body>
 </html>

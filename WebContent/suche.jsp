@@ -8,8 +8,11 @@
 </head>
 
 <body>
+	<header>
+		<%@include file="./fragments/header.jsp" %>
+	</header>
 	<nav>
-	<%@include file="navigation.jsp" %>
+		<jsp:include page="./fragments/navigation.jsp"/>
 	</nav>
 	
 	<h1>Das ist die Suchseite</h1>
@@ -39,7 +42,7 @@
 		<button name="suchen" type="submit">Suchen</button>
 	</form>
 	<footer>
-		<jsp:include page="fusszeile.jsp"/>
+		<jsp:include page="./fragments/fusszeile.jsp"/>
 	</footer>
 </body>
 </html>

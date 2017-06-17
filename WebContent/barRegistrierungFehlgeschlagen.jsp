@@ -7,8 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<header>
+		<%@include file="./fragments/header.jsp" %>
+	</header>
 	<nav>
-	<%@include file="navigation.jsp" %>
+		<jsp:include page="./fragments/navigation.jsp"/>
 	</nav>
 	
 	<h1>Registrierung Fehlgeschlagen</h1>
@@ -16,7 +19,7 @@
 	Versuchen sie einen Anderen.
 	
 	<footer>
-		<%@include file="fusszeile.jsp" %>
+		<%@include file="./fragments/fusszeile.jsp" %>
 	</footer>
 </body>
 </html>

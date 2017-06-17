@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<header>
+		<%@include file="./fragments/header.jsp" %>
+	</header>
+	<nav>
+		<jsp:include page="./fragments/navigation.jsp"/>
+	</nav>
+	
 	<form action="ProfilBearbeiten" method="post">
 		<p>Vorname: <input type="text" name="vorname" value="${selfUser.vorname}" > </p>
 		<p>Nachname: <input type="text" name="nachname" value="${selfUser.nachname}" > </p>
@@ -16,7 +23,7 @@
 	</form>
 	
 	<footer>
-		<%@include file="fusszeile.jsp" %>
+		<%@include file="./fragments/fusszeile.jsp" %>
 	</footer>
 </body>
 </html>

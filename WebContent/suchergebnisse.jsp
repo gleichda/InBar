@@ -8,8 +8,11 @@
 <title>Ergebnisse der Suche</title>
 </head>
 <body>
+	<header>
+		<%@include file="./fragments/header.jsp" %>
+	</header>
 	<nav>
-	<%@include file="navigation.jsp" %>
+		<jsp:include page="./fragments/navigation.jsp"/>
 	</nav>
 	
 	<h1>Suchergebnisse</h1>
@@ -42,7 +45,7 @@
 		</c:forEach>
 	</table>
 	<footer>
-		<%@include file="fusszeile.jsp" %>
+		<%@include file="./fragments/fusszeile.jsp" %>
 	</footer>
 </body>
 

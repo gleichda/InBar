@@ -7,15 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<%@include file="navigation.jsp" %>
-
+	<header>
+		<%@include file="./fragments/header.jsp" %>
+	</header>
+	<nav>
+		<jsp:include page="./fragments/navigation.jsp"/>
+	</nav>
 	
 	<h1>Sie sind nicht eingeloggt</h1>
 	<p> Bitte loggen Sie sich ein, um mit der Aktion fortzufahren.</p>
 	
 	<footer>
-		<%@include file="fusszeile.jsp" %>
+		<%@include file="./fragments/fusszeile.jsp" %>
 	</footer>	
 </body>
 </html>

@@ -7,13 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<nav> 
-		<%@include file="navigation.jsp"%>
+	<header>
+		<%@include file="./fragments/header.jsp" %>
+	</header>
+	<nav>
+		<jsp:include page="./fragments/navigation.jsp"/>
 	</nav>
+	
 	<h1>Das von Ihnen aufgerufene Profil exisitiert nicht</h1>
 
 	<footer>
-		<%@include file="fusszeile.jsp" %>
+		<%@include file="./fragments/fusszeile.jsp" %>
 	</footer>
 </body>
 </html>

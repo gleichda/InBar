@@ -140,9 +140,10 @@ public class BarRegisterServlet extends HttpServlet {
 				//hier ist der Fehler
 				//ResultSet rs = bildStatement.getGeneratedKeys();
 				ResultSet rs = bildStatement.executeQuery();
+				
 				rs.first();
 					bild.setBildid(rs.getInt(1));
-
+					System.out.println(rs);
 				//bildStatement.setBytes(1, bild.getBild());
 				bildStatement.executeUpdate();				
 			}

@@ -8,11 +8,12 @@
 </head>
 <body>
 	<header>
-		<h1 id="logo">INBars</h1>
+		<%@include file="./fragments/header.jsp" %>
 	</header>
-
 	<nav>
-	<jsp:include page="navigation.jsp"/>
+	
+		<jsp:include page="./fragments/navigation.jsp"/>
+
 	</nav>
 
 	<article>
@@ -31,13 +32,13 @@
 			</p>
 			<button id="login_btn" type="submit">Login</button>
 		</form>
-		<p>
-			<a href="registrierung.html"> Registrieren</a>
+		<p> Sie sind noch nicht Registriert? Jetzt 
+			<a href="registrierung.jsp"> Registrieren</a>
 		</p>
 	</article>
 
 	<footer>
-		<%@include file="fusszeile.jsp" %>
+		<%@include file="./fragments/fusszeile.jsp" %>
 	</footer>
 </body>
 </html>

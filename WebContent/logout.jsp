@@ -7,10 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<header>
+		<%@include file="./fragments/header.jsp" %>
+	</header>
+	<nav>
+		<jsp:include page="./fragments/navigation.jsp"/>
+	</nav>
+	
 	<h1> Sie wurden erfolgreich abgemeldet</h1>
 	
 	<footer>
-		<%@include file="fusszeile.jsp" %>
+		<%@include file="./fragments/fusszeile.jsp" %>
 	</footer>
 </body>
 </html>
