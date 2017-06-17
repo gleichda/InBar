@@ -8,42 +8,45 @@
 </head>
 <body>
 	<header>
-		<%@include file="./fragments/header.jsp" %>
+		<%@include file="./fragments/header.jsp"%>
 	</header>
-	<nav>
-		<c:choose>
-		<c:when test="${not empty selfUser.vorname}"> 
-			<jsp:include page="./fragments/navigationEingeloggt.jsp"/>
-		</c:when>
-		<c:otherwise>
-					<jsp:include page ="./fragments/navigation.jsp"/>
-		</c:otherwise>
-		</c:choose>		
-	</nav>
+	
+		<nav>
+			<c:choose>
+				<c:when test="${not empty selfUser.vorname}">
+					<jsp:include page="./fragments/navigationEingeloggt.jsp" />
+				</c:when>
+				<c:otherwise>
+					<jsp:include page="./fragments/navigation.jsp" />
+				</c:otherwise>
+			</c:choose>
+		</nav>
 
-	<article>
-		<h2>Login</h2>
-		<p>Das ist die Login-Seite</p>
-		<c:if test="${fehlgeschlageneLoginVersuche != null}">
-			<p>Ihr Login war nicht erfolgreich bitte versuchen Sie es erneut.</p>
-		</c:if>
+		<article>
+			<h2>Login</h2>
+			<p>Das ist die Login-Seite</p>
+			<c:if test="${fehlgeschlageneLoginVersuche != null}">
+				<p>Ihr Login war nicht erfolgreich bitte versuchen Sie es
+					erneut.</p>
+			</c:if>
 
-		<form class="login" method="post" action="LoginServlet">
+			<form class="login" method="post" action="LoginServlet">
+				<p>
+					Benutzername: <input type="text" name="benutzer" autofocus>
+				</p>
+				<p>
+					Passwort: <input type="password" name="passwort">
+				</p>
+				<button id="login_btn" type="submit">Login</button>
+			</form>
 			<p>
-				Benutzername: <input type="text" name="benutzer" autofocus>
+				Sie sind noch nicht Registriert? Jetzt <a href="registrierung.jsp">
+					Registrieren</a>
 			</p>
-			<p>
-				Passwort: <input type="password" name="passwort">
-			</p>
-			<button id="login_btn" type="submit">Login</button>
-		</form>
-		<p> Sie sind noch nicht Registriert? Jetzt 
-			<a href="registrierung.jsp"> Registrieren</a>
-		</p>
-	</article>
-
+		</article>
+	
 	<footer>
-		<%@include file="./fragments/fusszeile.jsp" %>
+		<%@include file="./fragments/fusszeile.jsp"%>
 	</footer>
 </body>
 </html>
