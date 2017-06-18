@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="default.css" rel="stylesheet">
+<link href="./css/style.css" type="text/css" rel="stylesheet">
+<link href="./css/formStyle.css" type="text/css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>IN-Bars Registrierung</title>
 </head>

@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="./css/style.css" type="text/css" rel="stylesheet">
 <title>Insert title here</title>
 </head>
 <body>
@@ -20,11 +21,13 @@
 		</c:otherwise>
 		</c:choose>		
 	</nav>
-	
-	<h1>Ihr Login war erfolgreich</h1>
-	<h2>Herzlich Willkommen ${selfUser.vorname}</h2>
-	
-		<p> <a href=profilAnzeigen.jsp >Weiter zu meinem Profil</a></p>
+	<article>
+		<h1>Ihr Login war erfolgreich</h1>
+		<h2>Herzlich Willkommen ${selfUser.vorname}</h2>
+		
+			<p> <a href=profilAnzeigen.jsp >Weiter zu meinem Profil</a></p>
+	</article>	
+		
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>
 	</footer>

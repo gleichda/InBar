@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="./css/style.css" type="text/css" rel="stylesheet">
+<link href="./css/formStyle.css" type="text/css" rel="stylesheet">
 <title>Suche</title>
 </head>
 
@@ -21,46 +23,46 @@
 		</c:otherwise>
 		</c:choose>		
 	</nav>
+	<article>
+		<h1>Das ist die Suchseite</h1>
 	
-	<h1>Das ist die Suchseite</h1>
-
-	<form id="suchForm" method="post" action="Suchservlet">
-		<div>
-		<!-- Textfeld zur Suche nach dem Barnamen -->
-		<label for="suchbegriff">Name der Bar: </label>
-		<input type="text" name="suchbegriff" id="suchbegriff" placeholder="Barname" autofocus>
-		</div>
-		<br>
-		<p>Suchst du eine Bar oder ein Event?</p>
-		<!-- Radio-Button zur Auswahl der Suchart. -->
-		<div>
+		<form id="suchForm" method="post" action="Suchservlet">
 			<div>
-			<input type="radio" name="suchart" value="bar" id="bar_radio" checked>
-			<label for="bar">Bar</label><br> 
+			<!-- Textfeld zur Suche nach dem Barnamen -->
+			<label for="suchbegriff">Name der Bar: </label>
+			<input type="text" name="suchbegriff" id="suchbegriff" placeholder="Barname" autofocus>
 			</div>
-			
+			<br>
+			<p>Suchst du eine Bar oder ein Event?</p>
+			<!-- Radio-Button zur Auswahl der Suchart. -->
 			<div>
-			<input type="radio" name="suchart" value="event" id="event_radio">
-			<label for="event">Event</label><br>
+				<div>
+				<input type="radio" name="suchart" value="bar" id="bar_radio" checked>
+				<label for="bar">Bar</label><br> 
+				</div>
+				
+				<div>
+				<input type="radio" name="suchart" value="event" id="event_radio">
+				<label for="event">Event</label><br>
+				</div>
 			</div>
-		</div>
-		<div>
-			<p> Musikart:
-			<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/inbar" user="root" />
-			<sql:query dataSource="${ds}" var="musikarten">SELECT * FROM musikarten;</sql:query>
-			
-			<select name="musikart">
-				<c:forEach var ="art" items="${musikarten.rows}" >
-					<option value="${art.musikid}">${art.name }</option>
-				</c:forEach>
-			</select>
-			</p>
-		</div>
-		<div>
-			<button name="suchen" type="submit">Suchen</button>
-		</div>
-	</form>
-	
+			<div>
+				<p> Musikart:
+				<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/inbar" user="root" />
+				<sql:query dataSource="${ds}" var="musikarten">SELECT * FROM musikarten;</sql:query>
+				
+				<select name="musikart">
+					<c:forEach var ="art" items="${musikarten.rows}" >
+						<option value="${art.musikid}">${art.name }</option>
+					</c:forEach>
+				</select>
+				</p>
+			</div>
+			<div>
+				<button name="suchen" type="submit">Suchen</button>
+			</div>
+		</form>
+	</article>
 	<footer>
 		<jsp:include page="./fragments/fusszeile.jsp"/>
 	</footer>

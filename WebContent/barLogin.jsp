@@ -2,7 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<link href="default.css" rel="stylesheet">
+<link href="./css/style.css" type="text/css" rel="stylesheet">
+<link href="./css/formStyle.css" type="text/css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>IN-Bars Login</title>
 </head>
