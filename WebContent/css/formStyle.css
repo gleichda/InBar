@@ -1,1 +1,19 @@
 @CHARSET "UTF-8";
+
+
+
+label{
+	display: block;
+}
+
+input {
+	width: 20em;
+}
+
+textarea {
+	border: 1px solid black;
+}
+
+input[type="checkbox"], input[type="radio"] {
+	width: auto;
+}

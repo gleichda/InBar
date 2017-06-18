@@ -23,13 +23,15 @@
 	</nav>
 	
 	<h1>Suchergebnisse</h1>
-	<h3>Ihre Sucheingaben:</h3>
-	<br>
-	<b>Gesuchter Begriff </b>${param.suchbegriff}
-	<br>
-	<b>Du suchst nach:</b>${param.suchart}
-	<br>Musikart: ${param.musikart}
-	<table>
+	<div>
+		<h3>Ihre Sucheingaben:</h3>
+		<br>
+		<b>Gesuchter Begriff </b>${param.suchbegriff}
+		<br>
+		<b>Du suchst nach:</b>${param.suchart}
+		<br>Musikart: ${param.musikart}
+	</div>
+	<table id="suchergebnisse">
 		<tr>
 		<th>BarID</th>
 		<th>Name</th>

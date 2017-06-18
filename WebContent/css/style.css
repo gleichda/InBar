@@ -17,7 +17,9 @@ header {
 	order:1;
 	
 }
-
+nav{
+	order: 2;
+}
 .main {
 	display: flex;
 	order:3;
