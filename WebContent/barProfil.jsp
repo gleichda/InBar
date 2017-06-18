@@ -21,10 +21,17 @@
 		</c:otherwise>
 		</c:choose>		
 	</nav>
-	
-	<h1>Ihr Login war erfolgreich</h1>
-	<h2>Herzlich Willkommen ${baruser.barname}</h2>
-	
+	<article>
+		<h1>${baruser.barname}</h1>
+		<h2>Herzlich Willkommen ${baruser.barname}</h2> 
+		
+		<!-- TODO: Profilbild der Bar einfügen, sobald möglich -->
+		<section >
+			<p>${baruser.bbeschreibung}</p>
+			<p>${baruser.mbeschreibung}</p>
+			<p>${baruser.lbeschreibung}</p>
+		</section>
+	</article>
 
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>

@@ -22,16 +22,17 @@
 		</c:otherwise>
 		</c:choose>		
 	</nav>
-	
-	<section class="main" >
-		<c:if test="${not empty param.id }">
-			<h1>Profil von ${user.vorname }</h1>
-		</c:if>
-		<c:if test="${empty param.id }">
-			<h1>Dein Profil</h1>
-		</c:if>
-		Username: ${user.username}
-	</section>
+	<article>
+		<section class="main" >
+			<c:if test="${not empty param.id }">
+				<h1>Profil von ${user.vorname }</h1>
+			</c:if>
+			<c:if test="${empty param.id }">
+				<h1>Dein Profil</h1>
+			</c:if>
+			Username: ${user.username}
+		</section>
+	</article>
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>
 	</footer>

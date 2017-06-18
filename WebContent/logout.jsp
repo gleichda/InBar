@@ -21,9 +21,9 @@
 		</c:otherwise>
 		</c:choose>		
 	</nav>
-	
-	<h1> Sie wurden erfolgreich abgemeldet</h1>
-	
+	<article>
+		<h1> Sie wurden erfolgreich abgemeldet</h1>
+	</article>
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>
 	</footer>

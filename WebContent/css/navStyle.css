@@ -2,20 +2,19 @@
 
 /* Quelle http://www.olivergast.de/blog/2015/05/12/css-ein-horizontales-dropdown-menue-reloaded/ */
 nav {
- 
-	
 	box-sizing: border-box;
  	float: left;
   	width: 100%;
   	background: #0A223C;
   	font-size: 16px;	
-
 }
+
 nav ul {
   margin: 0;
   padding: 0;
   background: #0A223C;
 }
+
 nav a {
   display: block;
   color: #fff;
@@ -27,15 +26,18 @@ nav ul li {
   float: left;
   list-style: none;
   background: #0A223C;
+  z-index: 1;
 }
  
 nav ul li:hover {
-  background: #0A223C;
+  /* background: #0A223C; */
+  background: #3F4F60
 }
  
 nav ul li a {
     padding: 20px;
 }
+
 nav ul ul {
   position: absolute;
   top: -9999px;
@@ -59,11 +61,13 @@ nav ul ul li a {
 nav ul li:hover > ul {
   top: 100%;
   left: 0;
+  background: #3F4F60
 }
 
 nav ul ul li:hover > ul {
   top: 0;
   left: 200px;
+  background: #3F4F60
 }
 
 nav ul li.submenu > a:after {
@@ -77,9 +81,10 @@ nav ul li.submenu > a:after {
   border-top: 5px solid #fff;
   border-bottom: 5px solid transparent;
 }
-/*
+
+
 nav ul ul li:last-child {
   border-bottom: none;
 }
-*/
+
 /* Quelle ende  */
