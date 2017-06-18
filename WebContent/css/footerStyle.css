@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+#footer{
+	box-sizing: border-box;
+	float: left;
+	width: 100%;
+	
+}
+
+#footer a{
+	display: block;
+	text-decoration: none;
+}
+
+#footer ul{
+	float: left;
+}
+
+#footer ul li {
+	float: left;
+	list-style: none;
+	background-color: #BDBDBD;
+	opacity: 0.8;	
+
+	margin-right: 5px;
+	border-style: groove;	
+}
+
+#footer ul li a{
+	padding: 20px;
+
+}

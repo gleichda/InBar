@@ -7,7 +7,7 @@
 	<p>EINGELOGGT</p>
 	<ul>
 		<li class="nav1"><a href="startseite.jsp"> Startseite</a></li>
-		<li class="nav1"><a href="suche.jsp"> Suche</a>
+		<li class="submenu"><a href="suche.jsp"> Suche</a>
 			<ul>
 				<li class="nav2"><a href="barSuche.jsp"> Bars suchen</a></li>
 				<li class="nav2"><a href="eventSuche.jsp"> Events suchen</a></li>
