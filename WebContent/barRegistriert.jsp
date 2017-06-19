@@ -33,6 +33,7 @@
 	<br> ${baruser.mbeschreibung}
 	<br> ${baruser.lbeschreibung}
 	<br> ${baruser.bildId}
+	<br> ${baruser.bild}
 	<!--  TODO: Bild anzeigen -->
 
 	<footer>
