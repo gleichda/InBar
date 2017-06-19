@@ -40,6 +40,7 @@ public class BarLoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String barname = (String) request.getParameter("barname");
 		String passwort = (String) request.getParameter("passwort");
 

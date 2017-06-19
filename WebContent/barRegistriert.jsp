@@ -32,7 +32,8 @@
 	<br> ${baruser.bbeschreibung}
 	<br> ${baruser.mbeschreibung}
 	<br> ${baruser.lbeschreibung}
-	<br> ${baruser.bild}
+	<br> ${baruser.bildId}
+	<!--  TODO: Bild anzeigen -->
 
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>

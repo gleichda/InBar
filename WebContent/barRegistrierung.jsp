@@ -70,6 +70,7 @@
 				<label for="barmail">Mail-Adresse der Bar: </label> <input
 					type="text" name="barmail" id="barmail" value="">
 			</div>
+			<!-- TODO: Musikrichtung waehlen -->
 			</fieldset>
 			<fieldset><legend>Profiltext</legend>
 			<div id="beschreibung">

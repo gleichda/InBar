@@ -21,6 +21,7 @@ import javax.sql.DataSource;
 
 import inbar.beans.BarBean;
 import inbar.beans.UserBean;
+import inbar.datenbank.BildHandler;
 import inbar.beans.BildBean;
 
 @WebServlet("/BarRegisterServlet")
@@ -37,19 +38,12 @@ public class BarRegisterServlet extends HttpServlet {
 	// Sabine: Kopiert aus RegisterServlet und angepasst
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		final HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
-
-		// String read = "SELECT * from bar where barname LIKE '" +
-		// request.getParameter("barname") + "'";
-		// System.out.println(read);
-
+		
+		final HttpSession session = request.getSession();
+		
 		UserBean user = (UserBean) session.getAttribute("selfUser");
-		
 
-		
-		
 		if (user != null) {
 
 			try (Connection con = ds.getConnection();
@@ -59,151 +53,139 @@ public class BarRegisterServlet extends HttpServlet {
 			{
 				statement.setString(1, request.getParameter("barname"));
 				ResultSet rs = statement.executeQuery();
-				
 
 				// pruefen ob der Barname schon existiert
 				if (!rs.first()) {
 
-					// Bar fuer die Session speichern
-					BarBean baruser = new BarBean();
+					BarBean bar = new BarBean();
 					BildBean bild = new BildBean();
-											
-						// Bildbehandlung
-						Part filepart = request.getPart("bild");
-						bild.setBildname(filepart.getSubmittedFileName());
-						
-						try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
-								InputStream in = filepart.getInputStream()){
-							int i=0;
-							while ((i= in.read()) != -1) {
-								baos.write(i);
-							}
-							bild.setBild(baos.toByteArray());
-							baos.flush();
-						} catch (IOException ex){
-							throw new ServletException(ex.getMessage());
+
+					// Bildbehandlung
+					Part filepart = request.getPart("bild");
+					bild.setBildname(filepart.getSubmittedFileName());
+
+					try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
+							InputStream in = filepart.getInputStream()) {
+						int i = 0;
+						while ((i = in.read()) != -1) {
+							baos.write(i);
 						}
+						bild.setBild(baos.toByteArray());
+						baos.flush();
+					} catch (IOException ex) {
+						throw new ServletException(ex.getMessage());
+					}
 					
 					
-					baruser.setBarname(request.getParameter("barname"));
-					baruser.setVorname(request.getParameter("vorname"));
-					baruser.setNachname(request.getParameter("nachname"));
-					baruser.setChefmail(request.getParameter("chefmail"));
-					baruser.setStrasse(request.getParameter("strasse"));
-					baruser.setHausnummer(request.getParameter("hausnummer"));
-					baruser.setPlz(request.getParameter("plz"));
-					baruser.setOrt(request.getParameter("ort"));
-					baruser.setBarmail(request.getParameter("barmail"));
+					//BarBean fuellen
+					bar.setBarname(request.getParameter("barname"));
+					bar.setVorname(request.getParameter("vorname"));
+					bar.setNachname(request.getParameter("nachname"));
+					bar.setChefmail(request.getParameter("chefmail"));
+					bar.setStrasse(request.getParameter("strasse"));
+					bar.setHausnummer(request.getParameter("hausnummer"));
+					bar.setPlz(request.getParameter("plz"));
+					bar.setOrt(request.getParameter("ort"));
+					bar.setBarmail(request.getParameter("barmail"));
 
-					baruser.setPasswort(request.getParameter("passwort"));
+					bar.setPasswort(request.getParameter("passwort"));
 
-					baruser.setBbeschreibung(request.getParameter("text"));
-					baruser.setMbeschreibung(request.getParameter("mbeschreibung"));
-					baruser.setLbeschreibung(request.getParameter("lbeschreibung"));
+					bar.setBbeschreibung(request.getParameter("text"));
+					bar.setMbeschreibung(request.getParameter("mbeschreibung"));
+					bar.setLbeschreibung(request.getParameter("lbeschreibung"));
 
-					System.out.println(user.getNachname());
-					bildSpeichern(bild);
-					barUserSpeichern(baruser, user);
-
-					session.setAttribute("baruser", baruser);
+					BildHandler bildHandler = new BildHandler(bild);
+					bild = bildHandler.bildSpeichern(ds); 
+					// Neue BildBean mitgesetzter ID uebernehmen
 					
+					barSpeichern(bar, user);
+					barZuUserZuweisen(bar, user);
+					bar.setBildId(bild.getBildid());
+					barZuBildZuweisen(bar);
+					
+					//TODO: Musikarten festlegen
+					
+					session.setAttribute("baruser", bar); //TODO: Brauchen wir das?
 
 					final RequestDispatcher dispatcher = request.getRequestDispatcher("barRegistriert.jsp");
 					dispatcher.forward(request, response);
 				} else {
-					final RequestDispatcher dispatcher = request.getRequestDispatcher("barRegistrierungFehlgeschlagen.jsp");
+					final RequestDispatcher dispatcher = request
+							.getRequestDispatcher("barRegistrierungFehlgeschlagen.jsp");
 					dispatcher.forward(request, response);
 				}
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				e.printStackTrace(System.out);
 			}
-		}
-		else {
-			//Aufruf Fehlerseite, wenn kein User eingeloggt ist
+		} else {
+			// Aufruf Fehlerseite, wenn kein User eingeloggt ist
 			final RequestDispatcher dispatcher = request.getRequestDispatcher("nichtEingeloggt.jsp");
 			dispatcher.forward(request, response);
 		}
 	}
 
-	private void bildSpeichern(BildBean bild) throws ServletException{
-			String[] generatedKeys = new String[] {"bildid"};
-			//int i = 1;
-			//System.out.println(bild.getBildname());
-			//System.out.println(generatedKeys[i]);	
-			//TODO Ursache f�r den Fehler ist das leere rs, Weis aber nicht, wie ich das beheben kann
-			//Du hast den query nie ausgefuert.
-			try (Connection con = ds.getConnection();
-					PreparedStatement bildStatement = con.prepareStatement(
-							"INSERT INTO bild(bildbyte) VALUES ()",generatedKeys)){
-				System.out.println(bild.getBildname());	
-				//hier ist der Fehler
-				//ResultSet rs = bildStatement.getGeneratedKeys();
-				ResultSet rs = bildStatement.executeQuery();
-				
-				rs.first();
-					bild.setBildid(rs.getInt(1));
-					System.out.println(rs);
-				//bildStatement.setBytes(1, bild.getBild());
-				bildStatement.executeUpdate();				
-			}
+	private void barSpeichern(BarBean bar, UserBean user) throws ServletException {
+		String[] generatedKeys = new String[] { "barid" }; // Aus Skript JDBC Folie 12 uebernommen
 
-			catch (Exception e) {
-				throw new ServletException(e.getMessage());
-			}
-					
-	}
-
-	private void barUserSpeichern(BarBean baruser, UserBean user) throws ServletException {
-
-		/*
-		 * String writeString =
-		 * "INSERT INTO benutzer(benutzername, vorname, nachname, email, passwort) VALUES ("
-		 * + user.getUsername() + ", " + user.getVorname() + ", " +
-		 * user.getNachname() + ", " + user.getEmail() + ", " +
-		 * user.getPassword() + ")";
-		 */
-		
-		String[] generatedKeys = new String[] {"barid"};  //Aus Skript JDBC Folie 12 �bernommen
-		
 		try (Connection con = ds.getConnection();
 				PreparedStatement barCreationStatement = con.prepareStatement(
 						"INSERT INTO bar(vorname, nachname, chefmail, strasse, hausnummer, plz ,ort ,barmail ,barname, bbeschreibung, mbeschreibung, lbeschreibung) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-						generatedKeys);
-				PreparedStatement barAdminStatement = con.prepareStatement("INSERT INTO bar_zu_user(userid, barid) VALUES (?, ?)")){
-			
-			//TODO bar_zu_bild-Tabelle in der Datenbank erstellen
-			barCreationStatement.setString(1, baruser.getVorname());
-			barCreationStatement.setString(2, baruser.getNachname());
-			barCreationStatement.setString(3, baruser.getChefmail());
-			barCreationStatement.setString(4, baruser.getStrasse());
-			barCreationStatement.setString(5, baruser.getHausnummer());
-			barCreationStatement.setString(6, baruser.getPlz());
-			barCreationStatement.setString(7, baruser.getOrt());
-			barCreationStatement.setString(8, baruser.getBarmail());
-			barCreationStatement.setString(9, baruser.getBarname());
-			barCreationStatement.setString(10, baruser.getBbeschreibung());
-			barCreationStatement.setString(11, baruser.getMbeschreibung());
-			barCreationStatement.setString(12, baruser.getLbeschreibung());
-			barCreationStatement.executeUpdate();
+						generatedKeys)) {
 
 			
+			barCreationStatement.setString(1, bar.getVorname());
+			barCreationStatement.setString(2, bar.getNachname());
+			barCreationStatement.setString(3, bar.getChefmail());
+			barCreationStatement.setString(4, bar.getStrasse());
+			barCreationStatement.setString(5, bar.getHausnummer());
+			barCreationStatement.setString(6, bar.getPlz());
+			barCreationStatement.setString(7, bar.getOrt());
+			barCreationStatement.setString(8, bar.getBarmail());
+			barCreationStatement.setString(9, bar.getBarname());
+			barCreationStatement.setString(10, bar.getBbeschreibung());
+			barCreationStatement.setString(11, bar.getMbeschreibung());
+			barCreationStatement.setString(12, bar.getLbeschreibung());
+			barCreationStatement.executeUpdate();
 
 			ResultSet rs = barCreationStatement.getGeneratedKeys();
 			rs.first();
-				baruser.setBarid(rs.getInt(1));
+			bar.setBarid(rs.getInt(1));
 
-				
-			//Zuweisung des aktuell angemeldeten Benutzers zu der angelegten Bar
-			barAdminStatement.setInt(1, user.getUserid());
-			barAdminStatement.setInt(2, baruser.getBarid());
-			barAdminStatement.executeUpdate();
 			
 			
+
 		}
 
 		catch (Exception e) {
 			throw new ServletException(e.getMessage());
 		}
 	}
+	
+	private void barZuUserZuweisen(BarBean bar, UserBean user){
+		// Zuweisung des aktuell angemeldeten Benutzers zu der angelegten Bar
+		try (Connection con = ds.getConnection();
+				PreparedStatement barAdminStatement = con.prepareStatement("INSERT INTO bar_zu_user(userid, barid) VALUES (?, ?)")){
+			barAdminStatement.setInt(1, user.getUserid());
+			barAdminStatement.setInt(2, bar.getBarid());
+			barAdminStatement.executeUpdate();
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	private void barZuBildZuweisen(BarBean bar){
+		try (Connection con = ds.getConnection();
+				PreparedStatement barBildStatement = con.prepareStatement("INSERT INTO bar_zu_bild (barid, bildid) VALUES (?, ?)")) {
+			barBildStatement.setInt(1, bar.getBarid());
+			barBildStatement.setInt(2, bar.getBildId());
+			barBildStatement.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
 }

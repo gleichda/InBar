@@ -40,6 +40,8 @@ public class ProfilAnzeigenServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
 		final HttpSession session = request.getSession();
 		UserBean selfUser = (UserBean) session.getAttribute("selfUser");
 		if (request.getParameter("id") != null) {
