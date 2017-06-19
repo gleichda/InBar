@@ -28,6 +28,7 @@
 			<p>Nachname: <input type="text" name="nachname" value="${selfUser.nachname}" > </p>
 			<p>E-Mail Adresse: <input type="text" name="email"value="${selfUser.email}"> </p>
 			<p>Passwort: <input type="password" name="passwort"> </p>
+			<!-- TODO: Passwort zweimal abfragen und vergleichen (javascript) -->
 			<button id="aendern" type="submit">Absenden</button>
 		</form>
 	</article>

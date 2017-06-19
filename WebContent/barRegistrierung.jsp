@@ -86,8 +86,6 @@
 				<div>
 					<label for="mbeschreibung">Beschreiben Sie die Musik, die
 						bei Ihnen gespielt wird: <br></label> 
-						<!-- <input type="text" name="mbeschreibung" id="mbeschreibung"  
-						value="Musikbeschreibung">  -->
 						<textarea name="mbeschreibung" id="mbeschreibung" placeholder="Beschreiben Sie die Musik die bei Ihnen gespielt wird." rows="5" cols="100"></textarea>
 				</div>
 				<div>
