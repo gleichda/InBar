@@ -9,6 +9,10 @@ import javax.sql.DataSource;
 
 import inbar.beans.BildBean;
 
+/**
+ * @author david
+ *Klasse zum Speichern des Bilds in der Datenbank
+ */
 public class BildHandler {
 
 	BildBean bild;

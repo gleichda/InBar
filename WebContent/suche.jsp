@@ -52,6 +52,7 @@
 				<sql:query dataSource="${ds}" var="musikarten">SELECT * FROM musikarten;</sql:query>
 				
 				<select name="musikart">
+					<option value="-1">Alle</option> 
 					<c:forEach var ="art" items="${musikarten.rows}" >
 						<option value="${art.musikid}">${art.name }</option>
 					</c:forEach>

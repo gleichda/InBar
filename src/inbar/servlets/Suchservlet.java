@@ -55,8 +55,18 @@ public class Suchservlet extends HttpServlet {
 							"SELECT * FROM ((musik_zu_bar INNER JOIN bar ON bar.barid=musik_zu_bar.barid)" + ""
 									+ " INNER JOIN musikarten ON musik_zu_bar.musikid=musikarten.musikid)"
 									+ " WHERE musik_zu_bar.musikid = ? AND bar.barname LIKE ?")) {
-				statement.setInt(1, musikart);
-				statement.setString(2, "%" + suchbegriff + "%");
+				if (musikart < 0){
+					statement.setInt(1, musikart);
+				}
+				else {
+					statement.setString(1, "%");
+				}
+				if (suchbegriff != "" && suchbegriff != null){
+					statement.setString(2, "%" + suchbegriff + "%");
+				}
+				else {
+					statement.setString(2, "%");
+				}
 				ResultSet rs = statement.executeQuery();
 				while (rs.next()) {
 					BarBean bar = new BarBean();

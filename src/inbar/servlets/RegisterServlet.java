@@ -41,9 +41,6 @@ public class RegisterServlet extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		//String read = "SELECT * from benutzer where benutzername LIKE '" + request.getParameter("benutzer") + "' OR email LIKE '" + request.getParameter("email") + "'";
-		//System.out.println(read);
-		
 		try (Connection con = ds.getConnection();
 			PreparedStatement statement = con.prepareStatement("SELECT * from benutzer where benutzername LIKE ? OR email LIKE ?", Statement.RETURN_GENERATED_KEYS);
 			)
@@ -52,6 +49,7 @@ public class RegisterServlet extends HttpServlet {
 			statement.setString(2, request.getParameter("email"));
 			ResultSet rs = statement.executeQuery();
 			System.out.println(rs.getFetchSize());
+			
 			//pruefen ob der Benutzername schon existiert
 			if (!rs.first()){
 				
@@ -94,11 +92,6 @@ public class RegisterServlet extends HttpServlet {
 	
 	private void userSpeichern (UserBean user) throws ServletException{
 		
-		/*String writeString = "INSERT INTO benutzer(benutzername, vorname, nachname, email, passwort) VALUES (" + user.getUsername() +
-				", " + user.getVorname() +
-				", " + user.getNachname() +
-				", " + user.getEmail() +
-				", " + user.getPassword() + ")";*/
 		try (Connection con = ds.getConnection();
 				PreparedStatement statement = con.prepareStatement("INSERT INTO benutzer(benutzername, vorname, nachname, email, passwort) VALUES (?, ?, ?, ?, ?)");
 			){
