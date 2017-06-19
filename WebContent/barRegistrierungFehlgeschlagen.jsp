@@ -22,10 +22,11 @@
 		</c:choose>		
 	</nav>
 	
+	<article>
 	<h1>Registrierung Fehlgeschlagen</h1>
 	Ihr Barname ${request.barname} ist leider schon vergeben. Bitte
 	Versuchen sie einen Anderen.
-	
+	</article>
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>
 	</footer>

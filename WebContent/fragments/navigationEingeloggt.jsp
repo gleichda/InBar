@@ -13,8 +13,13 @@
 				<li class="nav2"><a href="eventSuche.jsp"> Events suchen</a></li>
 				<li class="nav2"><a href="userSuche.jsp"> User suchen</a></li>
 			</ul></li>
-		<li class="nav1"><a href="./Logout">Logout</a>
-		<li class="nav1"><a href="profilAnzeigen.jsp"> MeinProfil</a></li>
+		<li class="submenu"><a>Profil</a>
+			<ul>
+				<li class="nav2"><a href="profilAnzeigen.jsp"> MeinProfil</a></li>
+				<li class="nav2"><a href="profilBearbeiten.jsp">Profil bearbeiten</a></li>
+				<li class="nav2"><a href="./Logout">Logout</a>
+			</ul>
+		</li>
 		<li class="nav1"><a href="barRegistrierung.jsp">Bar anlegen</a></li>
 		<li class="nav1"><a href="kontakt.html"> Kontakt</a></li>
 	</ul>

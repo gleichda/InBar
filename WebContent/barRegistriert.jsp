@@ -21,7 +21,7 @@
 		</c:otherwise>
 		</c:choose>		
 	</nav>
-	
+	<article>
 	<h1>Registrierung erfolgreich</h1>
 	<h2>Herzlich Willkkommen ${baruser.vorname}</h2>
 	<br> Vorname: ${baruser.vorname}
@@ -33,9 +33,9 @@
 	<br> ${baruser.mbeschreibung}
 	<br> ${baruser.lbeschreibung}
 	<br> ${baruser.bildId}
-	<br> ${baruser.bild}
+	<br> <img src="./Bild?id=${baruser.bildId}">
 	<!--  TODO: Bild anzeigen -->
-
+	</article>
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>
 	</footer>
