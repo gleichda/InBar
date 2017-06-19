@@ -54,21 +54,25 @@ public class ProfilBearbeitenServlet extends HttpServlet {
 				vStatement.setInt(2, user.getUserid());;
 				vStatement.setString(1, vorname);
 				vStatement.executeUpdate();
+				user.setVorname(vorname);
 			}
 			if (nachname != user.getNachname()){
 				nStatement.setInt(2, user.getUserid());
 				nStatement.setString(1, nachname);
 				nStatement.executeUpdate();
+				user.setNachname(nachname);
 			}
 			if (email != user.getEmail()){
 				eStatement.setInt(2, user.getUserid());
 				eStatement.setString(1, email);
 				eStatement.executeUpdate();
+				user.setEmail(email);
 			}
 			if (passwort != user.getPassword()){
 				pStatement.setInt(2, user.getUserid());
 				pStatement.setString(1, passwort);
 				pStatement.executeUpdate();
+				user.setPassword(passwort);
 			}
 			RequestDispatcher dispatcher = request.getRequestDispatcher("erfolgreichGeaendert.jsp");
 			dispatcher.forward(request, response);

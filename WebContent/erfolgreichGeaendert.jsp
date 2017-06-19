@@ -21,9 +21,9 @@
 		</c:otherwise>
 		</c:choose>		
 	</nav>
-	
-	<h1>Ihre Daten wurden erfolgreich geaendert</h1>
-	
+	<article>
+		<h1>Ihre Daten wurden erfolgreich geaendert</h1>
+	</article>
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>
 	</footer>
