@@ -46,29 +46,30 @@ public class Suchservlet extends HttpServlet {
 		int musikart = Integer.parseInt(request.getParameter("musikart"));
 		String suchbegriff = request.getParameter("suchbegriff");
 		String suchart = request.getParameter("suchart");
+		System.out.println("Suche: Suchbegriff: " + suchbegriff + " Suchart: " + suchart + " Musikart: " + musikart);
 
 		switch (suchart.toLowerCase()) {
 		case "bar":
 			List<BarBean> barsList = new ArrayList<BarBean>();
 			try (Connection con = ds.getConnection();
 					PreparedStatement statement = con.prepareStatement(
-							"SELECT * FROM ((musik_zu_bar INNER JOIN bar ON bar.barid=musik_zu_bar.barid)" + ""
-									+ " INNER JOIN musikarten ON musik_zu_bar.musikid=musikarten.musikid)"
-									+ " WHERE musik_zu_bar.musikid = ? AND bar.barname LIKE ?")) {
-				if (musikart < 0){
+							"SELECT * FROM ((musik_zu_bar INNER JOIN bar ON bar.barid=musik_zu_bar.barid) INNER JOIN musikarten ON musik_zu_bar.musikid=musikarten.musikid) WHERE bar.barname LIKE ?")) 
+			{
+				/*if (musikart < 0){
 					statement.setInt(1, musikart);
 				}
 				else {
 					statement.setString(1, "%");
-				}
+				}*/
 				if (suchbegriff != "" && suchbegriff != null){
-					statement.setString(2, "%" + suchbegriff + "%");
+					statement.setString(1, "%" + suchbegriff + "%");
 				}
 				else {
-					statement.setString(2, "%");
+					statement.setString(1, "%");
 				}
 				ResultSet rs = statement.executeQuery();
 				while (rs.next()) {
+					if (musikart < 0 || rs.getInt("musik_zu_bar.musikid") == musikart) {
 					BarBean bar = new BarBean();
 					bar.setBarid(rs.getInt("bar.barid"));
 					bar.setBarname(rs.getString("bar.barname"));
@@ -83,9 +84,11 @@ public class Suchservlet extends HttpServlet {
 					bar.setBbeschreibung(rs.getString("bar.bbeschreibung"));
 					bar.setMbeschreibung(rs.getString("bar.mbeschreibung"));
 					bar.setLbeschreibung(rs.getString("bar.lbeschreibung"));
-					barsList.add(bar);
+					barsList.add(bar);}
 				}
+				System.out.println("BarsList Size:" + barsList.size());
 				if (!barsList.isEmpty()) {
+					System.out.println("Ergebnisse enthalten");
 					request.setAttribute("suchergebnisse", barsList);
 
 					RequestDispatcher dispatcher = request.getRequestDispatcher("suchergebnisse.jsp");

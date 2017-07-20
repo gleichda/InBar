@@ -21,9 +21,9 @@
 		</c:otherwise>
 		</c:choose>		
 	</nav>
-	
+	<article>
 	<h1>Ihre Bar konnte leider nicht gefunden werden.</h1>
-	
+	</article>
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>
 	</footer>
