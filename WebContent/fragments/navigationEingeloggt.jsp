@@ -6,7 +6,7 @@
 <!-- Navigationsleiste, wenn der User NICHT eingeloggt ist -->
 <div id="main_nav">
 	<ul>
-		<li class="nav1"><a href="startseite.jsp"> Startseite</a></li>
+		<li class="nav1"><a href="index.jsp"> Startseite</a></li>
 		<li class="submenu"><a href="suche.jsp"> Suche</a>
 			<ul>
 				<li class="nav2"><a href="barSuche.jsp"> Bars suchen</a></li>

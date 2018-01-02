@@ -3,6 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 	<!--   <h1 id="logo">INBars</h1>-->
-	<a href="./startseite.jsp" ><img src="./img/INBars_Logo.jpg" id="logo"></a>
+	<a href="./index.jsp" ><img src="./img/INBars_Logo.jpg" id="logo"></a>
 	
 	
