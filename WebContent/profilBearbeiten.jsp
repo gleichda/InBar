@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./css/style.css" type="text/css" rel="stylesheet">
 <link href="./css/formStyle.css" type="text/css" rel="stylesheet">
+<script src="./js/profilBearbeiten.js" type="text/javascript"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -24,11 +25,12 @@
 	</nav>
 	<article>
 		<form action="ProfilBearbeiten" method="post">
-			<p>Vorname: <input type="text" name="vorname" value="${selfUser.vorname}" > </p>
-			<p>Nachname: <input type="text" name="nachname" value="${selfUser.nachname}" > </p>
-			<p>E-Mail Adresse: <input type="text" name="email"value="${selfUser.email}"> </p>
-			<p>Passwort: <input type="password" name="passwort"> </p>
+			<p><label>Vorname:</label> <input type="text" name="vorname" value="${selfUser.vorname}" required > </p>
+			<p><label>Nachname:</label> <input type="text" name="nachname" value="${selfUser.nachname}" required> </p>
+			<p><label>E-Mail Adresse:</label> <input type="email" name="email"value="${selfUser.email}" required> </p>
+			<p><label>Passwort:</label> <input type="password" name="passwort" id="passwort"> </p>
 			<!-- TODO: Passwort zweimal abfragen und vergleichen (javascript) -->
+			<p><label>Passwort wiederholen:</label> <input type="password" name="passwort_wiederholen" id=passwort_wiederholen> </p>
 			<button id="aendern" type="submit">Absenden</button>
 		</form>
 	</article>

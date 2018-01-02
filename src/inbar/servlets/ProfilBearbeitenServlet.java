@@ -68,7 +68,7 @@ public class ProfilBearbeitenServlet extends HttpServlet {
 				eStatement.executeUpdate();
 				user.setEmail(email);
 			}
-			if (passwort != user.getPassword()){
+			if (passwort != user.getPassword() && !passwort.isEmpty()){
 				pStatement.setInt(2, user.getUserid());
 				pStatement.setString(1, passwort);
 				pStatement.executeUpdate();

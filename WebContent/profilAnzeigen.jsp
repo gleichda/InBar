@@ -30,8 +30,8 @@
 			<c:if test="${empty param.id }">
 				<h1>Dein Profil</h1>
 			</c:if>
-			Username: ${user.username}
 		</section>
+		Username: ${user.username}
 	</article>
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>
