@@ -15,7 +15,7 @@
 			</ul></li>
 		<li class="submenu"><a>Profil</a>
 			<ul>
-				<li class="nav2"><a href="profilAnzeigen.jsp"> MeinProfil</a></li>
+				<li class="nav2"><a href="profilAnzeigen"> MeinProfil</a></li>
 				<li class="nav2"><a href="profilBearbeiten.jsp">Profil bearbeiten</a></li>
 				<li class="nav2"><a href="./Logout">Logout</a>
 			</ul>
