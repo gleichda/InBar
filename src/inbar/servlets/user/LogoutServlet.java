@@ -1,4 +1,4 @@
-package inbar.servlets;
+package inbar.servlets.user;
 
 import java.io.IOException;
 

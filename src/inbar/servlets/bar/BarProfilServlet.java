@@ -1,4 +1,4 @@
-package inbar.servlets;
+package inbar.servlets.bar;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -39,6 +39,8 @@ public class BarProfilServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//TODO: wird das Benutzt falls ja mit BarAnzeigenServlet ersetzen
+		System.out.println("BarProfilServlet benutzt mit Bar Anzeigen Servlet ersetzen");
 		if (request.getParameter("id") != null) {
 			int barID = Integer.parseInt(request.getParameter("id"));
 

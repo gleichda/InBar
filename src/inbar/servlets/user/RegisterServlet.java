@@ -1,4 +1,4 @@
-package inbar.servlets;
+package inbar.servlets.user;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -51,7 +51,7 @@ public class RegisterServlet extends HttpServlet {
 		
 		try (Connection con = ds.getConnection();
 			PreparedStatement statement = con.prepareStatement("SELECT * from benutzer where benutzername LIKE ? OR email LIKE ?", Statement.RETURN_GENERATED_KEYS);
-				PreparedStatement bildStatement = con.prepareStatement("SELECT * from bild where bildid LIKE ?")) //PreparedStatement für Bild hinzugefügt. Sabine
+				PreparedStatement bildStatement = con.prepareStatement("SELECT * from bild where bildid LIKE ?")) //PreparedStatement fï¿½r Bild hinzugefï¿½gt. Sabine
 		{
 			statement.setString(1, request.getParameter("benutzer"));
 			statement.setString(2, request.getParameter("email"));
@@ -64,7 +64,7 @@ public class RegisterServlet extends HttpServlet {
 				
 				//Benutzer fuer die Session speichern
 				UserBean user = new UserBean();
-				BildBean bild = new BildBean(); //03.01 BildBean eingefügt. Sabine
+				BildBean bild = new BildBean(); //03.01 BildBean eingefï¿½gt. Sabine
 				
 				user.setVorname(request.getParameter("vorname"));
 				user.setNachname(request.getParameter("nachname"));

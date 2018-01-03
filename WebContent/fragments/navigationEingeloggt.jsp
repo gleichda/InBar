@@ -17,7 +17,8 @@
 			<ul>
 				<li class="nav2"><a href="ProfilAnzeigen"> MeinProfil</a></li>
 				<li class="nav2"><a href="profilBearbeiten.jsp">Profil bearbeiten</a></li>
-				<li class="nav2"><a href="./Logout">Logout</a>
+				<li class="nav2"><a href="MeineBars">Meine Bars</a></li>
+				<li class="nav2"><a href="./Logout">Logout</a></li>
 			</ul>
 		</li>
 		<li class="nav1"><a href="barRegistrierung.jsp">Bar anlegen</a></li>
