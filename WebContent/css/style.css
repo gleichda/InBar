@@ -34,11 +34,23 @@ footer{
 }
 
 /*TODO: Tabellen Formatieren*/
-table {
-	border: 2px solid blue;
-	border-style: inset;
-	
-}
 
+table{
+	border-collapse: collapse;
+	border-left-style: inset;
+	border-right-style: inset;
+	color: gainsboro;
+	text-align:center;
+}
+th {
+	min-width:100px;
+	border-top-style: inset;
+	border-bottom-style: inset;
+	background-color: #172318;
+}
+td{
+	border-bottom-style:inset;
+	border-collapse:inset;
+}
 img.small{width: 100px; height: 100px;}
 img.medium{width: 200px; height: 200px;}
