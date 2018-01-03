@@ -29,12 +29,11 @@
 			können.
 		</p>
 
-		<form id="barBearbeiten" action="BarBearbeiten" method="post"
-			enctype="multipart/form-data">
+		<form id="barBearbeiten" action="BarBearbeiten" method="post">
 			<p>
 				<label for="barname">Name der Bar: </label> 
 				<input type="text" name="barname" id="barname" value="${bar.barname }"> 
-				<input type="hidden" name="barid" id="barid" value="${bar.barid }">
+				<input type="text" name="barid" id="barid" value="${bar.barid }">
 			</p>
 			<br>
 			<br>

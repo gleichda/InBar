@@ -22,15 +22,15 @@
 		</c:choose>		
 	</nav>
 	<article>
-		<h1>${baruser.barname}</h1>
-		<h2>Herzlich Willkommen ${baruser.barname}</h2> 
+		<h1>${bar.barname}</h1>
+		<h2>Herzlich Willkommen ${bar.barname}</h2> 
 		
 		<!-- TODO: Profilbild der Bar einfügen, sobald möglich -->
 		<section >
-			<p>${baruser.bbeschreibung}</p>
-			<p>${baruser.mbeschreibung}</p>
-			<p>${baruser.lbeschreibung}</p>
-			<br> <img src="./Bild?id=${baruser.bildId}" class="medium">
+			<p>${bar.bbeschreibung}</p>
+			<p>${bar.mbeschreibung}</p>
+			<p>${bar.lbeschreibung}</p>
+			<br> <img src="./Bild?id=${bar.bildId}" class="medium">
 		</section>
 	</article>
 
