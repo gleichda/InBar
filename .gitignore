@@ -3,5 +3,5 @@ build/*
 .project
 .settings/*
 
-build/
-WebContent/WEB-INF/*
+/build/
+/WebContent/WEB-INF/*
