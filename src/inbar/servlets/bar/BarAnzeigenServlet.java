@@ -19,7 +19,7 @@ import inbar.beans.BarBean;
 /**
  * Servlet implementation class BarBearbeitenServlet
  */
-@WebServlet("/BarAnzeigen")
+@WebServlet("/BarBearbeiten")
 public class BarAnzeigenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(lookup = "jdbc/InBar")
@@ -92,6 +92,7 @@ public class BarAnzeigenServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

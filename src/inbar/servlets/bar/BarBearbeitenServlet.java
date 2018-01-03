@@ -36,6 +36,7 @@ public class BarBearbeitenServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Barid: " + request.getParameter("barid"));
 		int barid = Integer.parseInt(request.getParameter("barid"));
+		System.out.println("Barid: " + request.getParameter("barid"));		
 		String barname = request.getParameter("barname");
 		String vorname = request.getParameter("vorname");
 		String nachname = request.getParameter("nachname");

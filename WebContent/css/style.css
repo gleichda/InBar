@@ -36,6 +36,8 @@ footer{
 /*TODO: Tabellen Formatieren*/
 table {
 	border: 2px solid blue;
+	border-style: inset;
+	
 }
 
 img.small{width: 100px; height: 100px;}
