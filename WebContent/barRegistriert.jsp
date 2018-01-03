@@ -32,7 +32,7 @@
 	<br> ${baruser.mbeschreibung}
 	<br> ${baruser.lbeschreibung}
 	<br> ${baruser.bildId}
-	<br> <img src="./Bild?id=${baruser.bildId}">
+	<br> <img src="./Bild?id=${baruser.bildId}" class="medium">
 	<!--  TODO: Bild größe anpassen -->
 	</article>
 	<footer>

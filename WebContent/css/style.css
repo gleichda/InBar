@@ -37,3 +37,6 @@ footer{
 table {
 	border: 2px solid blue;
 }
+
+img.small{width: 100px; height: 100px;}
+img.medium{width: 200px; height: 200px;}
