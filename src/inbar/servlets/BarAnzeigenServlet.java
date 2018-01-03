@@ -17,30 +17,26 @@ import javax.sql.DataSource;
 import inbar.beans.BarBean;
 
 /**
- * Servlet implementation class BarAnzeigeServlet
+ * Servlet implementation class BarBearbeitenServlet
  */
-@WebServlet("/BarProfil")
-public class BarProfilServlet extends HttpServlet {
+@WebServlet("/BarBearbeiten")
+public class BarAnzeigenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	@Resource(lookup = "jdbc/InBar")
 	private DataSource ds;
+	
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public BarAnzeigenServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * @see HttpServlet#HttpServlet()
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public BarProfilServlet() {
-		super();
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		//TODO: wird das Benutzt falls ja mit BarAnzeigenServlet ersetzen
-		System.out.println("BarProfilServlet benutzt mit Bar Anzeigen Servlet ersetzen");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getParameter("id") != null) {
 			int barID = Integer.parseInt(request.getParameter("id"));
 
@@ -62,10 +58,23 @@ public class BarProfilServlet extends HttpServlet {
 					bar.setOrt(rs.getString("ort"));
 					bar.setBarmail(rs.getString("barmail"));
 					bar.setBarid(barID);
+					bar.setBbeschreibung(rs.getString("bbeschreibung"));
+					bar.setMbeschreibung(rs.getString("mbeschreibung"));
+					bar.setLbeschreibung(rs.getString("lbeschreibung"));
 
 					request.setAttribute("bar", bar);
-					final RequestDispatcher dispatcher = request.getRequestDispatcher("barProfil.jsp");
-					dispatcher.forward(request, response);
+					/*
+					 * Der bearbeiten Parameter wird nur gesetzt, wenn auf die Bar Bearbeiten verlinkt 
+					 * werden soll, ansonsten wird die Bar nur angezeigt
+					 */
+					if (request.getParameter("bearbeiten") != null) {
+						final RequestDispatcher dispatcher = request.getRequestDispatcher("barBearbeiten.jsp");
+						dispatcher.forward(request, response);
+					}
+					else {
+						final RequestDispatcher dispatcher = request.getRequestDispatcher("barProfil.jsp");
+						dispatcher.forward(request, response);
+					}
 				} else {
 					final RequestDispatcher dispatcher = request.getRequestDispatcher("barExistiertNicht.jsp");
 					dispatcher.forward(request, response);
@@ -81,12 +90,10 @@ public class BarProfilServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
