@@ -1,6 +1,8 @@
 package inbar.servlets;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,9 +16,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import javax.sql.DataSource;
 
+import inbar.beans.BarBean;
+import inbar.beans.BildBean;
 import inbar.beans.UserBean;
+import inbar.datenbank.BildHandler;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -43,7 +49,7 @@ public class RegisterServlet extends HttpServlet {
 		
 		try (Connection con = ds.getConnection();
 			PreparedStatement statement = con.prepareStatement("SELECT * from benutzer where benutzername LIKE ? OR email LIKE ?", Statement.RETURN_GENERATED_KEYS);
-			)
+				PreparedStatement bildStatement = con.prepareStatement("SELECT * from bild where bildid LIKE ?")) //PreparedStatement für Bild hinzugefügt. Sabine
 		{
 			statement.setString(1, request.getParameter("benutzer"));
 			statement.setString(2, request.getParameter("email"));
@@ -56,6 +62,7 @@ public class RegisterServlet extends HttpServlet {
 				
 				//Benutzer fuer die Session speichern
 				UserBean user = new UserBean();
+				BildBean bild = new BildBean(); //03.01 BildBean eingefügt. Sabine
 				
 				user.setVorname(request.getParameter("vorname"));
 				user.setNachname(request.getParameter("nachname"));
@@ -63,9 +70,36 @@ public class RegisterServlet extends HttpServlet {
 				user.setUsername(request.getParameter("benutzer"));
 				user.setPassword(request.getParameter("passwort"));
 				
+
+				
+				//start 03.01 Sabine Profilbild
+
+				// Neue BildBean mitgesetzter ID uebernehmen
+				// Bildbehandlung
+				Part filepart = request.getPart("bild");
+				bild.setBildname(filepart.getSubmittedFileName());
+
+				try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
+						InputStream in = filepart.getInputStream()) {
+					int i = 0;
+					while ((i = in.read()) != -1) {
+						baos.write(i);
+					}
+					bild.setBild(baos.toByteArray());
+					baos.flush();
+				} catch (IOException ex) {
+					throw new ServletException(ex.getMessage());
+				}
+				
+				BildHandler bildHandler = new BildHandler(bild);
+				bild = bildHandler.bildSpeichern(ds); 
+				//ende 03.01 Sabine Profilbild
+				
 				userSpeichern(user);
-				
-				
+				//start 03.01 Sabine Profilbild speichern
+				bild.setBildid(bild.getBildid());
+				userZuBildZuweisen(user);
+				//ende 03.01 Sabine Profilbild speichern
 				
 				final HttpSession session = request.getSession();
 				session.setAttribute("selfUser", user);
@@ -107,5 +141,19 @@ public class RegisterServlet extends HttpServlet {
 				throw new ServletException(e.getMessage());
 			}
 	}
+	
+	//start 03.01 Sabine Profilbild speichern
+	private void userZuBildZuweisen(UserBean user){
+		try (Connection con = ds.getConnection();
+				PreparedStatement barBildStatement = con.prepareStatement("INSERT INTO user_zu_bild (userid, bildid) VALUES (?, ?)")) {
+			barBildStatement.setInt(1, user.getUserid());
+			barBildStatement.setInt(2, user.getBildId());
+			barBildStatement.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	//ende 03.01 Sabine Profilbild speichern
 
 }

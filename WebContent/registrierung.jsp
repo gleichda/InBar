@@ -40,6 +40,11 @@
 			<label for="passwort_wiederholen">Passwort wiederholen: </label> 
 				<input type="password" name="passwort" id="passwort_wiederholen" required>
 			<br>
+			<p>
+				<label for="bild">Laden sie das Profilbild ihrer Bar hoch:</label>
+				<br>
+				<input type="file" name="bild" id="bild" accept="image/*" required>
+			</p>
 			<button id="reg_daten" type="submit">Registrieren</button>
 			<!-- formaction muss noch angepasst werden -->
 		</form>
