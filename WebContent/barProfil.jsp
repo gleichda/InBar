@@ -30,6 +30,7 @@
 			<p>${baruser.bbeschreibung}</p>
 			<p>${baruser.mbeschreibung}</p>
 			<p>${baruser.lbeschreibung}</p>
+			<br> <img src="./Bild?id=${baruser.bildId}" class="medium">
 		</section>
 	</article>
 
