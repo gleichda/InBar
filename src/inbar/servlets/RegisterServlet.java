@@ -11,6 +11,7 @@ import java.sql.Statement;
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +29,7 @@ import inbar.datenbank.BildHandler;
  * Servlet implementation class RegisterServlet
  */
 @WebServlet("/RegisterServlet")
+@MultipartConfig 
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
