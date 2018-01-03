@@ -11,6 +11,7 @@ public class UserBean implements Serializable {
 	private String email;
 	private String vorname;
 	private String nachname;
+	private int bildId; // 03.01 Sabine
 
 	public String getUsername() {
 		return username;
@@ -58,6 +59,14 @@ public class UserBean implements Serializable {
 
 	public void setUserid(int userid) {
 		this.userid = userid;
+	}
+
+	public int getBildId() {
+		return bildId;
+	}
+
+	public void setBildId(int bildId) {
+		this.bildId = bildId;
 	}
 
 }

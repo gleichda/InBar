@@ -45,6 +45,13 @@
 				<label>Passwort wiederholen:</label> 
 				<input type="password" name="passwort_wiederholen" id=passwort_wiederholen> 
 			</p>
+			
+			<p>
+				<label for="bild">Laden sie das Profilbild ihrer Bar hoch:</label>
+				<br>
+				<input type="file" name="bild" id="bild" accept="image/*" required>
+			</p>
+			
 			<button id="aendern" type="submit">Absenden</button>
 		</form>
 	</article>

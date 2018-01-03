@@ -32,6 +32,7 @@
 			</c:if>
 		</section>
 		Username: ${user.username}
+		<br> <img src="./Bild?id=${baruser.bildId}">
 	</article>
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>
