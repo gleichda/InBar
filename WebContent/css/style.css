@@ -34,3 +34,6 @@ footer{
 }
 
 /*TODO: Tabellen Formatieren*/
+table {
+	border: 2px solid blue;
+}
