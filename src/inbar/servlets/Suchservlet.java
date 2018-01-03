@@ -91,10 +91,10 @@ public class Suchservlet extends HttpServlet {
 					System.out.println("Ergebnisse enthalten");
 					request.setAttribute("suchergebnisse", barsList);
 
-					RequestDispatcher dispatcher = request.getRequestDispatcher("suchergebnisse.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("barExistiertNicht.jsp");
 					dispatcher.forward(request, response);
 				} else {
-					RequestDispatcher dispatcher = request.getRequestDispatcher("barExistiertNicht.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("suchergebnisse.jsp");
 					dispatcher.forward(request, response);
 				}
 
