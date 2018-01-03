@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <html>
 <head>
 <link href="./css/style.css" type="text/css" rel="stylesheet">
 <link href="./css/formStyle.css" type="text/css" rel="stylesheet">
 <meta charset="UTF-8">
-<title>IN-Bars Registrierung fÃ¼r Bars</title>
+<title>IN-Bars Registrierung für Bars</title>
 </head>
 <body>
 	<header>
@@ -69,7 +70,18 @@
 				<label for="barmail">Mail-Adresse der Bar: </label> 
 				<input type="text" name="barmail" id="barmail" value="">
 			</p>
-						<!-- TODO: Musikrichtung waehlen -->
+			<p> Musikart:
+				<!-- TODO: DB in JSP Seite?? -->
+				<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/inbar" user="root" />
+				<sql:query dataSource="${ds}" var="musikarten">SELECT * FROM musikarten;</sql:query>
+				
+				<select name="musikart">
+					<option value="-1">Alle</option> 
+					<c:forEach var ="art" items="${musikarten.rows}" >
+						<option value="${art.musikid}">${art.name }</option>
+					</c:forEach>
+				</select>
+				</p>
 			</fieldset>
 			<fieldset><legend>Profiltext</legend>
 			<div id="beschreibung">
@@ -85,7 +97,7 @@
 					<textarea name="mbeschreibung" id="mbeschreibung" placeholder="Beschreiben Sie die Musik die bei Ihnen gespielt wird." rows="5" cols="100"></textarea>
 				</p>
 				<p>
-					<label for="lbeschreibung">Beschreiben Sie, wie ihre Barerreicht werden kann: </label>
+					<label for="lbeschreibung">Beschreiben Sie, wie ihre Bar erreicht werden kann: </label>
 					<textarea name="lbeschreibung" id="lbeschreibung" placeholder="Beschreiben Sie die Lage Ihrer Bar und wie man sie erreichen kann." rows="5" cols="100"></textarea>
 				</p>
 			</div>

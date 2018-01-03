@@ -42,7 +42,7 @@ public class BildServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String bildIdParameter = request.getParameter("id");
-		if (bildIdParameter != null) {
+		if (bildIdParameter != "") {
 			int bildId = Integer.parseInt(bildIdParameter);
 			try (Connection con = ds.getConnection();
 					PreparedStatement statement = con.prepareStatement("SELECT bild FROM bild where bildid = ?")) {

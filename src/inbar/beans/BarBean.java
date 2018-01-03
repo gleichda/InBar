@@ -15,12 +15,12 @@ public class BarBean implements Serializable{
 	private String ort;
 	private String barmail;
 	private String baruser;
-	private String passwort;
 	private int barid;
 	private String bbeschreibung;
 	private String mbeschreibung;
 	private String lbeschreibung;
 	private int bildId; //Da das Bild ueber einen Separaten Request aufgerufen wird, muss es nicht in der BarBean gespeichert werden.
+	private int musikId;
 	
 	
 	//Getter/Setter Barname
@@ -93,13 +93,6 @@ public class BarBean implements Serializable{
 	public void setBaruser(String baruser) {
 		this.baruser = baruser;
 	}
-	//Getter/Setter Passwort f�r den User der Bar
-	public String getPasswort() {
-		return passwort;
-	}
-	public void setPasswort(String passwort) {
-		this.passwort = passwort;
-	}
 	public int getBarid() {
 		return barid;
 	}
@@ -129,6 +122,12 @@ public class BarBean implements Serializable{
 	}
 	public void setBildId(int bildId) {
 		this.bildId = bildId;
+	}
+	public int getMusikId() {
+		return musikId;
+	}
+	public void setMusikId(int musikId) {
+		this.musikId = musikId;
 	}	
 	
 }

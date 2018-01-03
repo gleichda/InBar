@@ -28,13 +28,12 @@
 	<br> Nachname ${baruser.nachname}
 	<br> E-Mail: ${baruser.chefmail}
 	<br> Benutzername: ${baruser.barname}
-	<br> Passwort: ${baruser.passwort}
 	<br> ${baruser.bbeschreibung}
 	<br> ${baruser.mbeschreibung}
 	<br> ${baruser.lbeschreibung}
 	<br> ${baruser.bildId}
 	<br> <img src="./Bild?id=${baruser.bildId}">
-	<!--  TODO: Bild anzeigen -->
+	<!--  TODO: Bild größe anpassen -->
 	</article>
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>
