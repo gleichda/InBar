@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./css/style.css" type="text/css" rel="stylesheet">
 <link href="./css/formStyle.css" type="text/css" rel="stylesheet">
-<script src="./js/profilBearbeiten.js" type="text/javascript"></script>
+<script src="./js/passwortValidieren.js" type="text/javascript"></script>
 <title>Insert title here</title>
 </head>
 <body>

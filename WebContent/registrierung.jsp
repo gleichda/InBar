@@ -4,6 +4,7 @@
 <head>
 <link href="./css/style.css" type="text/css" rel="stylesheet">
 <link href="./css/formStyle.css" type="text/css" rel="stylesheet">
+<script src="./js/passwortValidieren.js" type="text/javascript"></script>
 <meta charset="UTF-8">
 <title>IN-Bars Registrierung</title>
 </head>
@@ -26,33 +27,21 @@
 		<h2>Registrierung</h2>
 		<p>Das ist die Registrierungs-Seite</p>
 		<form id="userRegistrierung" action="RegisterServlet" method="post">
-			<div>
-				<label for="uservorname">Vorname: </label> <input type="text"
-					name="vorname" id="uservorname" value="">
-			</div>
-			<div>
-				<label for="usernachname">Nachname: </label> <input type="text"
-					name="nachname" id="usernachname" value="">
-			</div>
-			<div>
-				<label for="usermail">E-Mail: </label> <input type="text"
-					name="email" id="usermail" value="">
-			</div>
-			<p>
-				<br>
-			</p>
-			<div>
-				<label for="benutzer">Benutzername: </label> <input type="text"
-					name="benutzer" id="benutzer" value="">
-			</div>
-			<div>
-				<label for="userpasswort">Passwort: </label> <input type="password"
-					name="passwort" id="userpasswort">
-			</div>
-			<div>
-				<button id="reg_daten" type="submit">Registrieren</button>
-				<!-- formaction muss noch angepasst werden -->
-			</div>
+			<label for="uservorname">Vorname: </label> 
+				<input type="text" name="vorname" id="uservorname" required> 
+			<label for="usernachname">Nachname:</label> 
+				<input type="text" name="nachname" id="usernachname" required> 
+			<label	for="usermail">E-Mail: </label> 
+				<input type="email" name="email"id="usermail" required>  
+			<label for="benutzer">Benutzername: </label>
+				<input type="text" name="benutzer" id="benutzer" required> 
+			<label for="passwort">Passwort: </label> 
+				<input type="password" name="passwort" id="passwort" required> 
+			<label for="passwort_wiederholen">Passwort wiederholen: </label> 
+				<input type="password" name="passwort" id="passwort_wiederholen" required>
+			<br>
+			<button id="reg_daten" type="submit">Registrieren</button>
+			<!-- formaction muss noch angepasst werden -->
 		</form>
 	</article>
 

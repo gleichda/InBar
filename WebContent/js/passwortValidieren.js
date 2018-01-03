@@ -4,11 +4,11 @@ function validate(){
 	//passwort.required = true;
 	//passwort2.required = true;
 	if (! passwort.value == passwort2.value){
-		//console.log("passwörter stimmen nicht")
+		console.log("passwörter stimmen nicht")
 		passwort2.setCustomValidity("Die Passwörter stimmen nicht überein");
 	}
 	else if (passwort.value == passwort2.value){
-		//console.log("passwörter stimmen")
+		console.log("passwörter stimmen")
 		passwort2.setCustomValidity("");
 	}
 }
