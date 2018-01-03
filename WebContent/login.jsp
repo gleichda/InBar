@@ -34,17 +34,17 @@
 			</c:if>
 
 			<form id="login" method="post" action="LoginServlet">
-				<div>
-					<label for="name"> Benutzer: </label> <input type="text"
-						name="benutzer" id="name" autofocus>
-				</div>
-				<div>
-					<label for="passwort"> Passwort: </label> <input type="password"
-						name="passwort" id="passwort">
-				</div>
-				<div>
+				<p>
+					<label for="name"> Benutzer: </label> 
+					<input type="text" name="benutzer" id="name" autofocus>
+				</p>
+				<p>
+					<label for="passwort"> Passwort: </label> 
+					<input type="password" name="passwort" id="passwort">
+				</p>
+				<p>
 					<button id="login_btn" type="submit">Login</button>
-				</div>
+				</p>
 			</form>
 			<p>
 				Sie sind noch nicht Registriert? Jetzt <a href="registrierung.jsp"

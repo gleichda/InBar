@@ -25,12 +25,26 @@
 	</nav>
 	<article>
 		<form action="ProfilBearbeiten" method="post">
-			<p><label>Vorname:</label> <input type="text" name="vorname" value="${selfUser.vorname}" required > </p>
-			<p><label>Nachname:</label> <input type="text" name="nachname" value="${selfUser.nachname}" required> </p>
-			<p><label>E-Mail Adresse:</label> <input type="email" name="email"value="${selfUser.email}" required> </p>
-			<p><label>Passwort:</label> <input type="password" name="passwort" id="passwort"> </p>
-			<!-- TODO: Passwort zweimal abfragen und vergleichen (javascript) -->
-			<p><label>Passwort wiederholen:</label> <input type="password" name="passwort_wiederholen" id=passwort_wiederholen> </p>
+			<p>
+				<label>Vorname:</label> 
+				<input type="text" name="vorname" value="${selfUser.vorname}" required > 
+			</p>
+			<p>
+				<label>Nachname:</label> 
+				<input type="text" name="nachname" value="${selfUser.nachname}" required> 
+			</p>
+			<p>
+				<label>E-Mail Adresse:</label> 
+				<input type="email" name="email"value="${selfUser.email}" required> 
+			</p>
+			<p>
+				<label>Passwort:</label> 
+				<input type="password" name="passwort" id="passwort"> 
+			</p>
+			<p>
+				<label>Passwort wiederholen:</label> 
+				<input type="password" name="passwort_wiederholen" id=passwort_wiederholen> 
+			</p>
 			<button id="aendern" type="submit">Absenden</button>
 		</form>
 	</article>

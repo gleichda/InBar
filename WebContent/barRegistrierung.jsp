@@ -22,87 +22,83 @@
 	</nav>
 
 	<article>
-		<h2>Registrierung fÃ¼r Bars</h2>
+		<h2>Registrierung für Bars</h2>
 		<p>
 			Das ist die Registrierungs-Seite, auf der Sie ihre Bar anmelden
-			kÃ¶nnen.
+			können.
 		</p>
 
 		<form id="barRegistrierung" action="BarRegisterServlet" method="post"
 			enctype="multipart/form-data">
-
-			<div>
-				<label for="barname">Name der Bar: </label> <input type="text"
-					name="barname" id="barname" value=""> <br> Der Name
-				der Bar wird automatisch zum Login-Namen
-			</div>
+			<p>
+				<label for="barname">Name der Bar: </label> 
+				<input type="text" name="barname" id="barname"> 
+			</p>
+			<br>
 			<br>
 			<fieldset><legend>Informationen zum Geschäftsführer</legend>
-			<div>
-				<label for="vorname"> Geschäftsführer: </label> <input type="text"
-					name="vorname" id="vorname" value="vorname"> <input
-					type="text" name="nachname" id="nachname" value="nachname">
-			</div>
-			<div>
-				<label for="chefmail"> E-Mail-Adresse des Geschäftsführers:
-				</label> <input type="text" name="chefmail" id="chefmail" value="">
-			</div>
+			<p>
+				<label for="vorname"> Geschäftsführer: </label> 
+				<input type="text" name="vorname" id="vorname" placeholder="Vorname"> 
+				<input type="text" name="nachname" id="nachname" placeholder="Nachname">
+			</p>
+			<p>
+				<label for="chefmail"> E-Mail-Adresse des Geschäftsführers:</label> 
+				<input type="email" name="chefmail" id="chefmail" value="">
+			</p>
 			</fieldset>
 			<br>
 			<fieldset><legend>Informationen über die Bar</legend>
-			<div>
-				<label for="strasse">Strasse: </label> <input type="text"
-					name="strasse" id="strasse" value="">
-			</div>
-			<div>
-				<label for="hausnummer">Hausnummer: </label> <input type="text"
-					name="hausnummer" id="hausnummer" value="">
-			</div>
-			<div>
-				<label for="plz">PLZ: </label> <input type="text" name="plz"
-					id="plz" value="">
-			</div>
-			<div>
-				<label for="ort">Ort: </label> <input type="text" name="ort"
-					id="ort" value="">
-			</div>
-			<div>
-				<label for="barmail">Mail-Adresse der Bar: </label> <input
-					type="text" name="barmail" id="barmail" value="">
-			</div>
-			<!-- TODO: Musikrichtung waehlen -->
+			<p>
+				<label for="strasse">Strasse: </label> 
+				<input type="text" name="strasse" id="strasse" value="">
+			</p>
+			<p>
+				<label for="hausnummer">Hausnummer: </label> 
+				<input type="text" name="hausnummer" id="hausnummer" value="">
+			</p>
+			<p>
+				<label for="plz">PLZ: </label> 
+				<input type="text" name="plz" id="plz" value="">
+			</p>
+			<p>
+				<label for="ort">Ort: </label> 
+				<input type="text" name="ort" id="ort" value="">
+			</p>
+			<p>
+				<label for="barmail">Mail-Adresse der Bar: </label> 
+				<input type="text" name="barmail" id="barmail" value="">
+			</p>
+						<!-- TODO: Musikrichtung waehlen -->
 			</fieldset>
 			<fieldset><legend>Profiltext</legend>
 			<div id="beschreibung">
 				<p>Die folgenden Texte werden zu dem Profil-Text der Bar:</p>
-				<div>
-					<label for="bbeschreibung">Beschreiben Sie ihre Bar.<br></label>
-					<!--   <input type="text" name="text" id="bbeschreibung"
-						value="Barbeschreibung"> <br>  -->
+				<p>
+					<label for="bbeschreibung">Beschreiben Sie ihre Bar.</label>
 					<textarea name ="text" id="bbeschreibung" placeholder="Beschreiben Sie ihre Bar." rows="5" cols="100"></textarea>
 					<!--TODO: Name anpassen an bbeschreibung? -->
-				</div>
+				</p>
 				<br>
-				<div>
-					<label for="mbeschreibung">Beschreiben Sie die Musik, die
-						bei Ihnen gespielt wird: <br></label> 
-						<textarea name="mbeschreibung" id="mbeschreibung" placeholder="Beschreiben Sie die Musik die bei Ihnen gespielt wird." rows="5" cols="100"></textarea>
-				</div>
-				<div>
-					<label for="lbeschreibung">Beschreiben Sie, wie ihre Barerreicht werden kann: </label> <br>
-					<!--   <input type="text" name="lbeschreibung" id="lbeschreibung"value="Lagebeschreibung"> -->
+				<p>
+					<label for="mbeschreibung">Beschreiben Sie die Musik, die bei Ihnen gespielt wird: </label>
+					<textarea name="mbeschreibung" id="mbeschreibung" placeholder="Beschreiben Sie die Musik die bei Ihnen gespielt wird." rows="5" cols="100"></textarea>
+				</p>
+				<p>
+					<label for="lbeschreibung">Beschreiben Sie, wie ihre Barerreicht werden kann: </label>
 					<textarea name="lbeschreibung" id="lbeschreibung" placeholder="Beschreiben Sie die Lage Ihrer Bar und wie man sie erreichen kann." rows="5" cols="100"></textarea>
-				</div>
+				</p>
 			</div>
 			</fieldset>
-			<div>
-				<label for="bild">Laden sie das Profilbild ihrer Bar hoch: <br></label>
+			<p>
+				<label for="bild">Laden sie das Profilbild ihrer Bar hoch:</label>
+				<br>
 				<input type="file" name="bild" id="bild" accept="image/*" required>
-			</div>
-			<div>
+			</p>
+			<p>
 				<button id="reg_daten" type="submit">Registrieren</button>
 				<!-- formaction muss noch angepasst werden -->
-			</div>
+			</p>
 		</form>
 	</article>
 
