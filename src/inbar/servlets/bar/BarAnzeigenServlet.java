@@ -19,7 +19,7 @@ import inbar.beans.BarBean;
 /**
  * Servlet implementation class BarBearbeitenServlet
  */
-@WebServlet("/BarBearbeiten")
+@WebServlet("/BarAnzeigen")
 public class BarAnzeigenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(lookup = "jdbc/InBar")

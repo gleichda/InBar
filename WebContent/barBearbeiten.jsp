@@ -33,8 +33,8 @@
 			enctype="multipart/form-data">
 			<p>
 				<label for="barname">Name der Bar: </label> 
-				<input type="text" name="barname" id="barname"> 
-				<input type="hidden" name="barid" value="${bar.barid }">
+				<input type="text" name="barname" id="barname" value="${bar.barname }"> 
+				<input type="hidden" name="barid" id="barid" value="${bar.barid }">
 			</p>
 			<br>
 			<br>
@@ -104,6 +104,9 @@
 			</div>
 			</fieldset>
 			<!-- TODO: Bild Ändern -->
+			<p>
+				<button id="bar_aendern" type="submit">Speichern</button>
+			</p>
 		</form>
 	</article>
 
