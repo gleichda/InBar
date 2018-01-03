@@ -88,8 +88,6 @@ public class BarRegisterServlet extends HttpServlet {
 					bar.setOrt(request.getParameter("ort"));
 					bar.setBarmail(request.getParameter("barmail"));
 
-					bar.setPasswort(request.getParameter("passwort"));
-
 					bar.setBbeschreibung(request.getParameter("text"));
 					bar.setMbeschreibung(request.getParameter("mbeschreibung"));
 					bar.setLbeschreibung(request.getParameter("lbeschreibung"));
@@ -97,15 +95,18 @@ public class BarRegisterServlet extends HttpServlet {
 					BildHandler bildHandler = new BildHandler(bild);
 					bild = bildHandler.bildSpeichern(ds); 
 					// Neue BildBean mitgesetzter ID uebernehmen
+					System.out.println("Musikart: " + request.getParameter("musikart"));
 					
-					barSpeichern(bar, user);
+					bar.setMusikId( Integer.parseInt(request.getParameter("musikart")));
+					
+					barSpeichern(bar);
 					barZuUserZuweisen(bar, user);
 					bar.setBildId(bild.getBildid());
 					barZuBildZuweisen(bar);
+					barZuMusikrichtung(bar);
 					
-					//TODO: Musikarten festlegen
+					session.setAttribute("baruser", bar);
 					
-					session.setAttribute("baruser", bar); //TODO: Brauchen wir das?
 
 					final RequestDispatcher dispatcher = request.getRequestDispatcher("barRegistriert.jsp");
 					dispatcher.forward(request, response);
@@ -125,7 +126,7 @@ public class BarRegisterServlet extends HttpServlet {
 		}
 	}
 
-	private void barSpeichern(BarBean bar, UserBean user) throws ServletException {
+	private void barSpeichern(BarBean bar) throws ServletException {
 		String[] generatedKeys = new String[] { "barid" }; // Aus Skript JDBC Folie 12 uebernommen
 
 		try (Connection con = ds.getConnection();
@@ -165,7 +166,7 @@ public class BarRegisterServlet extends HttpServlet {
 	private void barZuUserZuweisen(BarBean bar, UserBean user){
 		// Zuweisung des aktuell angemeldeten Benutzers zu der angelegten Bar
 		try (Connection con = ds.getConnection();
-				PreparedStatement barAdminStatement = con.prepareStatement("INSERT INTO bar_zu_user(userid, barid) VALUES (?, ?)")){
+				PreparedStatement barAdminStatement = con.prepareStatement("INSERT INTO bar_zu_user (userid, barid) VALUES (?, ?)")){
 			barAdminStatement.setInt(1, user.getUserid());
 			barAdminStatement.setInt(2, bar.getBarid());
 			barAdminStatement.executeUpdate();
@@ -182,6 +183,19 @@ public class BarRegisterServlet extends HttpServlet {
 			barBildStatement.setInt(1, bar.getBarid());
 			barBildStatement.setInt(2, bar.getBildId());
 			barBildStatement.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	private void barZuMusikrichtung(BarBean bar) {
+		//System.out.println("Bar zu Musikrichtung: Barid: " + bar.getBarid() + " Musikid: " + bar.getMusikId());
+		try (Connection con = ds.getConnection();
+				PreparedStatement barMusikrichtungStatement = con.prepareStatement("INSERT INTO musik_zu_bar (barid, musikid) VALUES (?, ?)")){
+			barMusikrichtungStatement.setInt(1, bar.getBarid());
+			barMusikrichtungStatement.setInt(2, bar.getMusikId());
+			barMusikrichtungStatement.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
