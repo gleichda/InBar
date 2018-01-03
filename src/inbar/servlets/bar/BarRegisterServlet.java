@@ -1,4 +1,4 @@
-package inbar.servlets;
+package inbar.servlets.bar;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
