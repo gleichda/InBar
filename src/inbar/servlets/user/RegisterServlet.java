@@ -19,7 +19,6 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import javax.sql.DataSource;
 
-import inbar.beans.BarBean;
 import inbar.beans.BildBean;
 import inbar.beans.UserBean;
 import inbar.datenbank.BildHandler;
