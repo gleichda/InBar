@@ -21,10 +21,10 @@
 		</c:otherwise>
 		</c:choose>		
 	</nav>
-	
-	<h1>Sie sind nicht eingeloggt</h1>
-	<p> Bitte loggen Sie sich ein, um mit der Aktion fortzufahren.</p>
-	
+	<article>
+		<h1>Sie sind nicht eingeloggt</h1>
+		<p> Bitte loggen Sie sich ein, um mit der Aktion fortzufahren.</p>
+	</article>
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>
 	</footer>	

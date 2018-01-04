@@ -71,7 +71,7 @@ public class BarAnzeigenServlet extends HttpServlet {
 						dispatcher.forward(request, response);
 					}
 					else {
-						final RequestDispatcher dispatcher = request.getRequestDispatcher("barProfil.jsp");
+						final RequestDispatcher dispatcher = request.getRequestDispatcher("barAnzeige.jsp");
 						dispatcher.forward(request, response);
 					}
 				} else {

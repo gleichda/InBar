@@ -3,6 +3,7 @@ package inbar.servlets.bar;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -11,7 +12,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+
+import inbar.beans.UserBean;
 
 /**
  * Servlet implementation class BarBearbeitenServlet
@@ -34,9 +38,16 @@ public class BarBearbeitenServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Barid: " + request.getParameter("barid"));
-		int barid = Integer.parseInt(request.getParameter("barid"));
-		System.out.println("Barid: " + request.getParameter("barid"));		
+		final HttpSession session = request.getSession();
+		//Falls der User nicht eingeloggt ist wird er auf die nicht Eingeloggt Seite verwiesen weil selfUser dann NULL zurück gibt
+		UserBean selfUser = (UserBean) session.getAttribute("selfUser");
+		if (selfUser == null) {
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("nichtEingeloggt.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
+		
+		int barid = Integer.parseInt(request.getParameter("barid"));		
 		String barname = request.getParameter("barname");
 		String vorname = request.getParameter("vorname");
 		String nachname = request.getParameter("nachname");
@@ -52,24 +63,33 @@ public class BarBearbeitenServlet extends HttpServlet {
 		
 		//TODO: verify user
 		
+		
+		
 		try(Connection con = ds.getConnection();
+				PreparedStatement userStatement = con.prepareStatement("SELECT * from bar_zu_user WHERE userid = ? AND barid = ?");
 				PreparedStatement statement = con.prepareStatement("UPDATE bar SET barname = ?, vorname = ?, nachname = ?, chefmail = ?, strasse = ?, hausnummer = ?, "
 						+ "plz = ?, ort = ?, barmail = ?, bbeschreibung = ?, mbeschreibung = ?, lbeschreibung = ? WHERE barid = ? "))
 		{
-			statement.setString(1, barname);
-			statement.setString(2, vorname);
-			statement.setString(3, nachname);
-			statement.setString(4, chefmail);
-			statement.setString(5, strasse);
-			statement.setString(6, hausnummer);
-			statement.setString(7, plz);
-			statement.setString(8, ort);
-			statement.setString(9, barmail);
-			statement.setString(10, bbeschreibung);
-			statement.setString(11, mbeschreibung);
-			statement.setString(12, lbeschreibung);
-			statement.setInt(13, barid);
-			statement.executeUpdate();
+			userStatement.setInt(1, selfUser.getUserid());
+			userStatement.setInt(2, barid);
+			ResultSet userZuBar = userStatement.executeQuery();
+			
+			if (userZuBar.first()) { //falls eine Zuordnung von userid und barid existiert ausführen
+				statement.setString(1, barname);
+				statement.setString(2, vorname);
+				statement.setString(3, nachname);
+				statement.setString(4, chefmail);
+				statement.setString(5, strasse);
+				statement.setString(6, hausnummer);
+				statement.setString(7, plz);
+				statement.setString(8, ort);
+				statement.setString(9, barmail);
+				statement.setString(10, bbeschreibung);
+				statement.setString(11, mbeschreibung);
+				statement.setString(12, lbeschreibung);
+				statement.setInt(13, barid);
+				statement.executeUpdate();
+			}
 		}catch  (Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace(System.out);
