@@ -1,3 +1,8 @@
+/**
+ * @author david
+ * @date 02.01.2018
+ */
+
 function validate(){
 	var passwort = document.getElementById("passwort");
 	var passwort2 = document.getElementById("passwort_wiederholen");
@@ -19,4 +24,4 @@ function init(){
 	document.getElementById("passwort_wiederholen").addEventListener("keyup", validate);
 }
 
-document.addEventListener("DOMContentLoaded", init)
+document.addEventListener("DOMContentLoaded", init);

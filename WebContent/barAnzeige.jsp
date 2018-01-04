@@ -39,7 +39,7 @@
 			<div>
 				<h2>Bewertung abgeben</h2>
 				<br>
-				<form method="post" >
+				<form id="bewertungsForm">
 				<input type="hidden" id="barid" name="barid" value="${bar.barid }">
 					<div class="stars">
 					    <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
@@ -56,7 +56,7 @@
 				    <br>
 				    <textarea rows="5" cols="100" name="bewertungstext" id="bewertungstext" placeholder="Ihr Kommentar"></textarea>
 				    <br> <br>
-				    <button type=submit id="bewertungAbgeben">Absenden</button>
+				    <button type="button" id="bewertungAbgeben">Absenden</button>
 				</form>
 			</div>
 		</c:when>
