@@ -25,16 +25,17 @@ function sendBewertung(){
 		alert("Bitte vergeben sie eine Bewertung und versuchen Sie es dann erneut");
 		return;
 	}
-	var kommentar = document.getElementById("bewertungstext");
+	var kommentar = document.getElementById("bewertungstext").value;
 	if (kommentar==""){
 		alert("Bitte geben Sie einen Kommentar und versuchen Sie es dann erneut");
 		return;
 	}
-	var params = 'bewertung="' + rating + '"&kommentar="' + kommentar + '"&barid="' + barid + '"';
+	var params = 'bewertung=' + rating + '&kommentar=' + kommentar + '&barid=' + barid;
+	console.log(params)
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', './NeueBewertung');
 	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-	xhr.setRequestHeader("Content-length", params.length)
+	//xhr.setRequestHeader("Content-length", params.length)
 	xhr.send(params);
 
 	

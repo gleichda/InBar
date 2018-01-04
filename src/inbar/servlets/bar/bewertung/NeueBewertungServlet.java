@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import javax.annotation.Resource;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,7 +47,12 @@ public class NeueBewertungServlet extends HttpServlet {
 			
 			try(Connection con = ds.getConnection();
 					PreparedStatement statement = con.prepareStatement("INSERT INTO bewertung (barid, userid, bewertung, kommentar) VALUES (?, ?, ?, ?)");){
-				System.out.println("");
+				statement.setInt(1, barid);
+				statement.setInt(2, user.getUserid());
+				statement.setInt(3, bewertung);
+				statement.setString(4, kommentar);
+				statement.executeUpdate();
+				response.setStatus(HttpServletResponse.SC_OK);
 			}catch (Exception e) {
 				System.out.println(e.getMessage());
 				e.printStackTrace(System.out);

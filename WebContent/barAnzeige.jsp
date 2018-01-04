@@ -7,6 +7,7 @@
 <link href="./css/style.css" type="text/css" rel="stylesheet">
 <link href="./css/starRating.css" type="text/css" rel="stylesheet">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<script src="js/ajax_bewertung.js" type="text/javascript"></script>
 <!-- Rating mit Sternen übernommen von https://www.cssscript.com/simple-5-star-rating-system-with-css-and-html-radios/ -->
 <title>Insert title here</title>
 </head>
