@@ -120,6 +120,11 @@ public class UserSuchServlet extends HttpServlet {
 				e.printStackTrace(System.out);
 			}
 		}
+		else {
+			System.out.println("Keine Eingabe");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("userSucheKeineEingabe.jsp");
+			dispatcher.forward(request, response);
+		}
 		
 		/*switch () {
 		case "username":
