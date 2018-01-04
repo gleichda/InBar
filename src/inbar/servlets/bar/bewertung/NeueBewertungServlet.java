@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +21,7 @@ import inbar.beans.UserBean;
  * @author david
  * @date 04.01.2018
  */
-@WebServlet("/NeueBewertung")
+@WebServlet(asyncSupported = true, urlPatterns = { "/NeueBewertung" })
 public class NeueBewertungServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(lookup = "jdbc/InBar")
@@ -52,7 +53,12 @@ public class NeueBewertungServlet extends HttpServlet {
 				statement.setInt(3, bewertung);
 				statement.setString(4, kommentar);
 				statement.executeUpdate();
-				response.setStatus(HttpServletResponse.SC_OK);
+				
+				System.out.println("In DB geschrieben");
+				final RequestDispatcher dispatcher = request.getRequestDispatcher("dummy.html");
+				dispatcher.forward(request, response);	
+				System.out.println("Dispatcher hat gearbeitet");
+
 			}catch (Exception e) {
 				System.out.println(e.getMessage());
 				e.printStackTrace(System.out);

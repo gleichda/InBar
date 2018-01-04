@@ -37,14 +37,8 @@ function sendBewertung(){
 	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	//xhr.setRequestHeader("Content-length", params.length)
 	xhr.send(params);
-
+	 document.getElementById("bewertungsForm").reset(); 
 	
-	if (xhr.readyState == 4 && xhr.status == 200){
-		console.log("erfolgreich gesendet")
-	}
-	else{
-		alert("Fehler beim Senden ihrer Bewertung");
-	}
 }
 
 function init(){
