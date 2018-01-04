@@ -84,7 +84,7 @@
 						</tr>
 						<c:forEach var="bewertung" items="${bewertungen}">
 							<tr>
-								<td class="sterne">${bewertung.bewertung } \f005 </td>
+								<td class="sterne">${bewertung.bewertung } </td>
 								<td>${bewertung.kommentar }</td>
 								<td>${bewertung.user.username }</td>
 							</tr>

@@ -54,10 +54,11 @@ public class UserSuchServlet extends HttpServlet {
 			List<UserBean> userList = new ArrayList<UserBean>();
 		
 			try (Connection con = ds.getConnection();
-					PreparedStatement statement = con.prepareStatement("SELECT * FROM benutzer WHERE benutzername, vorname, nachname"))
+					PreparedStatement statement = con.prepareStatement("SELECT * FROM benutzer WHERE benutzername LIKE ? AND vorname LIKE ? AND nachname LIKE ?"))
 			{
 				
-				if ((username != "" && username != null)|| (vorname != "" && vorname != null) || (nachname != "" && nachname != null)){
+				/*if ((username != "" && username != null)|| (vorname != "" && vorname != null) || (nachname != "" && nachname != null)){ 
+				 * */
 					if (username != "" && username != null) {
 						statement.setString(1, "%" + username + "%");	
 					}
@@ -79,14 +80,14 @@ public class UserSuchServlet extends HttpServlet {
 					}
 					
 					System.out.println("test1");
-				}
+				/*}
 				else {
 					statement.setString(1, "%");
 					statement.setString(2, "%");
 					statement.setString(3, "%");
 					System.out.println("test2");
 				}
-				
+				*/
 				
 				ResultSet rs = statement.executeQuery();
 				while (rs.next()) {	
