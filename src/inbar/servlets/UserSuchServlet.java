@@ -54,9 +54,20 @@ public class UserSuchServlet extends HttpServlet {
 			List<UserBean> userList = new ArrayList<UserBean>();
 		
 			try (Connection con = ds.getConnection();
-					PreparedStatement statement = con.prepareStatement(
-							"SELECT * FROM (benutzer WHERE benutzer.benutzername LIKE ?"))
+					PreparedStatement statement = con.prepareStatement("SELECT * FROM benutzer WHERE (benutzer.benutzername) LIKE ?"))
 			{
+				
+				if (username != "" && username != null){
+					statement.setString(1, "%" + username + "%");
+					System.out.println("test1");
+				}
+				else {
+					statement.setString(1, "%");
+					System.out.println("test2");
+				}
+				
+				
+				statement.setString(1, request.getParameter("benutzername"));
 				ResultSet rs = statement.executeQuery();
 				while (rs.next()) {	
 					UserBean user = new UserBean();
