@@ -50,24 +50,44 @@ public class UserSuchServlet extends HttpServlet {
 		String nachname = request.getParameter("nachname");
 		System.out.println("Suche: Username: " + username + " Vorname: " + vorname);
 
-		if (!username.isEmpty()) {
+		if (!username.isEmpty() || !vorname.isEmpty() || !nachname.isEmpty()) {
 			List<UserBean> userList = new ArrayList<UserBean>();
 		
 			try (Connection con = ds.getConnection();
-					PreparedStatement statement = con.prepareStatement("SELECT * FROM benutzer WHERE benutzername LIKE ?"))
+					PreparedStatement statement = con.prepareStatement("SELECT * FROM benutzer WHERE benutzername, vorname, nachname"))
 			{
 				
-				if (username != "" && username != null){
-					statement.setString(1, "%" + username + "%");
+				if ((username != "" && username != null)|| (vorname != "" && vorname != null) || (nachname != "" && nachname != null)){
+					if (username != "" && username != null) {
+						statement.setString(1, "%" + username + "%");	
+					}
+					else {
+						statement.setString(1, "%");						
+					}
+					 
+					if (vorname != "" && vorname != null) {
+						statement.setString(2, "%" + vorname + "%");
+					}
+					else {
+						statement.setString(2, "%");
+					}
+					if (nachname != "" && nachname != null) {
+						statement.setString(3, "%" + nachname + "%");
+					}
+					else {
+						statement.setString(3, "%");
+					}
+					
 					System.out.println("test1");
 				}
 				else {
 					statement.setString(1, "%");
+					statement.setString(2, "%");
+					statement.setString(3, "%");
 					System.out.println("test2");
 				}
 				
 				
-				//statement.setString(1, request.getParameter("benutzername"));
 				ResultSet rs = statement.executeQuery();
 				while (rs.next()) {	
 					System.out.println("whileSchleife");
