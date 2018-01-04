@@ -29,7 +29,7 @@
 	<article>
 		<h1>Das ist die Suchseite für User</h1>
 	
-		<form id="suchForm" method="post" action="UserSuchservlet">
+		<form id="suchForm" method="post" action="UserSuchServlet">
 			<div>
 			<!-- Textfeld zur Suche nach dem Usernamen -->
 			<label for="username">Username: </label>
