@@ -70,12 +70,13 @@ public class UserSuchServlet extends HttpServlet {
 				//statement.setString(1, request.getParameter("benutzername"));
 				ResultSet rs = statement.executeQuery();
 				while (rs.next()) {	
+					System.out.println("whileSchleife");
 					UserBean user = new UserBean();
-					user.setUserid(rs.getInt("user.userid"));
-					user.setUsername(rs.getString("user.username"));
-					user.setVorname(rs.getString("user.vorname"));
-					user.setNachname(rs.getString("user.nachname"));
-					user.setEmail(rs.getString("user.email"));
+					user.setUserid(rs.getInt("userid"));
+					user.setUsername(rs.getString("benutzername"));
+					user.setVorname(rs.getString("vorname"));
+					user.setNachname(rs.getString("nachname"));
+					user.setEmail(rs.getString("email"));
 					userList.add(user);}
 				
 				System.out.println(username);
