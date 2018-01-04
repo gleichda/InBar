@@ -35,10 +35,11 @@
 			<br> <img src="./Bild?id=${bar.bildId}" class="medium">
 		</section>
 		
+		<h2>Bewertungen</h2>
 		<c:choose>
 		<c:when test="${not empty selfUser.vorname}">
 			<div>
-				<h2>Bewertung abgeben</h2>
+				<h3>Ihre Bewertung</h3>
 				<br>
 				<form id="bewertungsForm">
 				<input type="hidden" id="barid" name="barid" value="${bar.barid }">
@@ -67,7 +68,31 @@
 			</div>
 		</c:otherwise>
 		</c:choose>
-		
+		<div>
+			<c:choose>
+				<c:when test="${empty bewertungen}">
+					<p>Es ist noch keine Bewertung vorhanden <br>
+					Schreiben Sie doch die erste
+					</p>
+				</c:when>
+				<c:otherwise>
+					<table id="bewertungen">
+						<tr>
+							<th>Bewertung</th>
+							<th>Kommentar</th>
+							<th>Benutzername</th>
+						</tr>
+						<c:forEach var="bewertung" items="${bewertungen}">
+							<tr>
+								<td class="sterne">${bewertung.bewertung } \f005 </td>
+								<td>${bewertung.kommentar }</td>
+								<td>${bewertung.user.username }</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</c:otherwise>
+			</c:choose>
+		</div>
 	</article>
 	
 	
