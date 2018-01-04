@@ -5,6 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./css/style.css" type="text/css" rel="stylesheet">
+<link href="./css/starRating.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<!-- Rating mit Sternen übernommen von https://www.cssscript.com/simple-5-star-rating-system-with-css-and-html-radios/ -->
 <title>Insert title here</title>
 </head>
 <body>
@@ -24,16 +27,39 @@
 	<article>
 		<h1>${bar.barname}</h1>
 		<h2>Herzlich Willkommen ${bar.barname}</h2> 
-		
-
 		<section >
 			<p>${bar.bbeschreibung}</p>
 			<p>${bar.mbeschreibung}</p>
 			<p>${bar.lbeschreibung}</p>
 			<br> <img src="./Bild?id=${bar.bildId}" class="medium">
 		</section>
+		
+		<div>
+			<h2>Bewertung abgeben</h2>
+			<br> <br>
+			<form method="post" >
+			<div>
+			    <input class="star star-5" id="star-5" type="radio" name="star"/>
+			    <label class="star star-5" for="star-5"></label>
+			    <input class="star star-4" id="star-4" type="radio" name="star"/>
+			    <label class="star star-4" for="star-4"></label>
+			    <input class="star star-3" id="star-3" type="radio" name="star"/>
+			    <label class="star star-3" for="star-3"></label>
+			    <input class="star star-2" id="star-2" type="radio" name="star"/>
+			    <label class="star star-2" for="star-2"></label>
+			    <input class="star star-1" id="star-1" type="radio" name="star"/>
+			    <label class="star star-1" for="star-1"></label>
+		    </div>
+			    <br><br>
+			    <textarea rows="5" cols="100" name="bewertungstext" id="bewertungstext" placeholder="Ihr Kommentar"></textarea>
+			    <br> <br>
+			    <button type=submit id="bewertungAbgeben">Absenden</button>
+			</form>
+		</div>
+		
 	</article>
-
+	
+	
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>
 	</footer>

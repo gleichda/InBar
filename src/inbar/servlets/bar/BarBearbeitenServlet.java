@@ -30,9 +30,8 @@ public class BarBearbeitenServlet extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public BarBearbeitenServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+        super();    
+        }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -60,8 +59,6 @@ public class BarBearbeitenServlet extends HttpServlet {
 		String bbeschreibung = request.getParameter("bbeschreibung");
 		String mbeschreibung = request.getParameter("mbeschreibung");
 		String lbeschreibung = request.getParameter("lbeschreibung");
-		
-		//TODO: verify user
 		
 		
 		
@@ -106,7 +103,6 @@ public class BarBearbeitenServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

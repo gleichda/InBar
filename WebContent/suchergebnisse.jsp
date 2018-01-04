@@ -41,13 +41,13 @@
 			<c:forEach var="bar" items="${suchergebnisse}">
 				<tr>
 					<td>${bar.barid}</td>
-					<td>"${bar.barname}"</td>
-					<td>"${bar.strasse}" "${bar.hausnummer}" <br>
-						"${bar.plz}" "${bar.ort}"
+					<td><a href="./BarAnzeigen?id=${bar.barid}">${bar.barname}</a></td>
+					<td>${bar.strasse} ${bar.hausnummer} <br>
+						${bar.plz} ${bar.ort}
 					</td>
-					<td>"${bar.bbeschreibung}"</td>
-					<td>"${bar.lbeschreibung}"</td>
-					<td>"${bar.mbeschreibung}"</td>
+					<td>${bar.bbeschreibung}</td>
+					<td>${bar.lbeschreibung}</td>
+					<td>${bar.mbeschreibung}</td>
 				</tr>
 			</c:forEach>
 		</table>
