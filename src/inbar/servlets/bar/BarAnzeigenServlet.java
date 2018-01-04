@@ -18,6 +18,7 @@ import inbar.beans.BarBean;
 
 /**
  * Servlet implementation class BarBearbeitenServlet
+ * @author david
  */
 @WebServlet("/BarAnzeigen")
 public class BarAnzeigenServlet extends HttpServlet {
@@ -40,12 +41,12 @@ public class BarAnzeigenServlet extends HttpServlet {
 			int barID = Integer.parseInt(request.getParameter("id"));
 
 			try (Connection con = ds.getConnection();
-					PreparedStatement statement = con.prepareStatement("SELECT * FROM bar where barid = ?")) {
+					PreparedStatement statement = con.prepareStatement("SELECT * FROM bar LEFT JOIN bar_zu_bild ON bar.barid=bar_zu_bild.barid where bar.barid = ?")) {
 				statement.setInt(1, barID);
 
 				ResultSet rs = statement.executeQuery();
 
-				if (rs.first() && rs.getInt("barid") == barID) {
+				if (rs.first() && rs.getInt("bar.barid") == barID) {
 					BarBean bar = new BarBean();
 					bar.setBarname(rs.getString("barname"));
 					bar.setVorname(rs.getString("vorname"));
@@ -60,6 +61,7 @@ public class BarAnzeigenServlet extends HttpServlet {
 					bar.setBbeschreibung(rs.getString("bbeschreibung"));
 					bar.setMbeschreibung(rs.getString("mbeschreibung"));
 					bar.setLbeschreibung(rs.getString("lbeschreibung"));
+					bar.setBildId(rs.getInt("bildid"));
 
 					request.setAttribute("bar", bar);
 					/*

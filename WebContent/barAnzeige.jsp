@@ -24,8 +24,6 @@
 	<article>
 		<h1>${bar.barname}</h1>
 		<h2>Herzlich Willkommen ${bar.barname}</h2> 
-		
-		<!-- TODO: Profilbild der Bar einfügen, sobald möglich -->
 		<section >
 			<p>${bar.bbeschreibung}</p>
 			<p>${bar.mbeschreibung}</p>
