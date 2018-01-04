@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
@@ -65,6 +66,12 @@ public class BildServlet extends HttpServlet {
 						out.flush();
 					}
 				}
+				//start 04.01 Sabine Default-Profilbild
+				else {
+					final RequestDispatcher dispatcher = request.getRequestDispatcher("./img/default-avatar.jpg");
+					dispatcher.forward(request, response);
+				}
+				//ende 04.01 Sabine Default-Profilbild
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				e.printStackTrace();
