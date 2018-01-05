@@ -27,13 +27,15 @@
 			Hier koennen Sie ein neues Event anlegen
 		</p>
 
-		<form id="barRegistrierung" action="BarRegisterServlet" method="post"
+		<form id="eventAnlegen" action="EventAnlegenServlet" method="post"
 			enctype="multipart/form-data">
 
 			<div>
 				<label for="eventname">Name des Events: </label> <input type="text"
 					name="eventname" id="eventname" value="">
 				<label for="datum"> Bitte Datum waehlen</label> <input type="date" name=datum id="datum" value="">
+				<label for="start"> Bitte Startuhrzeit auswaehlen</label> <input type="time" name=start id="start" value="">				
+				<label for="ende"> Bitte Enduhrzeit auswaehlen </label> <input type="time" name=ende id="ende" value="">
 				<!-- TODO: Aktuelles Datum vorschlagen https://stackoverflow.com/questions/6982692/html5-input-type-date-default-value-to-today -->				
 			</div>
 			<br>

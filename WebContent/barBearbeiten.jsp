@@ -23,10 +23,13 @@
 	</nav>
 
 	<article>
-		<h2>Registrierung für Bars</h2>
+		<h2>Bearbeitung für Bars</h2>
 		<p>
-			Das ist die Registrierungs-Seite, auf der Sie ihre Bar anmelden
-			können.
+			Hier können Sie das Profil Ihrer Bar bearbeiten.
+		</p>
+		
+		<p>
+				<a href="eventAnlegen.jsp"id="eventNeu"> Event anlegen</a>
 		</p>
 
 		<form id="barBearbeiten" action="BarBearbeiten" method="post">

@@ -134,7 +134,6 @@ public class BarRegisterServlet extends HttpServlet {
 						"INSERT INTO bar(vorname, nachname, chefmail, strasse, hausnummer, plz ,ort ,barmail ,barname, bbeschreibung, mbeschreibung, lbeschreibung) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
 						generatedKeys)) {
 
-			
 			barCreationStatement.setString(1, bar.getVorname());
 			barCreationStatement.setString(2, bar.getNachname());
 			barCreationStatement.setString(3, bar.getChefmail());
@@ -152,10 +151,6 @@ public class BarRegisterServlet extends HttpServlet {
 			ResultSet rs = barCreationStatement.getGeneratedKeys();
 			rs.first();
 			bar.setBarid(rs.getInt(1));
-
-			
-			
-
 		}
 
 		catch (Exception e) {
