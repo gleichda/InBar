@@ -33,6 +33,7 @@
 				<th>Lage</th>
 				<th>Musik</th>
 				<th></th>
+				<th></th>
 			</tr>
 			<c:forEach var="bar" items="${eigeneBars}">
 				<tr>
@@ -49,6 +50,13 @@
 							<input type="hidden" name="id" value="${bar.barid}">
 							<input type="hidden" name="bearbeiten" value="1">
     						<button type="submit">Bearbeiten</button>
+						</form>
+					</td>
+					<td>
+						<form action="EventAnlegenServlet">
+							<input type="hidden" name="barid" value="${bar.barid}">
+ 							<input type="hidden" name="eventAnlegen" value="1">
+    						<button type="submit">Event anlegen</button>
 						</form>
 					</td>
 				</tr>

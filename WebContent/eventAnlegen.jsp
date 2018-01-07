@@ -27,11 +27,11 @@
 			Hier koennen Sie ein neues Event anlegen
 		</p>
 <!-- 		06.01 start Sabine input hidden um die Bar-ID zu erhalten -->
-		<form action="BarAnzeigen">
+<%-- 		<form action="BarAnzeigen">
 				<input type="hidden" name="id" value="${bar.barid}">
 				<input type="hidden" name="bearbeiten" value="1">
     			<button type="submit">Bearbeiten</button>
-		</form>
+		</form> --%>
 <!-- 		06.01 ende Sabine input hidden um die Bar-ID zu erhalten -->
 		<form id="eventAnlegen" action="EventAnlegenServlet" method="post"
 			enctype="multipart/form-data">

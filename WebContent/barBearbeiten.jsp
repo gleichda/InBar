@@ -28,9 +28,6 @@
 			Hier können Sie das Profil Ihrer Bar bearbeiten.
 		</p>
 		
-		<p>
-				<a href="eventAnlegen.jsp"id="eventNeu"> Event anlegen</a>
-		</p>
 
 		<form id="barBearbeiten" action="BarBearbeiten" method="post">
 			<p>
