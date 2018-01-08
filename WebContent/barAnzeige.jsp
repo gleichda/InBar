@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!--  Validation OK -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./css/style.css" type="text/css" rel="stylesheet">
 <link href="./css/starRating.css" type="text/css" rel="stylesheet">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-<script src="js/ajax_bewertung.js" type="text/javascript"></script>
+<script src="js/ajax_bewertung.js"></script>
 <!-- Rating mit Sternen übernommen von https://www.cssscript.com/simple-5-star-rating-system-with-css-and-html-radios/ -->
 <title>Insert title here</title>
 </head>
@@ -27,12 +28,12 @@
 	</nav>
 	<article>
 		<h1>${bar.barname}</h1>
-		<h2>Herzlich Willkommen ${bar.barname}</h2> 
 		<section >
+			<h2>Herzlich Willkommen ${bar.barname}</h2> 
 			<p>${bar.bbeschreibung}</p>
 			<p>${bar.mbeschreibung}</p>
 			<p>${bar.lbeschreibung}</p>
-			<br> <img src="./Bild?id=${bar.bildId}" class="medium">
+			<br> <img src="./Bild?id=${bar.bildId}" class="medium" alt="Bild der Bar">
 		</section>
 		
 		<h2>Bewertungen</h2>

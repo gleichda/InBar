@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!--  Validation OK -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,7 +24,7 @@
 	</nav>
 	<article>
 	<h1>Registrierung erfolgreich</h1>
-	<h2>Herzlich Willkkommen ${baruser.vorname}</h2>
+	<h2>Herzlich Willkommen ${baruser.vorname}</h2>
 	<br> Vorname: ${baruser.vorname}
 	<br> Nachname ${baruser.nachname}
 	<br> E-Mail: ${baruser.chefmail}
@@ -32,7 +33,7 @@
 	<br> ${baruser.mbeschreibung}
 	<br> ${baruser.lbeschreibung}
 	<br> ${baruser.bildId}
-	<br> <img src="./Bild?id=${baruser.bildId}" class="medium">
+	<br> <img src="./Bild?id=${baruser.bildId}" alt="Bild der Bar" class="medium">
 	<!--  TODO: Bild größe anpassen -->
 	</article>
 	<footer>

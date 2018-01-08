@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--  Validation OK -->
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <html>
 <head>
@@ -82,7 +83,7 @@
 				<br>
 				<p>
 					<label for="mbeschreibung">Beschreiben Sie die Musik, die bei Ihnen gespielt wird: </label>
-					<textarea name="mbeschreibung" id="mbeschreibung"rows="5" cols="100" required>${bar.mbeschreibung}</textarea>
+					<textarea name="mbeschreibung" id="mbeschreibung" rows="5" cols="100" required>${bar.mbeschreibung}</textarea>
 				</p>
 				<p>
 					<label for="lbeschreibung">Beschreiben Sie, wie ihre Bar erreicht werden kann: </label>

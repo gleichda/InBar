@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--  Validation OK -->
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <html>
 <head>
@@ -29,7 +30,7 @@
 			können.
 		</p>
 
-		<form id="barRegistrierung" action="BarRegisterServlet" method="post">
+		<form id="barRegistrierung" action="BarRegisterServlet" method="post" enctype="multipart/form-data">
 			<p>
 				<label for="barname">Name der Bar: </label> 
 				<input type="text" name="barname" id="barname" required> 
