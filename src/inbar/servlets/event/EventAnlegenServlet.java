@@ -121,8 +121,9 @@ public class EventAnlegenServlet extends HttpServlet {
 	
 	//start 05.01 Sabine eventSpeichern angelegt
 	private void eventSpeichern (EventBean event) throws ServletException{
+		String[] generatedKeys = new String[] { "eventid" }; // Aus Skript JDBC Folie 12 uebernommen
 		try (Connection con = ds.getConnection();
-				PreparedStatement statement = con.prepareStatement("INSERT INTO event(eventname, ebeschreibung, startzeit, endzeit, datum) VALUES (?, ?, ?, ?, ?)");
+				PreparedStatement statement = con.prepareStatement("INSERT INTO event(eventname, ebeschreibung, startzeit, endzeit, datum) VALUES (?, ?, ?, ?, ?)", generatedKeys);
 			){
 			statement.setString(1, event.getEventname());
 			statement.setString(2, event.getEbeschreibung());
@@ -132,6 +133,10 @@ public class EventAnlegenServlet extends HttpServlet {
 
 			statement.executeUpdate();
 			System.out.println("eventSpeicher ausgeführt");
+			
+			ResultSet rs = statement.getGeneratedKeys();
+			rs.first();
+			event.setEventid(rs.getInt(1));
 		}		
 		catch (Exception e) {
 				throw new ServletException(e.getMessage());
@@ -144,6 +149,7 @@ public class EventAnlegenServlet extends HttpServlet {
 		try (Connection con = ds.getConnection();
 				PreparedStatement eventBarStatement = con.prepareStatement("INSERT INTO event_zu_bar (eventid, barid) VALUES (?, ?)")) {
 			eventBarStatement.setInt(1, event.getEventid());
+			System.out.println("Inhalt der Variable bar " + bar);
 			eventBarStatement.setInt(2, bar);
 			eventBarStatement.executeUpdate();
 			
