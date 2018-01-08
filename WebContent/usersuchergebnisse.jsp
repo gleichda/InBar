@@ -45,7 +45,7 @@
 			<c:forEach var="user" items="${suchergebnisse}">
 				<tr>
 					<td>${user.userid}</td>
-					<td><a href="./profilAnzeigen?id=${user.userid}">${user.username}</a></td>
+					<td><a href="./ProfilAnzeigen?id=${user.userid}">${user.username}</a></td>
 					<td>${user.vorname}</td>
 					<td>${user.nachname}</td>
 					<td>${user.email}</td>
