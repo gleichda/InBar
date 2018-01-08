@@ -21,7 +21,6 @@ import javax.servlet.http.HttpSession;
 //import javax.servlet.http.Part;
 import javax.sql.DataSource;
 
-import inbar.beans.BarBean;
 //import inbar.beans.BildBean;
 import inbar.beans.EventBean;
 import inbar.beans.UserBean;
@@ -73,33 +72,43 @@ public class EventAnlegenServlet extends HttpServlet {
 				
 				//Vorlage Ex11Num01CreateServlet.java Zeile 41-49 
 				// Datum im Format yyyy-mm-dd
-				String dateString = request.getParameter("datum");
-				String[] dateArray = dateString.split("-");
-				Calendar cal = Calendar.getInstance();
-				int year = Integer.parseInt(dateArray[0]);
-				int month = Integer.parseInt(dateArray[1])-1;
-				int day = Integer.parseInt(dateArray[2]);
-				cal.set(year, month, day);
-				event.setDatum(cal.getTime());
+				String startdateString = request.getParameter("startdatum");
+				String[] startdateArray = startdateString.split("-");
+				Calendar startcal = Calendar.getInstance();
+				int startyear = Integer.parseInt(startdateArray[0]);
+				int startmonth = Integer.parseInt(startdateArray[1])-1;
+				int startday = Integer.parseInt(startdateArray[2]);
+				startcal.set(startyear, startmonth, startday);
+				event.setStartdatum(startcal.getTime());
+				
+				
+				String enddateString = request.getParameter("enddatum");
+				String[] enddateArray = enddateString.split("-");
+				Calendar endcal = Calendar.getInstance();
+				int endyear = Integer.parseInt(enddateArray[0]);
+				int endmonth = Integer.parseInt(enddateArray[1])-1;
+				int endday = Integer.parseInt(enddateArray[2]);
+				endcal.set(endyear, endmonth, endday);
+				event.setEnddatum(endcal.getTime());
 				
 				
 				//Vorlage Ex11Num01CreateServlet.java Zeile 51-55
 				// Zeitfeld für Startzeit auswerten - Eingangsformat hh:mm
 				String startTimeString = request.getParameter("start");
 				String[] startTimeArray = startTimeString.split(":");
-				cal.set(year, month, day, Integer.parseInt(startTimeArray[0]), Integer.parseInt(startTimeArray[1]));
-				event.setStartzeit(cal.getTime());
+				startcal.set(startyear, startmonth, startday, Integer.parseInt(startTimeArray[0]), Integer.parseInt(startTimeArray[1]));
+				event.setStartzeit(startcal.getTime());
 				
 				// Zeitfeld für Endzeit auswerten - Eingangsformat hh:mm
 				String endTimeString = request.getParameter("ende");
 				String[] endTimeArray = endTimeString.split(":");
-				cal.set(year, month, day, Integer.parseInt(endTimeArray[0]), Integer.parseInt(endTimeArray[1]));
-				event.setEndzeit(cal.getTime());
+				endcal.set(endyear, endmonth, endday, Integer.parseInt(endTimeArray[0]), Integer.parseInt(endTimeArray[1]));
+				event.setEndzeit(endcal.getTime());
 				
 				eventSpeichern(event);
 				eventZuBarZuweisen(event, bar);
 				
-				//session.setAttribute("event", event);
+				request.setAttribute("event", event);
 				
 				final RequestDispatcher dispatcher = request.getRequestDispatcher("eventAnzeige.jsp");
 				dispatcher.forward(request, response);
@@ -120,13 +129,14 @@ public class EventAnlegenServlet extends HttpServlet {
 	private void eventSpeichern (EventBean event) throws ServletException{
 		String[] generatedKeys = new String[] { "eventid" }; // Aus Skript JDBC Folie 12 uebernommen
 		try (Connection con = ds.getConnection();
-				PreparedStatement statement = con.prepareStatement("INSERT INTO event(eventname, ebeschreibung, startzeit, endzeit, datum) VALUES (?, ?, ?, ?, ?)", generatedKeys);
+				PreparedStatement statement = con.prepareStatement("INSERT INTO event(eventname, ebeschreibung, startzeit, endzeit, startdatum, enddatum) VALUES (?, ?, ?, ?, ?, ?)", generatedKeys);
 			){
 			statement.setString(1, event.getEventname());
 			statement.setString(2, event.getEbeschreibung());
 			statement.setTime(3, new java.sql.Time(event.getStartzeit().getTime()));  //Vorlage Ex11Num01CreateServlet.java Zeile 80 +81
 			statement.setTime(4, new java.sql.Time(event.getEndzeit().getTime()));
-			statement.setDate(5, new java.sql.Date(event.getDatum().getTime()));
+			statement.setDate(5, new java.sql.Date(event.getStartdatum().getTime()));
+			statement.setDate(6, new java.sql.Date(event.getEnddatum().getTime()));
 
 			statement.executeUpdate();
 			
