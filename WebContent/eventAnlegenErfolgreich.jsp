@@ -28,11 +28,6 @@
 	<br> Start-Uhrzeit: ${event.startzeit }
 	<br> End-Uhrzeit: ${event.endzeit}
 	<br> Beschreibung: ${event.ebeschreibung}
-	<br> Für die Bar: ${baruser.barname}
-	<br> Vorname: ${baruser.vorname}
-	<br> Nachname ${baruser.nachname}
-	<br> E-Mail: ${baruser.chefmail}
-	<br> Benutzername: ${baruser.barname}
 	</article>
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>

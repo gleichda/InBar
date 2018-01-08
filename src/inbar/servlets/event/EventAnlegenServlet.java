@@ -81,7 +81,6 @@ public class EventAnlegenServlet extends HttpServlet {
 				int day = Integer.parseInt(dateArray[2]);
 				cal.set(year, month, day);
 				event.setDatum(cal.getTime());
-				System.out.println(" Datumsausgabe: " + event.getDatum());
 				
 				
 				//Vorlage Ex11Num01CreateServlet.java Zeile 51-55
@@ -90,21 +89,19 @@ public class EventAnlegenServlet extends HttpServlet {
 				String[] startTimeArray = startTimeString.split(":");
 				cal.set(year, month, day, Integer.parseInt(startTimeArray[0]), Integer.parseInt(startTimeArray[1]));
 				event.setStartzeit(cal.getTime());
-				System.out.println("Startzeit: " + event.getStartzeit());
 				
 				// Zeitfeld für Endzeit auswerten - Eingangsformat hh:mm
 				String endTimeString = request.getParameter("ende");
 				String[] endTimeArray = endTimeString.split(":");
 				cal.set(year, month, day, Integer.parseInt(endTimeArray[0]), Integer.parseInt(endTimeArray[1]));
 				event.setEndzeit(cal.getTime());
-				System.out.println("Endzeit: " + event.getEndzeit());
 				
 				eventSpeichern(event);
 				eventZuBarZuweisen(event, bar);
 				
 				//session.setAttribute("event", event);
 				
-				final RequestDispatcher dispatcher = request.getRequestDispatcher("eventAnlegenErfolgreich.jsp");
+				final RequestDispatcher dispatcher = request.getRequestDispatcher("eventAnzeige.jsp");
 				dispatcher.forward(request, response);
 
 			} catch (Exception e) {
@@ -132,7 +129,6 @@ public class EventAnlegenServlet extends HttpServlet {
 			statement.setDate(5, new java.sql.Date(event.getDatum().getTime()));
 
 			statement.executeUpdate();
-			System.out.println("eventSpeicher ausgeführt");
 			
 			ResultSet rs = statement.getGeneratedKeys();
 			rs.first();
@@ -149,11 +145,9 @@ public class EventAnlegenServlet extends HttpServlet {
 		try (Connection con = ds.getConnection();
 				PreparedStatement eventBarStatement = con.prepareStatement("INSERT INTO event_zu_bar (eventid, barid) VALUES (?, ?)")) {
 			eventBarStatement.setInt(1, event.getEventid());
-			System.out.println("Inhalt der Variable bar " + bar);
 			eventBarStatement.setInt(2, bar);
 			eventBarStatement.executeUpdate();
 			
-			System.out.println("eventZuBarZuweisen ausgeführt");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
