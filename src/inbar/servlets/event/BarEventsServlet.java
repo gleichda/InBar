@@ -60,7 +60,7 @@ public class BarEventsServlet extends HttpServlet {
 					event.setEventname(rs.getString("event.eventname"));
 					event.setStartdatum(rs.getDate("startdatum"));
 					event.setStartzeit(rs.getTime("startzeit"));
-					event.setEnddatum(rs.getDate("endzeit"));
+					event.setEnddatum(rs.getDate("enddatum"));
 					event.setEndzeit(rs.getTime("endzeit"));
 					event.setEbeschreibung(rs.getString("ebeschreibung"));
 					eventList.add(event);

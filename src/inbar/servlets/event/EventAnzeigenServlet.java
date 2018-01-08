@@ -40,7 +40,7 @@ public class EventAnzeigenServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getParameter("id") != null) {
-			int eventID = Integer.parseInt(request.getParameter("id"));
+			int eventID = Integer.parseInt(request.getParameter("eventid"));
 
 			try (Connection con = ds.getConnection();
 					PreparedStatement eventStatement = con.prepareStatement("SELECT * FROM event where eventid LIKE ?"))
@@ -54,7 +54,6 @@ public class EventAnzeigenServlet extends HttpServlet {
 					event.setEventname(eventRs.getString("eventname"));
 					event.setStartdatum(eventRs.getDate("startdatum"));
 					event.setStartzeit(eventRs.getTime("startzeit"));
-					//event.setStartzeit(eventRs.getString("startzeit"));
 					event.setEnddatum(eventRs.getDate("enddatum"));
 					event.setEndzeit(eventRs.getDate("endzeit"));
 					event.setEbeschreibung(eventRs.getString("ebeschreibung"));
