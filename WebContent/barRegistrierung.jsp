@@ -32,42 +32,42 @@
 		<form id="barRegistrierung" action="BarRegisterServlet" method="post">
 			<p>
 				<label for="barname">Name der Bar: </label> 
-				<input type="text" name="barname" id="barname"> 
+				<input type="text" name="barname" id="barname" required> 
 			</p>
 			<br>
 			<br>
 			<fieldset><legend>Informationen zum Geschäftsführer</legend>
 			<p>
 				<label for="vorname"> Geschäftsführer: </label> 
-				<input type="text" name="vorname" id="vorname" placeholder="Vorname"> 
-				<input type="text" name="nachname" id="nachname" placeholder="Nachname">
+				<input type="text" name="vorname" id="vorname" placeholder="Vorname"  required> 
+				<input type="text" name="nachname" id="nachname" placeholder="Nachname"  required>
 			</p>
 			<p>
 				<label for="chefmail"> E-Mail-Adresse des Geschäftsführers:</label> 
-				<input type="email" name="chefmail" id="chefmail" value="">
+				<input type="email" name="chefmail" id="chefmail" required>
 			</p>
 			</fieldset>
 			<br>
 			<fieldset><legend>Informationen über die Bar</legend>
 			<p>
 				<label for="strasse">Strasse: </label> 
-				<input type="text" name="strasse" id="strasse" value="">
+				<input type="text" name="strasse" id="strasse" required>
 			</p>
 			<p>
 				<label for="hausnummer">Hausnummer: </label> 
-				<input type="text" name="hausnummer" id="hausnummer" value="">
+				<input type="text" name="hausnummer" id="hausnummer" required>
 			</p>
 			<p>
 				<label for="plz">PLZ: </label> 
-				<input type="text" name="plz" id="plz" value="">
+				<input type="text" name="plz" id="plz" required>
 			</p>
 			<p>
 				<label for="ort">Ort: </label> 
-				<input type="text" name="ort" id="ort" value="">
+				<input type="text" name="ort" id="ort" required>
 			</p>
 			<p>
 				<label for="barmail">Mail-Adresse der Bar: </label> 
-				<input type="text" name="barmail" id="barmail" value="">
+				<input type="email" name="barmail" id="barmail" required>
 			</p>
 			<p> Musikart:
 				<!-- TODO: DB in JSP Seite?? -->
@@ -87,17 +87,16 @@
 				<p>Die folgenden Texte werden zu dem Profil-Text der Bar:</p>
 				<p>
 					<label for="bbeschreibung">Beschreiben Sie ihre Bar.</label>
-					<textarea name ="text" id="bbeschreibung" placeholder="Beschreiben Sie ihre Bar." rows="5" cols="100"></textarea>
-					<!--TODO: Name anpassen an bbeschreibung? -->
+					<textarea name ="text" id="bbeschreibung" placeholder="Beschreiben Sie ihre Bar." rows="5" cols="100" required></textarea>
 				</p>
 				<br>
 				<p>
 					<label for="mbeschreibung">Beschreiben Sie die Musik, die bei Ihnen gespielt wird: </label>
-					<textarea name="mbeschreibung" id="mbeschreibung" placeholder="Beschreiben Sie die Musik die bei Ihnen gespielt wird." rows="5" cols="100"></textarea>
+					<textarea name="mbeschreibung" id="mbeschreibung" placeholder="Beschreiben Sie die Musik die bei Ihnen gespielt wird." rows="5" cols="100" required></textarea>
 				</p>
 				<p>
 					<label for="lbeschreibung">Beschreiben Sie, wie ihre Bar erreicht werden kann: </label>
-					<textarea name="lbeschreibung" id="lbeschreibung" placeholder="Beschreiben Sie die Lage Ihrer Bar und wie man sie erreichen kann." rows="5" cols="100"></textarea>
+					<textarea name="lbeschreibung" id="lbeschreibung" placeholder="Beschreiben Sie die Lage Ihrer Bar und wie man sie erreichen kann." rows="5" cols="100" required></textarea>
 				</p>
 			</div>
 			</fieldset>
@@ -108,7 +107,6 @@
 			</p>
 			<p>
 				<button id="reg_daten" type="submit">Registrieren</button>
-				<!-- formaction muss noch angepasst werden -->
 			</p>
 		</form>
 	</article>

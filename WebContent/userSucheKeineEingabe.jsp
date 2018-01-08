@@ -40,13 +40,13 @@
 			<div>
 			<!-- Textfeld zur Suche nach dem Vornamen -->
 			<label for="vorname">Vorname: </label>
-			<input type="text" name="vorname" id="vorname" placeholder="Vorname" autofocus>
+			<input type="text" name="vorname" id="vorname" placeholder="Vorname">
 			</div>
 			<br>
 			<div>
 			<!-- Textfeld zur Suche nach dem Nachnamen -->
 			<label for="nachname">Nachname: </label>
-			<input type="text" name="nachname" id="nachname" placeholder="Nachname" autofocus>
+			<input type="text" name="nachname" id="nachname" placeholder="Nachname">
 			</div>
 			<br>
 

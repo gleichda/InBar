@@ -40,65 +40,53 @@
 			<fieldset><legend>Informationen zum Geschäftsführer</legend>
 			<p>
 				<label for="vorname"> Geschäftsführer: </label> 
-				<input type="text" name="vorname" id="vorname" value="${bar.vorname}"> 
-				<input type="text" name="nachname" id="nachname" value="${bar.nachname}">
+				<input type="text" name="vorname" id="vorname" value="${bar.vorname}" required> 
+				<input type="text" name="nachname" id="nachname" value="${bar.nachname}" required>
 			</p>
 			<p>
 				<label for="chefmail"> E-Mail-Adresse des Geschäftsführers:</label> 
-				<input type="email" name="chefmail" id="chefmail" value="${bar.chefmail}">
+				<input type="email" name="chefmail" id="chefmail" value="${bar.chefmail}" required>
 			</p>
 			</fieldset>
 			<br>
 			<fieldset><legend>Informationen über die Bar</legend>
 			<p>
 				<label for="strasse">Strasse: </label> 
-				<input type="text" name="strasse" id="strasse" value="${bar.strasse}">
+				<input type="text" name="strasse" id="strasse" value="${bar.strasse}" required>
 			</p>
 			<p>
 				<label for="hausnummer">Hausnummer: </label> 
-				<input type="text" name="hausnummer" id="hausnummer" value="${bar.hausnummer}">
+				<input type="text" name="hausnummer" id="hausnummer" value="${bar.hausnummer}" required>
 			</p>
 			<p>
 				<label for="plz">PLZ: </label> 
-				<input type="text" name="plz" id="plz" value="${bar.plz}">
+				<input type="text" name="plz" id="plz" value="${bar.plz}" required>
 			</p>
 			<p>
 				<label for="ort">Ort: </label> 
-				<input type="text" name="ort" id="ort" value="${bar.ort}">
+				<input type="text" name="ort" id="ort" value="${bar.ort}" required>
 			</p>
 			<p>
 				<label for="barmail">Mail-Adresse der Bar: </label> 
-				<input type="text" name="barmail" id="barmail" value="${bar.barmail}">
+				<input type="email" name="barmail" id="barmail" value="${bar.barmail}" required>
 			</p>
-			<p> Musikart:
-				<!-- TODO: DB in JSP Seite?? && Selected Musikart-->
-				<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/inbar" user="root" />
-				<sql:query dataSource="${ds}" var="musikarten">SELECT * FROM musikarten;</sql:query>
-				
-				<select name="musikart">
-					<option value="-1">Alle</option> 
-					<c:forEach var ="art" items="${musikarten.rows}" >
-						<option value="${art.musikid}">${art.name }</option>
-					</c:forEach>
-				</select>
-				</p>
 			</fieldset>
 			<fieldset><legend>Profiltext</legend>
 			<div id="beschreibung">
 				<p>Die folgenden Texte werden zu dem Profil-Text der Bar:</p>
 				<p>
 					<label for="bbeschreibung">Beschreiben Sie ihre Bar.</label>
-					<textarea name="bbeschreibung" id="bbeschreibung" rows="5" cols="100">${bar.bbeschreibung}</textarea>
+					<textarea name="bbeschreibung" id="bbeschreibung" rows="5" cols="100" required>${bar.bbeschreibung}</textarea>
 					
 				</p>
 				<br>
 				<p>
 					<label for="mbeschreibung">Beschreiben Sie die Musik, die bei Ihnen gespielt wird: </label>
-					<textarea name="mbeschreibung" id="mbeschreibung"rows="5" cols="100">${bar.mbeschreibung}</textarea>
+					<textarea name="mbeschreibung" id="mbeschreibung"rows="5" cols="100" required>${bar.mbeschreibung}</textarea>
 				</p>
 				<p>
 					<label for="lbeschreibung">Beschreiben Sie, wie ihre Bar erreicht werden kann: </label>
-					<textarea name="lbeschreibung" id="lbeschreibung" rows="5" cols="100">${bar.lbeschreibung}</textarea>
+					<textarea name="lbeschreibung" id="lbeschreibung" rows="5" cols="100" required>${bar.lbeschreibung}</textarea>
 				</p>
 			</div>
 			</fieldset>

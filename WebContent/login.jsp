@@ -36,11 +36,11 @@
 			<form id="login" method="post" action="LoginServlet">
 				<p>
 					<label for="name"> Benutzer: </label> 
-					<input type="text" name="benutzer" id="name" autofocus>
+					<input type="text" name="benutzer" id="name" autofocus required>
 				</p>
 				<p>
 					<label for="passwort"> Passwort: </label> 
-					<input type="password" name="passwort" id="passwort">
+					<input type="password" name="passwort" id="passwort" required>
 				</p>
 				<p>
 					<button id="login_btn" type="submit">Login</button>

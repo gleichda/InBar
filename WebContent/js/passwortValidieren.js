@@ -6,8 +6,8 @@
 function validate(){
 	var passwort = document.getElementById("passwort");
 	var passwort2 = document.getElementById("passwort_wiederholen");
-	//passwort.required = true;
-	//passwort2.required = true;
+	passwort.required = true;
+	passwort2.required = true;
 	if (! passwort.value == passwort2.value){
 		console.log("passwörter stimmen nicht")
 		passwort2.setCustomValidity("Die Passwörter stimmen nicht überein");
