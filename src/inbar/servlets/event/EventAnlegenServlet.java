@@ -73,7 +73,7 @@ public class EventAnlegenServlet extends HttpServlet {
 				
 				//Vorlage Ex11Num01CreateServlet.java Zeile 41-49 
 				// Datum im Format yyyy-mm-dd
-				String dateString = request.getParameter("Datum");
+				String dateString = request.getParameter("datum");
 				String[] dateArray = dateString.split("-");
 				Calendar cal = Calendar.getInstance();
 				int year = Integer.parseInt(dateArray[0]);
@@ -86,14 +86,14 @@ public class EventAnlegenServlet extends HttpServlet {
 				
 				//Vorlage Ex11Num01CreateServlet.java Zeile 51-55
 				// Zeitfeld für Startzeit auswerten - Eingangsformat hh:mm
-				String startTimeString = request.getParameter("startzeit");
+				String startTimeString = request.getParameter("start");
 				String[] startTimeArray = startTimeString.split(":");
 				cal.set(year, month, day, Integer.parseInt(startTimeArray[0]), Integer.parseInt(startTimeArray[1]));
 				event.setStartzeit(cal.getTime());
 				System.out.println("Startzeit: " + event.getStartzeit());
 				
 				// Zeitfeld für Endzeit auswerten - Eingangsformat hh:mm
-				String endTimeString = request.getParameter("endzeit");
+				String endTimeString = request.getParameter("ende");
 				String[] endTimeArray = endTimeString.split(":");
 				cal.set(year, month, day, Integer.parseInt(endTimeArray[0]), Integer.parseInt(endTimeArray[1]));
 				event.setEndzeit(cal.getTime());

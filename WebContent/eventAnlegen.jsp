@@ -39,14 +39,16 @@
 			<div>
 				<label for="eventname">Name des Events: </label> <input type="text"
 					name="eventname" id="eventname" value="">
-				<label for="datum"> Bitte Datum waehlen</label> <input type="date" name=datum id="datum" value="">
-				<label for="start"> Bitte Startuhrzeit auswaehlen</label> <input type="time" name=start id="start" value="">				
-				<label for="ende"> Bitte Enduhrzeit auswaehlen </label> <input type="time" name=ende id="ende" value="">
+				<label for="datum"> Bitte Datum waehlen</label> <input type="date" name="datum" id="datum" value="">
+				<label for="start"> Bitte Startuhrzeit auswaehlen</label> <input type="time" name="start" id="start" value="">				
+				<label for="ende"> Bitte Enduhrzeit auswaehlen </label> <input type="time" name="ende" id="ende" value="">
 				<!-- TODO: Aktuelles Datum vorschlagen https://stackoverflow.com/questions/6982692/html5-input-type-date-default-value-to-today -->				
 			</div>
 			<br>
-			<textarea name="eventBeschreibung" id="eventBeschreibung" placeholder="Beschreiben Sie ihr Event." rows="5" cols="100"></textarea>
+			<textarea name="ebeschreibung" id="ebeschreibung" placeholder="Beschreiben Sie ihr Event." rows="5" cols="100"></textarea>
 			<br>
+
+			<input type="hidden" name="barid" value="${param.barid}">
 			<button id="event_anlegen" type="submit">Event anlegen</button>
 		</form>
 	</article>

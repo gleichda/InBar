@@ -53,9 +53,8 @@
 						</form>
 					</td>
 					<td>
-						<form action="EventAnlegenServlet">
+						<form action="eventAnlegen.jsp">
 							<input type="hidden" name="barid" value="${bar.barid}">
- 							<input type="hidden" name="eventAnlegen" value="1">
     						<button type="submit">Event anlegen</button>
 						</form>
 					</td>
