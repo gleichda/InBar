@@ -24,7 +24,7 @@
 		</c:choose>		
 	</nav>
 	<article>
-		<h1>Das ist die Suchseite</h1>
+		<h1>Bar Suche</h1>
 	
 		<form id="suchForm" method="post" action="BarSuche">
 			<div>
