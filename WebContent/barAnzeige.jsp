@@ -28,6 +28,11 @@
 	</nav>
 	<article>
 		<h1>${bar.barname}</h1>
+		<form action="BarEvents">
+			<input type="hidden" name="id" value="${bar.barid}">
+			<input type="hidden" name="eventListe" value="1">
+    		<button type="submit">Events</button>
+		</form>
 		<section >
 			<h2>Herzlich Willkommen ${bar.barname}</h2> 
 			<p>${bar.bbeschreibung}</p>

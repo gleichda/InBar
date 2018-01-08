@@ -28,7 +28,7 @@
 
 		<section >
 			<p>Das Event ${event.eventname}</p>
-			<p>Findet am : ${event.datum} statt.</p>
+			<p>Findet am : ${event.startdatum} statt.</p>
 			<p>${event.ebeschreibung}</p>
 
 			<p>Start ist um: ${event.startzeit}</p>

@@ -20,10 +20,14 @@ import inbar.beans.UserBean;
 
 /**
  * Servlet implementation class Suchservlet
+<<<<<<< HEAD
  * @author sabine
+=======
+ * @author Sabine
+>>>>>>> refs/remotes/origin/master
  */
 
-//04.01 Sabine kopiert von Suchservlet und angepasst auf User
+//04.01 Sabine kopiert von BarSuchServlet und angepasst auf User
 @WebServlet("/UserSuchServlet")
 public class UserSuchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

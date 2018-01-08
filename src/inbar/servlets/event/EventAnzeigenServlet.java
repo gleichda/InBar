@@ -70,6 +70,7 @@ public class EventAnzeigenServlet extends HttpServlet {
 						final RequestDispatcher dispatcher = request.getRequestDispatcher("eventBearbeiten.jsp");
 						dispatcher.forward(request, response);
 					}
+
 					else {
 						final RequestDispatcher dispatcher = request.getRequestDispatcher("eventAnzeige.jsp");
 						dispatcher.forward(request, response);

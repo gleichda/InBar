@@ -25,7 +25,7 @@ import inbar.beans.UserBean;
  * @author sabine
  */
 @WebServlet("/BarEvents")
-public class BarEvents extends HttpServlet {
+public class BarEventsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(lookup = "jdbc/InBar")
 	private DataSource ds;
@@ -33,7 +33,7 @@ public class BarEvents extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BarEvents() {
+    public BarEventsServlet() {
         super();
     }
 
@@ -45,13 +45,14 @@ public class BarEvents extends HttpServlet {
 		UserBean selfUser = (UserBean) session.getAttribute("selfUser");
 		if (selfUser != null) {
 			int userId = selfUser.getUserid();
+			int barid = Integer.parseInt(request.getParameter("id"));	
 			List<EventBean> eventList = new ArrayList<EventBean>();
 			try (Connection con = ds.getConnection();
 					PreparedStatement statement = con.prepareStatement(
-							"SELECT * FROM event_zu_bar WHERE barid=?" ))
+							"SELECT * FROM event_zu_bar LEFT JOIN event ON event_zu_bar.eventid = event.eventid WHERE barid=?" ))
 			{
-				int bar = Integer.parseInt(request.getParameter("barid"));	
-				//statement.setInt(1, userId);
+
+				statement.setInt(1, barid);
 				ResultSet rs = statement.executeQuery();
 				while (rs.next()) {
 					EventBean event = new EventBean();
