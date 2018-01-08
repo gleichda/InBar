@@ -98,9 +98,10 @@ public class RegisterServlet extends HttpServlet {
 				bild = bildHandler.bildSpeichern(ds); 
 				//ende 03.01 Sabine Profilbild
 				
-				userSpeichern(user);
+				user = userSpeichern(user);
 				//start 03.01 Sabine Profilbild speichern
-				bild.setBildid(bild.getBildid());
+				//bild.setBildid(bild.getBildid());
+				user.setBildId(bild.getBildid());
 				userZuBildZuweisen(user);
 				//ende 03.01 Sabine Profilbild speichern
 				
@@ -127,10 +128,10 @@ public class RegisterServlet extends HttpServlet {
 		
 	}
 	
-	private void userSpeichern (UserBean user) throws ServletException{
-		
+	private UserBean userSpeichern (UserBean user) throws ServletException{
+		String[] generatedKeys = new String[] { "userid" };
 		try (Connection con = ds.getConnection();
-				PreparedStatement statement = con.prepareStatement("INSERT INTO benutzer(benutzername, vorname, nachname, email, passwort) VALUES (?, ?, ?, ?, ?)");
+				PreparedStatement statement = con.prepareStatement("INSERT INTO benutzer(benutzername, vorname, nachname, email, passwort) VALUES (?, ?, ?, ?, ?)", generatedKeys);
 			){
 			statement.setString(1, user.getUsername());
 			statement.setString(2, user.getVorname());
@@ -138,11 +139,18 @@ public class RegisterServlet extends HttpServlet {
 			statement.setString(4, user.getEmail());
 			statement.setString(5, user.getPassword());
 			statement.executeUpdate();
+			
+			ResultSet rs = statement.getGeneratedKeys();
+			while (rs.next()) {
+				user.setUserid((int) rs.getLong(1));
+
+			}
 		}
 		
 		catch (Exception e) {
 				throw new ServletException(e.getMessage());
 			}
+		return user;
 	}
 	
 	//start 03.01 Sabine Profilbild speichern
