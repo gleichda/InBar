@@ -12,7 +12,8 @@ public class EventBean implements Serializable{
 	private String ebeschreibung;
 
 	// Datentyp aus Übung 11 für Datum und Uhrzeit übernommen.
-	private Date datum;
+	private Date startdatum;
+	private Date enddatum;
 	private Date startzeit;
 	private Date endzeit;
 	
@@ -38,12 +39,7 @@ public class EventBean implements Serializable{
 	public void setEbeschreibung(String ebeschreibung) {
 		this.ebeschreibung = ebeschreibung;
 	}
-	public Date getDatum() {
-		return datum;
-	}
-	public void setDatum(Date datum) {
-		this.datum = datum;
-	}
+
 	public Date getStartzeit() {
 		return startzeit;
 	}
@@ -55,6 +51,18 @@ public class EventBean implements Serializable{
 	}
 	public void setEndzeit(Date endzeit) {
 		this.endzeit = endzeit;
+	}
+	public Date getStartdatum() {
+		return startdatum;
+	}
+	public void setStartdatum(Date startdatum) {
+		this.startdatum = startdatum;
+	}
+	public Date getEnddatum() {
+		return enddatum;
+	}
+	public void setEnddatum(Date enddatum) {
+		this.enddatum = enddatum;
 	}
 
 }
