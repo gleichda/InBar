@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!--  Validation OK -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./css/style.css" type="text/css" rel="stylesheet">
 <link href="./css/formStyle.css" type="text/css" rel="stylesheet">
-<script src="./js/passwortValidieren.js" type="text/javascript"></script>
+<script src="./js/passwortValidieren.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -23,7 +24,7 @@
 		</c:otherwise>
 		</c:choose>		
 	</nav>
-	<article>
+	<div>
 		<form action="ProfilBearbeiten" method="post">
 			<p>
 				<label>Vorname:</label> 
@@ -35,7 +36,7 @@
 			</p>
 			<p>
 				<label>E-Mail Adresse:</label> 
-				<input type="email" name="email"value="${selfUser.email}" required> 
+				<input type="email" name="email" value="${selfUser.email}" required> 
 			</p>
 			<p>
 				<label>Passwort:</label> 
@@ -54,7 +55,7 @@
 			
 			<button id="aendern" type="submit">Absenden</button>
 		</form>
-	</article>
+	</div>
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>
 	</footer>

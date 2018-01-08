@@ -23,7 +23,7 @@
 		</c:choose>		
 	</nav>
 	<article>
-	<h1>Ihre Bar konnte leider nicht gefunden werden.</h1>
+	<h1>Zu Ihrer Suche konnte kein Ergebnis gefunden werden! Bitte versuchen Sie es erneut!</h1>
 	</article>
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>

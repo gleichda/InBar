@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!--  Validation OK -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,9 +22,9 @@
 		</c:otherwise>
 		</c:choose>		
 	</nav>
-	
-	<h1>Das von Ihnen aufgerufene Profil exisitiert nicht</h1>
-
+	<div>
+		<h1>Das von Ihnen aufgerufene Profil exisitiert nicht</h1>
+	</div>
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>
 	</footer>

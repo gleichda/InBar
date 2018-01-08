@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+<!-- Validation OK -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <link href="./css/style.css" type="text/css" rel="stylesheet">
 <link href="./css/formStyle.css" type="text/css" rel="stylesheet">
-<script src="./js/passwortValidieren.js" type="text/javascript"></script>
+<script src="./js/passwortValidieren.js"></script>
 <meta charset="UTF-8">
 <title>IN-Bars Registrierung</title>
 </head>
@@ -32,7 +33,7 @@
 			<label for="usernachname">Nachname:</label> 
 				<input type="text" name="nachname" id="usernachname" required> 
 			<label	for="usermail">E-Mail: </label> 
-				<input type="email" name="email"id="usermail" required>  
+				<input type="email" name="email" id="usermail" required>  
 			<label for="benutzer">Benutzername: </label>
 				<input type="text" name="benutzer" id="benutzer" required> 
 			<label for="passwort">Passwort: </label> 

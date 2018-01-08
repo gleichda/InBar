@@ -87,7 +87,7 @@ public class BarSuchServlet extends HttpServlet {
 					RequestDispatcher dispatcher = request.getRequestDispatcher("suchergebnisse.jsp");
 					dispatcher.forward(request, response);
 				} else {
-					RequestDispatcher dispatcher = request.getRequestDispatcher("barExistiertNicht.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("keinSuchergebnis.jsp");
 					dispatcher.forward(request, response);
 				}
 

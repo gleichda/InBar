@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--  Validation OK -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -24,7 +25,7 @@
 	</nav>
 	<article>
 		<h1>Registrierung erfolgreich</h1>
-		<h2>Herzlich Willkkommen ${selfUser.vorname}</h2>
+		<h2>Herzlich Willkommen ${selfUser.vorname}</h2>
 		<br> Vorname: ${selfUser.vorname}
 		<br> Nachname ${selfUser.nachname}
 		<br> E-Mail: ${selfUser.email}

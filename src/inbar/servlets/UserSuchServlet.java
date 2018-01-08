@@ -111,7 +111,7 @@ public class UserSuchServlet extends HttpServlet {
 					dispatcher.forward(request, response);
 				} else {
 					System.out.println("Nichts gefunden.");
-					RequestDispatcher dispatcher = request.getRequestDispatcher("barExistiertNicht.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("keinSuchergebnis.jsp");
 					dispatcher.forward(request, response);
 				}
 				
