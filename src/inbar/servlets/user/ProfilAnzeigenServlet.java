@@ -43,16 +43,22 @@ public class ProfilAnzeigenServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		final HttpSession session = request.getSession();
+		
+		
 		UserBean selfUser = (UserBean) session.getAttribute("selfUser");
+		
+		
 		if (request.getParameter("id") != null) {
 			int userid = Integer.parseInt(request.getParameter("id"));
-			if (selfUser != null) {
-				if (selfUser.getUserid() == userid) {
-					request.setAttribute("user", selfUser);
-					final RequestDispatcher dispatcher = request.getRequestDispatcher("profilAnzeigen.jsp");
-					dispatcher.forward(request, response);
-				}
-			} else {
+			
+			//Falls der User eingeloggt ist und sich selbst sucht
+			if (selfUser != null && selfUser.getUserid() == userid) {
+				request.setAttribute("user", selfUser);
+				final RequestDispatcher dispatcher = request.getRequestDispatcher("profilAnzeigen.jsp");
+				dispatcher.forward(request, response);
+			} 
+			
+			else {
 				try (Connection con = ds.getConnection();
 						PreparedStatement statement = con.prepareStatement("SELECT * FROM benutzer WHERE userid = ?")) {
 					statement.setInt(1, userid);
@@ -78,10 +84,12 @@ public class ProfilAnzeigenServlet extends HttpServlet {
 				}
 			}
 		}
-		if (selfUser != null){
-		request.setAttribute("user", selfUser);
-		final RequestDispatcher dispatcher = request.getRequestDispatcher("profilAnzeigen.jsp");
-		dispatcher.forward(request, response);
+		
+		//Falls dem User sein eigenes Profil angezeigt werden soll
+		else if (selfUser != null){
+			request.setAttribute("user", selfUser);
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("profilAnzeigen.jsp");
+			dispatcher.forward(request, response);
 		}
 		else {
 			final RequestDispatcher dispatcher = request.getRequestDispatcher("profilExistiertNicht.jsp");
