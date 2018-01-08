@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--  Validation OK -->
+<!-- TODO: Validation OK -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./css/style.css" type="text/css" rel="stylesheet">
 <link href="./css/formStyle.css" type="text/css" rel="stylesheet">
 <script src="./js/passwortValidieren.js"></script>
+<script src="./js/profilLoeschen.js"></script>
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -55,6 +57,13 @@
 			
 			<button id="aendern" type="submit">Absenden</button>
 		</form>
+	</div>
+	<div>
+		<br><br><br>
+		<form method="post" action="ProfilLoeschen" id="profilLoeschenForm">
+			<button type="button" id="profilLoeschenButton">Profil löschen</button>
+		</form>
+		<br>
 	</div>
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>
