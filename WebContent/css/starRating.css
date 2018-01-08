@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+/* David: Rating mit Sternen übernommen von https://www.cssscript.com/simple-5-star-rating-system-with-css-and-html-radios/ */
 div.stars {
   width: 270px;
   display: inline-block;

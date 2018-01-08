@@ -48,6 +48,7 @@
 				<h3>Ihre Bewertung</h3>
 				<br>
 				<form id="bewertungsForm">
+				<!-- Rating mit Sternen übernommen von https://www.cssscript.com/simple-5-star-rating-system-with-css-and-html-radios/ -->
 				<input type="hidden" id="barid" name="barid" value="${bar.barid }">
 					<div class="stars">
 					    <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
