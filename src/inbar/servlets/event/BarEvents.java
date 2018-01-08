@@ -22,6 +22,7 @@ import inbar.beans.UserBean;
 
 /**
  * Servlet implementation class EigeneBars
+ * @author sabine
  */
 @WebServlet("/BarEvents")
 public class BarEvents extends HttpServlet {

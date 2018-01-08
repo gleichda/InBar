@@ -20,6 +20,7 @@ import inbar.beans.BarBean;
 
 /**
  * Servlet implementation class Suchservlet
+ * @author david
  */
 @WebServlet("/BarSuche")
 public class BarSuchServlet extends HttpServlet {

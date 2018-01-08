@@ -20,6 +20,7 @@ import inbar.beans.UserBean;
 
 /**
  * Servlet implementation class Suchservlet
+ * @author sabine
  */
 
 //04.01 Sabine kopiert von Suchservlet und angepasst auf User

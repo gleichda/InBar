@@ -24,6 +24,11 @@ import inbar.beans.UserBean;
 import inbar.datenbank.BildHandler;
 import inbar.beans.BildBean;
 
+/**
+ * 
+ * @author Sabine
+ *
+ */
 @WebServlet("/BarRegisterServlet")
 @MultipartConfig
 public class BarRegisterServlet extends HttpServlet {
@@ -35,7 +40,6 @@ public class BarRegisterServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	// Sabine: Kopiert aus RegisterServlet und angepasst
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");

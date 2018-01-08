@@ -18,6 +18,7 @@ import inbar.beans.BarBean;
 
 /**
  * Servlet implementation class BarAnzeigeServlet
+ * @author Sabine
  */
 @WebServlet("/BarProfil")
 public class BarProfilServlet extends HttpServlet {

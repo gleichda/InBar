@@ -20,7 +20,7 @@ import inbar.beans.EventBean;
 
 /**
  * Servlet implementation class BarBearbeitenServlet
- * @author david
+ * @author sabine
  */
 @WebServlet("/EventAnzeigen")
 public class EventAnzeigenServlet extends HttpServlet {

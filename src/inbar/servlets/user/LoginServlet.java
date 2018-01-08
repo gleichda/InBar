@@ -19,6 +19,7 @@ import inbar.beans.UserBean;
 
 /**
  * Servlet implementation class LoginServlet
+ * @author david
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {

@@ -19,6 +19,7 @@ import javax.sql.DataSource;
 
 /**
  * Servlet implementation class BildServlet
+ * @author david
  */
 @WebServlet("/Bild")
 public class BildServlet extends HttpServlet {

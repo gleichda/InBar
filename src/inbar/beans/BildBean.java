@@ -2,6 +2,11 @@ package inbar.beans;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * @author sabine
+ *
+ */
 public class BildBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	

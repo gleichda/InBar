@@ -26,6 +26,8 @@ import inbar.datenbank.BildHandler;
 
 /**
  * Servlet implementation class RegisterServlet
+ * @author david
+ * @author Sabine
  */
 @WebServlet("/RegisterServlet")
 @MultipartConfig 

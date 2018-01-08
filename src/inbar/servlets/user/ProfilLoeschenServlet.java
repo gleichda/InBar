@@ -19,6 +19,7 @@ import inbar.beans.UserBean;
 
 /**
  * Servlet implementation class ProfilLoeschenServlet
+ * @author david
  */
 @WebServlet("/ProfilLoeschen")
 public class ProfilLoeschenServlet extends HttpServlet {

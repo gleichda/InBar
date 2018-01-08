@@ -28,6 +28,7 @@ import inbar.beans.UserBean;
 
 /**
  * Servlet implementation class RegisterServlet
+ * @author sabine
  */
 @WebServlet("/EventAnlegenServlet")
 @MultipartConfig 
@@ -66,7 +67,7 @@ public class EventAnlegenServlet extends HttpServlet {
 				EventBean event = new EventBean();
 				
 				
-				//EventBean füllen
+				//EventBean fï¿½llen
 				event.setEventname(request.getParameter("eventname"));
 				event.setEbeschreibung(request.getParameter("ebeschreibung"));
 				
@@ -93,13 +94,13 @@ public class EventAnlegenServlet extends HttpServlet {
 				
 				
 				//Vorlage Ex11Num01CreateServlet.java Zeile 51-55
-				// Zeitfeld für Startzeit auswerten - Eingangsformat hh:mm
+				// Zeitfeld fï¿½r Startzeit auswerten - Eingangsformat hh:mm
 				String startTimeString = request.getParameter("start");
 				String[] startTimeArray = startTimeString.split(":");
 				startcal.set(startyear, startmonth, startday, Integer.parseInt(startTimeArray[0]), Integer.parseInt(startTimeArray[1]));
 				event.setStartzeit(startcal.getTime());
 				
-				// Zeitfeld für Endzeit auswerten - Eingangsformat hh:mm
+				// Zeitfeld fï¿½r Endzeit auswerten - Eingangsformat hh:mm
 				String endTimeString = request.getParameter("ende");
 				String[] endTimeArray = endTimeString.split(":");
 				endcal.set(endyear, endmonth, endday, Integer.parseInt(endTimeArray[0]), Integer.parseInt(endTimeArray[1]));

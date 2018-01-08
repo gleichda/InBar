@@ -1,5 +1,6 @@
 /**
- * 
+ *  @author david
+ *  @date 08.01.2018
  */
 
 function loeschenButton(){

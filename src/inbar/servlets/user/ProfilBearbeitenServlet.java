@@ -18,6 +18,7 @@ import inbar.beans.UserBean;
 
 /**
  * Servlet implementation class ProfilBearbeitenServlet
+ * @author david
  */
 @WebServlet("/ProfilBearbeiten")
 public class ProfilBearbeitenServlet extends HttpServlet {

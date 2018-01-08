@@ -19,6 +19,7 @@ import inbar.beans.UserBean;
 
 /**
  * Servlet implementation class BarBearbeitenServlet
+ * @author david
  */
 @WebServlet("/BarBearbeiten")
 public class BarBearbeitenServlet extends HttpServlet {
@@ -85,9 +86,9 @@ public class BarBearbeitenServlet extends HttpServlet {
 				statement.setString(11, mbeschreibung);
 				statement.setString(12, lbeschreibung);
 				statement.setInt(13, barid);
-				//05.01 Start Sabine Bar für Session merken zur Eventbearbeitung
+				//05.01 Start Sabine Bar fï¿½r Session merken zur Eventbearbeitung
 				//session.setAttribute("barid", barid);
-				//05.01 Ende Sabine Bar für Session merken zur Eventbearbeitung
+				//05.01 Ende Sabine Bar fï¿½r Session merken zur Eventbearbeitung
 				statement.executeUpdate();
 			}
 		}catch  (Exception e) {

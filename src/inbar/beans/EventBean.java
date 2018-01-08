@@ -3,7 +3,11 @@ package inbar.beans;
 import java.io.Serializable;
 import java.util.Date;
 
-
+/**
+ * 
+ * @author sabine
+ *
+ */
 public class EventBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -11,7 +15,7 @@ public class EventBean implements Serializable{
 	private String eventname;
 	private String ebeschreibung;
 
-	// Datentyp aus Übung 11 für Datum und Uhrzeit übernommen.
+	// Datentyp aus ï¿½bung 11 fï¿½r Datum und Uhrzeit ï¿½bernommen.
 	private Date startdatum;
 	private Date enddatum;
 	private Date startzeit;
