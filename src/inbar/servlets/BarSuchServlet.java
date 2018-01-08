@@ -45,22 +45,15 @@ public class BarSuchServlet extends HttpServlet {
 
 		int musikart = Integer.parseInt(request.getParameter("musikart"));
 		String suchbegriff = request.getParameter("suchbegriff");
-		//String suchart = request.getParameter("suchart");
+		
 		System.out.println("Suche: Suchbegriff: " + suchbegriff + " Musikart: " + musikart);
 
-		//switch (suchart.toLowerCase()) {
-		//case "bar":
+
 			List<BarBean> barsList = new ArrayList<BarBean>();
 			try (Connection con = ds.getConnection();
 					PreparedStatement statement = con.prepareStatement(
 							"SELECT * FROM ((musik_zu_bar INNER JOIN bar ON bar.barid=musik_zu_bar.barid) INNER JOIN musikarten ON musik_zu_bar.musikid=musikarten.musikid) WHERE bar.barname LIKE ?")) 
 			{
-				/*if (musikart < 0){
-					statement.setInt(1, musikart);
-				}
-				else {
-					statement.setString(1, "%");
-				}*/
 				if (suchbegriff != "" && suchbegriff != null){
 					statement.setString(1, "%" + suchbegriff + "%");
 				}
@@ -109,15 +102,7 @@ public class BarSuchServlet extends HttpServlet {
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				e.printStackTrace(System.out);
-			}/*
-			break;
-		case "event":
-			// TODO: event suche schreiben
-			break;
-
-		default:
-			break;
-		}*/
+			}
 	}
 
 	/**

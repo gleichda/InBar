@@ -22,6 +22,11 @@ article{
 	order:3;
 	color: white;
 }
+
+div{
+	order:3;
+	color: white;
+}
 .main {
 	display: flex;
 	order:4;

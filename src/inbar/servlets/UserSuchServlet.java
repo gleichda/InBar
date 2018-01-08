@@ -126,41 +126,6 @@ public class UserSuchServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 		
-		/*switch () {
-		case "username":
-			List<UserBean> userList = new ArrayList<UserBean>();
-			try (Connection con = ds.getConnection();
-					PreparedStatement statement = con.prepareStatement(
-							"SELECT * FROM (benutzer WHERE benutzer.benutzername LIKE ?")) 
-			{
-				if (username != "" && username != null){
-					statement.setString(1, "%" + username + "%");
-				}
-				else {
-					statement.setString(1, "%");
-				}
-				ResultSet rs = statement.executeQuery();
-				while (rs.next()) {	
-					UserBean user = new UserBean();
-					user.setUserid(rs.getInt("user.userid"));
-					user.setUsername(rs.getString("user.username"));
-					user.setVorname(rs.getString("user.vorname"));
-					user.setNachname(rs.getString("user.nachname"));
-					user.setEmail(rs.getString("user.email"));
-					userList.add(user);}
-				
-				System.out.println("UserList Size:" + userList.size());
-				if (!userList.isEmpty()) {
-					System.out.println("Ergebnisse enthalten");
-					request.setAttribute("suchergebnisse", userList);
-
-					RequestDispatcher dispatcher = request.getRequestDispatcher("usersuchergebnisse.jsp");
-					dispatcher.forward(request, response);
-				} else {
-					RequestDispatcher dispatcher = request.getRequestDispatcher("barExistiertNicht.jsp");
-					dispatcher.forward(request, response);
-				}
-*/
 				/*
 				 * Suchservlet und suchergebnisse.jsp teilweise erstellt mit
 				 * Hilfe von
@@ -168,19 +133,7 @@ public class UserSuchServlet extends HttpServlet {
 				 * bean-how-to-access-the-property-of-a-bean-using-el-in-jsp-
 				 * throw
 				 */
-//
-//			} catch (Exception e) {
-//				System.out.println(e.getMessage());
-//				e.printStackTrace(System.out);
-//			}
-//			break;
-//		case "event":
-//			// TODO: event suche schreiben
-//			break;
-//
-//		default:
-//			break;
-//		}
+
 	}
 
 	/**

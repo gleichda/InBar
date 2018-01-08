@@ -23,18 +23,17 @@
 		</c:choose>		
 	</nav>
 	<article>
-		<section class="main" >
-			<c:if test="${not empty param.id }">
-				<h1>Profil von ${user.vorname }</h1>
-			</c:if>
-			<c:if test="${empty param.id }">
-				<h1>Dein Profil</h1>
-			</c:if>
-		</section>
+		<c:if test="${not empty param.id }">
+			<h2>Profil von ${user.vorname }</h2>
+		</c:if>
+		<c:if test="${empty param.id }">
+			<h2>Dein Profil</h2>
+		</c:if>
 		Username: ${user.username}
 		
-
-		<br> <img src="./Bild?id=${baruser.bildId}" class="small">
+		<!--  TODO: Profil füllen -->
+		
+		<br> <img src="./Bild?id=${user.bildId}" alt="Profilbild" class="small">
 		
 		
 	</article>

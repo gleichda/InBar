@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Validation OK -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
@@ -28,8 +29,7 @@
 			<p>Das ist die Login-Seite</p>
 			<c:if test="${fehlgeschlageneLoginVersuche != null}">
 				<div>
-					<p>Ihr Login war nicht erfolgreich bitte versuchen Sie es
-						erneut.</p>
+					<p>Ihr Login war nicht erfolgreich bitte versuchen Sie es erneut.</p>
 				</div>
 			</c:if>
 
