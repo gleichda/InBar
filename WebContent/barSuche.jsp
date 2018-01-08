@@ -26,26 +26,13 @@
 	<article>
 		<h1>Das ist die Suchseite</h1>
 	
-		<form id="suchForm" method="post" action="Suchservlet">
+		<form id="suchForm" method="post" action="BarSuche">
 			<div>
 			<!-- Textfeld zur Suche nach dem Barnamen -->
 			<label for="suchbegriff">Name der Bar: </label>
 			<input type="text" name="suchbegriff" id="suchbegriff" placeholder="Barname" autofocus>
 			</div>
 			<br>
-			<p>Suchst du eine Bar oder ein Event?</p>
-			<!-- Radio-Button zur Auswahl der Suchart. -->
-			<div>
-				<div>
-				<input type="radio" name="suchart" value="bar" id="bar_radio" checked>
-				<label for="bar">Bar</label><br> 
-				</div>
-				
-				<div>
-				<input type="radio" name="suchart" value="event" id="event_radio">
-				<label for="event">Event</label><br>
-				</div>
-			</div>
 			<div>
 				<p> Musikart:
 				<!-- TODO: DB in JSP Seite?? -->

@@ -21,8 +21,8 @@ import inbar.beans.BarBean;
 /**
  * Servlet implementation class Suchservlet
  */
-@WebServlet("/Suchservlet")
-public class Suchservlet extends HttpServlet {
+@WebServlet("/BarSuche")
+public class BarSuchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(lookup = "jdbc/InBar")
 	private DataSource ds;
@@ -30,7 +30,7 @@ public class Suchservlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Suchservlet() {
+	public BarSuchServlet() {
 		super();
 	}
 
@@ -45,11 +45,11 @@ public class Suchservlet extends HttpServlet {
 
 		int musikart = Integer.parseInt(request.getParameter("musikart"));
 		String suchbegriff = request.getParameter("suchbegriff");
-		String suchart = request.getParameter("suchart");
-		System.out.println("Suche: Suchbegriff: " + suchbegriff + " Suchart: " + suchart + " Musikart: " + musikart);
+		//String suchart = request.getParameter("suchart");
+		System.out.println("Suche: Suchbegriff: " + suchbegriff + " Musikart: " + musikart);
 
-		switch (suchart.toLowerCase()) {
-		case "bar":
+		//switch (suchart.toLowerCase()) {
+		//case "bar":
 			List<BarBean> barsList = new ArrayList<BarBean>();
 			try (Connection con = ds.getConnection();
 					PreparedStatement statement = con.prepareStatement(
@@ -109,7 +109,7 @@ public class Suchservlet extends HttpServlet {
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				e.printStackTrace(System.out);
-			}
+			}/*
 			break;
 		case "event":
 			// TODO: event suche schreiben
@@ -117,7 +117,7 @@ public class Suchservlet extends HttpServlet {
 
 		default:
 			break;
-		}
+		}*/
 	}
 
 	/**
