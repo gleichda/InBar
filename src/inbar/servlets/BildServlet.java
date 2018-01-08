@@ -43,7 +43,7 @@ public class BildServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String bildIdParameter = request.getParameter("id");
-		if (bildIdParameter != "") {
+		if (bildIdParameter != "" && bildIdParameter != null) {
 			int bildId = Integer.parseInt(bildIdParameter);
 			try (Connection con = ds.getConnection();
 					PreparedStatement statement = con.prepareStatement("SELECT bild FROM bild where bildid = ?")) {
@@ -66,7 +66,7 @@ public class BildServlet extends HttpServlet {
 						out.flush();
 					}
 				}
-				//start 04.01 Sabine Default-Profilbild
+				//start 04.01 Sabine Default-Profilbild Falls die Übergebene ID nicht existiert
 				else {
 					final RequestDispatcher dispatcher = request.getRequestDispatcher("./img/default-avatar.jpg");
 					dispatcher.forward(request, response);
@@ -77,6 +77,10 @@ public class BildServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
+		}
+		else { //Default Profilbild falls keine ID übergeben wurde
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("./img/default-avatar.jpg");
+			dispatcher.forward(request, response);
 		}
 
 	}
