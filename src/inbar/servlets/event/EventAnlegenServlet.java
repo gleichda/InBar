@@ -117,7 +117,6 @@ public class EventAnlegenServlet extends HttpServlet {
 				System.out.println(e.getMessage());
 				e.printStackTrace(System.out);
 			}
-	
 		}
 		
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
