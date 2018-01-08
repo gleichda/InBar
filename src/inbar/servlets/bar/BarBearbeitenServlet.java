@@ -86,13 +86,7 @@ public class BarBearbeitenServlet extends HttpServlet {
 				statement.setString(11, mbeschreibung);
 				statement.setString(12, lbeschreibung);
 				statement.setInt(13, barid);
-<<<<<<< HEAD
-				//05.01 Start Sabine Bar f�r Session merken zur Eventbearbeitung
-				//session.setAttribute("barid", barid);
-				//05.01 Ende Sabine Bar f�r Session merken zur Eventbearbeitung
-=======
 
->>>>>>> refs/remotes/origin/master
 				statement.executeUpdate();
 			}
 		}catch  (Exception e) {
