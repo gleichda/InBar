@@ -64,7 +64,9 @@ public class BarEventsServlet extends HttpServlet {
 					event.setEndzeit(rs.getTime("endzeit"));
 					event.setEbeschreibung(rs.getString("ebeschreibung"));
 					eventList.add(event);
+					
 				}
+				
 				if (!eventList.isEmpty()) {
 					System.out.println("Ergebnisse enthalten");
 					request.setAttribute("barEvents", eventList);

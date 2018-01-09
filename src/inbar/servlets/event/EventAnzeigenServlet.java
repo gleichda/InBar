@@ -45,8 +45,8 @@ public class EventAnzeigenServlet extends HttpServlet {
 		if (request.getParameter("id") != null) {
 			int eventID = Integer.parseInt(request.getParameter("eventid"));
 			//int barid = Integer.parseInt(request.getParameter("id"));
-			System.out.print("Inhalt von ID: " + request.getAttribute("id"));
-
+			System.out.print("Attribute Inhalt von ID: " + request.getAttribute("id"));
+			System.out.print("Parameter Inhalt von ID: " + request.getParameter("id"));
 			try (Connection con = ds.getConnection();
 					PreparedStatement eventStatement = con.prepareStatement("SELECT * FROM event where eventid LIKE ?");
 					PreparedStatement barStatement = con.prepareStatement("SELECT * FROMT bar where barid LIKE ?"))
