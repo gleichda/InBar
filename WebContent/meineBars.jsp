@@ -40,7 +40,7 @@
 			<c:forEach var="bar" items="${eigeneBars}">
 				<tr>
 					<td>${bar.barid}</td>
-					<td>"${bar.barname}"</td>
+					<td><a href="./BarAnzeigen?id=${bar.barid}">${bar.barname}</a></td>
 					<td>"${bar.strasse}" "${bar.hausnummer}" <br>
 						"${bar.plz}" "${bar.ort}"
 					</td>
