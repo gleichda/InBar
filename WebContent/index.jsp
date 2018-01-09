@@ -7,7 +7,7 @@
 <head>
 <link href="./css/style.css" type="text/css" rel="stylesheet">
 <meta charset="UTF-8">
-<title>IN-Bars Login</title>
+<title>IN-Bars Startseite</title>
 </head>
 <body>
 	<header>
