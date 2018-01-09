@@ -40,15 +40,19 @@
 			<c:forEach var="event" items="${barEvents}">
 				<tr>
 					<td>${event.eventid}</td>
-					<td>"${event.eventname}"</td>
-					<td>"${event.startdatum}" "${event.startzeit}"</td>
-					<td>"${event.enddatum}" "${event.endzeit}"</td>
+					<td>${event.eventname}</td>
+					<td>${event.startdatum} </td>
+					<td>${event.startzeit}</td>
+					<td>${event.enddatum}</td> 
+					<td>${event.endzeit}</td>
+					<td>${event.ebeschreibung}</td>
 
 					<td>
-						<form action="eventAnlegen.jsp">
+						<form action="EventAnzeigenServlet">
 							<input type="hidden" name="barid" value="${bar.barid}">
+							<input type="hidden" name="eventid" value="${event.eventid}">
 							<input type="hidden" name="bearbeiten" value="1">
-    						<button type="submit">Event anlegen</button>
+    						<button type="submit">Event bearbeiten</button>
 						</form>
 					</td>
 				</tr>

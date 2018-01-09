@@ -58,5 +58,8 @@ td{
 	border-bottom-style:inset;
 	border-collapse:inset;
 }
+tr {
+	border-bottom-style: inset;
+}
 img.small{width: 100px; height: 100px;}
 img.medium{width: 200px; height: 200px;}

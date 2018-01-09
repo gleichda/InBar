@@ -27,6 +27,7 @@
 		<h1>${bar.barname}</h1>
 
 		<section >
+			<p> Ihr Event wurde erfolgreich mit folgenden Werten angelegt: </p>
 			<p>Das Event ${event.eventname}</p>
 			<p>Findet am : ${event.startdatum} statt.</p>
 			<p>${event.ebeschreibung}</p>
