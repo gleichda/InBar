@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--  Validation OK 
+<!--   
 @author Sabine -->
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <html>
@@ -56,6 +56,11 @@
 				<label for = "ebeschreibung"> Eventbeschreibung: </label>
 				<input type="text" name="ebeschreibung" id="ebeschreibung" value ="${event.ebeschreibung}"> 
 
+			<p>
+				<input type="hidden" name="id" value="${bar.barid}">
+				<input type="hidden" name="eventid" value="${event.eventid}">
+				<button id="event_aendern" type="submit">Speichern</button>
+			</p>
 
 		</form>
 	</article>

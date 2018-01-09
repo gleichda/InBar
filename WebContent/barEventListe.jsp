@@ -48,8 +48,8 @@
 					<td>${event.ebeschreibung}</td>
 
 					<td>
-						<form action="EventAnzeigenServlet">
-							<input type="hidden" name="barid" value="${bar.barid}">
+						<form action="EventAnzeigen">
+							<input type="hidden" name="id" value="${bar.barid}">
 							<input type="hidden" name="eventid" value="${event.eventid}">
 							<input type="hidden" name="bearbeiten" value="1">
     						<button type="submit">Event bearbeiten</button>

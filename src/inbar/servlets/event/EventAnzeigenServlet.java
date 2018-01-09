@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import inbar.beans.EventBean;
@@ -39,13 +40,19 @@ public class EventAnzeigenServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		
 		if (request.getParameter("id") != null) {
 			int eventID = Integer.parseInt(request.getParameter("eventid"));
+			//int barid = Integer.parseInt(request.getParameter("id"));
+			System.out.print("Inhalt von ID: " + request.getAttribute("id"));
 
 			try (Connection con = ds.getConnection();
-					PreparedStatement eventStatement = con.prepareStatement("SELECT * FROM event where eventid LIKE ?"))
+					PreparedStatement eventStatement = con.prepareStatement("SELECT * FROM event where eventid LIKE ?");
+					PreparedStatement barStatement = con.prepareStatement("SELECT * FROMT bar where barid LIKE ?"))
 			{
 				eventStatement.setInt(1, eventID);
+				//barStatement.setInt(1, barid);
 
 				ResultSet eventRs = eventStatement.executeQuery();
 
@@ -60,14 +67,17 @@ public class EventAnzeigenServlet extends HttpServlet {
 					event.setEventid(eventID);
 
 					request.setAttribute("event", event);
+					
 				
 					/*
 					 * Der bearbeiten Parameter wird nur gesetzt, wenn auf die Bar Bearbeiten verlinkt 
 					 * werden soll, ansonsten wird die Bar nur angezeigt
 					 */
 					if (request.getParameter("bearbeiten") != null) {
+
 						final RequestDispatcher dispatcher = request.getRequestDispatcher("eventBearbeiten.jsp");
 						dispatcher.forward(request, response);
+						request.setAttribute("id", request.getParameter("id"));
 					}
 
 					else {

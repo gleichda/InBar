@@ -49,7 +49,7 @@
 					<td>"${bar.mbeschreibung}"</td>
 					<td>
 						<form action="BarAnzeigen">
-							<input type="hidden" name="id" value="${bar.barid}">
+							<input type="hidden" name="barid" value="${bar.barid}">
 							<input type="hidden" name="bearbeiten" value="1">
     						<button type="submit">Bearbeiten</button>
 						</form>
