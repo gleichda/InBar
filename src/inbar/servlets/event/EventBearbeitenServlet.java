@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.annotation.Resource;
@@ -49,34 +50,59 @@ public class EventBearbeitenServlet extends HttpServlet {
 			return;
 		}
 		
+		EventBean event = new EventBean();
 		int eventid = Integer.parseInt(request.getParameter("eventid"));	
-		int barid = Integer.parseInt(request.getParameter("id"));
-		//System.out.println("Inhalt der barid " + barid);
 		String eventname = request.getParameter("eventname");
-		String startdatum = request.getParameter("startdatum");
-		String startzeit = request.getParameter("startzeit");
-		String enddatum = request.getParameter("enddatum");
-		String endzeit = request.getParameter("endzeit");
-		String ebeschreibung = request.getParameter("ebeschreibung");	
-
+		String ebeschreibung = request.getParameter("ebeschreibung");
+		
+		String startdateString = request.getParameter("startdatum");
+		String[] startdateArray = startdateString.split("-");
+		Calendar startcal = Calendar.getInstance();
+		int startyear = Integer.parseInt(startdateArray[0]);
+		int startmonth = Integer.parseInt(startdateArray[1])-1;
+		int startday = Integer.parseInt(startdateArray[2]);
+		startcal.set(startyear, startmonth, startday);
+		event.setStartdatum(startcal.getTime());
+		
+		String enddateString = request.getParameter("enddatum");
+		String[] enddateArray = enddateString.split("-");
+		Calendar endcal = Calendar.getInstance();
+		int endyear = Integer.parseInt(enddateArray[0]);
+		int endmonth = Integer.parseInt(enddateArray[1])-1;
+		int endday = Integer.parseInt(enddateArray[2]);
+		endcal.set(endyear, endmonth, endday);
+		event.setEnddatum(endcal.getTime());
+		
+		//Vorlage Ex11Num01CreateServlet.java Zeile 51-55
+		// Zeitfeld f�r Startzeit auswerten - Eingangsformat hh:mm
+		String startTimeString = request.getParameter("startzeit");
+		String[] startTimeArray = startTimeString.split(":");
+		startcal.set(startyear, startmonth, startday, Integer.parseInt(startTimeArray[0]), Integer.parseInt(startTimeArray[1]));
+		event.setStartzeit(startcal.getTime());
+		
+		// Zeitfeld f�r Endzeit auswerten - Eingangsformat hh:mm
+		String endTimeString = request.getParameter("endzeit");
+		String[] endTimeArray = endTimeString.split(":");
+		endcal.set(endyear, endmonth, endday, Integer.parseInt(endTimeArray[0]), Integer.parseInt(endTimeArray[1]));
+		event.setEndzeit(endcal.getTime());
 		
 		try(Connection con = ds.getConnection();
-				PreparedStatement zuordnungStatement = con.prepareStatement("SELECT * from event_zu_bar WHERE eventid = ? AND barid = ?");
-				PreparedStatement statement = con.prepareStatement("UPDATE bar SET eventname = ?, startdatum = ?, startzeit = ?, enddatum = ?, endzeit = ?, ebeschreibung = ?, WHERE eventid = ? "))
+				PreparedStatement zuordnungStatement = con.prepareStatement("SELECT * from event_zu_bar WHERE eventid = ?");
+				PreparedStatement statement = con.prepareStatement("UPDATE event SET eventname = ?, startdatum = ?, startzeit = ?, enddatum = ?, endzeit = ?, ebeschreibung = ? WHERE eventid = ? "))
 		{
-			EventBean event = new EventBean();
+
 			
 			zuordnungStatement.setInt(1, eventid);
-			zuordnungStatement.setInt(2, barid);
 			ResultSet eventZuBar = zuordnungStatement.executeQuery();
 			
 			if (eventZuBar.first()) { //falls eine Zuordnung von eventid und barid existiert ausführen
 				statement.setString(1, eventname);
-				statement.setDate(2, new java.sql.Date(event.getStartdatum().getTime())); 
+				statement.setDate(2,  new java.sql.Date(event.getStartdatum().getTime()));
 				statement.setTime(3,  new java.sql.Time(event.getStartzeit().getTime()));
 				statement.setDate(4, new java.sql.Date(event.getEnddatum().getTime())); 
 				statement.setTime(5,  new java.sql.Time(event.getEndzeit().getTime()));			
 				statement.setString(6, ebeschreibung);
+				statement.setString(7, request.getParameter("eventid"));
 
 
 				statement.executeUpdate();

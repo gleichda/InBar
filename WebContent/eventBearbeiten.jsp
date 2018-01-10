@@ -6,6 +6,7 @@
 <head>
 <link href="./css/style.css" type="text/css" rel="stylesheet">
 <link href="./css/formStyle.css" type="text/css" rel="stylesheet">
+<script src="./js/datumPruefen.js"></script>
 <meta charset="UTF-8">
 <title>IN-Bars Event-Bearbeitung</title>
 </head>
@@ -31,7 +32,7 @@
 		</p>
 		
 
-		<form id="eventBearbeiten" action="EventBearbeiten" method="post">
+		<form id="eventBearbeiten" action="EventBearbeiten">
 			<p>
 				<label for="eventname">Name des Events: </label> 
 				<input type="text" name="eventname" id="eventname" value="${event.eventname}"> 

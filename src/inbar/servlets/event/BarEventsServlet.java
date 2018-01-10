@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
+import inbar.beans.BarBean;
 import inbar.beans.EventBean;
 import inbar.beans.UserBean;
 
@@ -48,11 +49,12 @@ public class BarEventsServlet extends HttpServlet {
 			int barid = Integer.parseInt(request.getParameter("id"));	
 			List<EventBean> eventList = new ArrayList<EventBean>();
 			try (Connection con = ds.getConnection();
-					PreparedStatement statement = con.prepareStatement(
-							"SELECT * FROM event_zu_bar LEFT JOIN event ON event_zu_bar.eventid = event.eventid WHERE barid=?" ))
+					PreparedStatement statement = con.prepareStatement("SELECT * FROM event_zu_bar LEFT JOIN event ON event_zu_bar.eventid = event.eventid WHERE barid=?" ))
 			{
 
 				statement.setInt(1, barid);
+				//Ausgabe barid
+				System.out.println("BarEventsServlet: barid = " + barid);;
 				ResultSet rs = statement.executeQuery();
 				while (rs.next()) {
 					EventBean event = new EventBean();
@@ -71,6 +73,7 @@ public class BarEventsServlet extends HttpServlet {
 					System.out.println("Ergebnisse enthalten");
 					request.setAttribute("barEvents", eventList);
 					request.setAttribute("id", barid);
+					
 					System.out.println("BarEventServlet: Inhalt von barid: " + barid);
 	
 					RequestDispatcher dispatcher = request.getRequestDispatcher("barEventListe.jsp");

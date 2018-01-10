@@ -44,15 +44,15 @@ public class EventAnzeigenServlet extends HttpServlet {
 		
 		if (request.getParameter("id") != null) {
 			int eventID = Integer.parseInt(request.getParameter("eventid"));
-			//int barid = Integer.parseInt(request.getParameter("id"));
-			System.out.print("Attribute Inhalt von ID: " + request.getAttribute("id"));
-			System.out.print("Parameter Inhalt von ID: " + request.getParameter("id"));
+			System.out.println("Inhalt von eventid: " + eventID);
+
+
 			try (Connection con = ds.getConnection();
 					PreparedStatement eventStatement = con.prepareStatement("SELECT * FROM event where eventid LIKE ?");
-					PreparedStatement barStatement = con.prepareStatement("SELECT * FROMT bar where barid LIKE ?"))
+					PreparedStatement barStatement = con.prepareStatement("SELECT * FROMT bar where barid =?"))
 			{
 				eventStatement.setInt(1, eventID);
-				//barStatement.setInt(1, barid);
+
 
 				ResultSet eventRs = eventStatement.executeQuery();
 
@@ -62,11 +62,12 @@ public class EventAnzeigenServlet extends HttpServlet {
 					event.setStartdatum(eventRs.getDate("startdatum"));
 					event.setStartzeit(eventRs.getTime("startzeit"));
 					event.setEnddatum(eventRs.getDate("enddatum"));
-					event.setEndzeit(eventRs.getDate("endzeit"));
+					event.setEndzeit(eventRs.getTime("endzeit"));
 					event.setEbeschreibung(eventRs.getString("ebeschreibung"));
 					event.setEventid(eventID);
 
 					request.setAttribute("event", event);
+
 					
 				
 					/*
