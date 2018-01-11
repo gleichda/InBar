@@ -70,10 +70,7 @@ public class EventAnzeigenServlet extends HttpServlet {
 
 					
 				
-					/*
-					 * Der bearbeiten Parameter wird nur gesetzt, wenn auf die Bar Bearbeiten verlinkt 
-					 * werden soll, ansonsten wird die Bar nur angezeigt
-					 */
+
 					if (request.getParameter("bearbeiten") != null) {
 
 						final RequestDispatcher dispatcher = request.getRequestDispatcher("eventBearbeiten.jsp");
