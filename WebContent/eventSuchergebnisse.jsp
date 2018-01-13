@@ -37,10 +37,7 @@
 				<th>Eventbeschreibung</th>
 				<th></th>
 			</tr>
-			
-			
- 
-	
+
 
 					<c:forEach var="event" items = "${suchergebnisse}">	
 						<tr>
@@ -53,9 +50,7 @@
 							<td>${event.ebeschreibung}</td>
 					
 						</tr>					
-					</c:forEach>
-
-				
+					</c:forEach>			
 		</table>
 	</article>
 	

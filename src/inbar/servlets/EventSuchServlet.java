@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -49,25 +51,64 @@ public class EventSuchServlet extends HttpServlet {
 
 
 		String suchbegriff = request.getParameter("suchbegriff");
+
+		String startdateString = request.getParameter("start");
+		String[] startdateArray = startdateString.split("-");
+		Calendar startcal = Calendar.getInstance();
+		int startyear = Integer.parseInt(startdateArray[0]);
+		int startmonth = Integer.parseInt(startdateArray[1])-1;
+		int startday = Integer.parseInt(startdateArray[2]);
+		startcal.set(startyear, startmonth, startday);
+		Date start = startcal.getTime();
+		
+		String enddateString = request.getParameter("ende");
+		String[] enddateArray = enddateString.split("-");
+		Calendar endcal = Calendar.getInstance();
+		int endyear = Integer.parseInt(enddateArray[0]);
+		int endmonth = Integer.parseInt(enddateArray[1])-1;
+		int endday = Integer.parseInt(enddateArray[2]);
+		endcal.set(endyear, endmonth, endday);
+		Date ende = endcal.getTime();
+
 		
 		System.out.println("Suche: Suchbegriff: " + suchbegriff);
+		System.out.println("Start Suchzeitraum: " + start);
+		System.out.println("Ende des Suchzeitraums: " + ende );
 
 
 			List<EventBean> eventList = new ArrayList<EventBean>();
-			List<BarBean> barList = new ArrayList<BarBean>();
 						
 			
 			try (Connection con = ds.getConnection();
 					PreparedStatement statement = con.prepareStatement("SELECT * FROM event\r\n" + 
 							"LEFT JOIN event_zu_bar ON event.eventid = event_zu_bar.eventid\r\n" + 
-							"LEFT JOIN bar ON event_zu_bar.barid = bar.barid WHERE eventname LIKE ?"))
+							"LEFT JOIN bar ON event_zu_bar.barid = bar.barid WHERE eventname LIKE ?\r\n" +
+							"AND event.startdatum BETWEEN ? AND ?"))
 			{
 				if (suchbegriff != "" && suchbegriff != null){
 					statement.setString(1, "%" + suchbegriff + "%");
+					statement.setDate(2, new java.sql.Date(1970-01-01));
+					statement.setDate(3, new java.sql.Date(2333-01-01));
+					System.out.println("Subegriff nicht null");
+					
+				}
+				
+				else if (start != null ) {
+					statement.setString(1, "%");
+					statement.setDate(2, new java.sql.Date(start.getTime()));
+					statement.setDate(3, new java.sql.Date(start.getTime()));
+					System.out.println("Startdatum wurde eingetragen");
+					System.out.println("Suche: Suchbegriff: " + suchbegriff);
+					System.out.println("Start Suchzeitraum: " + start);
+					System.out.println("Ende des Suchzeitraums: " + ende );
 				}
 				else {
 					statement.setString(1, "%");
+					statement.setDate(2, new java.sql.Date(start.getTime()));
+					statement.setDate(3, new java.sql.Date(start.getTime()));
+					System.out.println("Subegriff suchbegriff ist leer und start ist null");
 				}
+
 				ResultSet rs = statement.executeQuery();
 				
 				while (rs.next()) {
@@ -83,8 +124,7 @@ public class EventSuchServlet extends HttpServlet {
 					event.setEbeschreibung(rs.getString("event.ebeschreibung"));
 					event.setBarname(rs.getString("bar.barname"));
 
-					eventList.add(event);
-					
+					eventList.add(event);					
 					}
 
 				System.out.println("EventList Size:" + eventList.size());

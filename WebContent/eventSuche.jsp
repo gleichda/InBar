@@ -40,14 +40,14 @@
 			<br>
 			<div>
 			<!-- Textfeld zur Suche nach dem Startdatum -->
-			<label for="startdatum">Startdatum: </label>
-			<input type="date" name="startdatum" id="Startdatum">
+			<label for="start">Von: </label>
+			<input type="date" name="start" id="start">
 			</div>
 			<br>
 			<div>
 			<!-- Textfeld zur Suche nach dem Enddatum -->
-			<label for="enddatum">Enddatum: </label>
-			<input type="date" name="enddatum" id="enddatum">
+			<label for="ende">Bis: </label>
+			<input type="date" name="ende" id="ende">
 			</div>
 			<br>
 
