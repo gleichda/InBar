@@ -53,22 +53,45 @@ public class EventSuchServlet extends HttpServlet {
 		String suchbegriff = request.getParameter("suchbegriff");
 
 		String startdateString = request.getParameter("start");
-		String[] startdateArray = startdateString.split("-");
-		Calendar startcal = Calendar.getInstance();
-		int startyear = Integer.parseInt(startdateArray[0]);
-		int startmonth = Integer.parseInt(startdateArray[1])-1;
-		int startday = Integer.parseInt(startdateArray[2]);
-		startcal.set(startyear, startmonth, startday);
-		Date start = startcal.getTime();
+		Date start;
+		Date ende;
+		
+		if (startdateString != "" && startdateString != null) {
+			String[] startdateArray = startdateString.split("-");
+			Calendar startcal = Calendar.getInstance();
+			int startyear = Integer.parseInt(startdateArray[0]);
+			int startmonth = Integer.parseInt(startdateArray[1])-1;
+			int startday = Integer.parseInt(startdateArray[2]);
+			startcal.set(startyear, startmonth, startday);
+			start = startcal.getTime();
+		}
+		else {
+			Calendar startcal = Calendar.getInstance();
+			int startyear = 1970;
+			int startmonth = 01;
+			int startday = 01;
+			startcal.set(startyear, startmonth, startday);
+			start = startcal.getTime();
+		}
 		
 		String enddateString = request.getParameter("ende");
-		String[] enddateArray = enddateString.split("-");
-		Calendar endcal = Calendar.getInstance();
-		int endyear = Integer.parseInt(enddateArray[0]);
-		int endmonth = Integer.parseInt(enddateArray[1])-1;
-		int endday = Integer.parseInt(enddateArray[2]);
-		endcal.set(endyear, endmonth, endday);
-		Date ende = endcal.getTime();
+		if (enddateString !="") {
+			String[] enddateArray = enddateString.split("-");
+			Calendar endcal = Calendar.getInstance();
+			int endyear = Integer.parseInt(enddateArray[0]);
+			int endmonth = Integer.parseInt(enddateArray[1])-1;
+			int endday = Integer.parseInt(enddateArray[2]);
+			endcal.set(endyear, endmonth, endday);
+			ende = endcal.getTime();
+		}
+		else {
+			Calendar endcal = Calendar.getInstance();
+			int endyear = 2038; //http://www.torsten-horn.de/techdocs/java-date.htm Ende des Wertebereichs unter 32-Bit-Programmierung am 2038-01-19
+			int endmonth = 01;
+			int endday = 18;
+			endcal.set(endyear, endmonth, endday);
+			ende = endcal.getTime();
+		}
 
 		
 		System.out.println("Suche: Suchbegriff: " + suchbegriff);
@@ -94,7 +117,10 @@ public class EventSuchServlet extends HttpServlet {
 					statement.setString(1, "%");
 				}
 				
-				//pruefen ob start gesetzt ist
+				statement.setDate(2, new java.sql.Date(start.getTime()));
+				statement.setDate(3, new java.sql.Date(start.getTime()));			
+				
+/*				//pruefen ob start gesetzt ist
 				if (startdateString != null && startdateString != "") {
 					statement.setDate(2, new java.sql.Date(start.getTime()));
 				}
@@ -108,7 +134,7 @@ public class EventSuchServlet extends HttpServlet {
 				}
 				else {
 					statement.setDate(3, new java.sql.Date(2038-01-18)); //http://www.torsten-horn.de/techdocs/java-date.htm Ende des Wertebereichs unter 32-Bit-Programmierung am 2038-01-19
-				}
+				}*/
 				
 				ResultSet rs = statement.executeQuery();
 				
