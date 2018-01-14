@@ -35,10 +35,14 @@
 		</form>
 		<section >
 			<h2>Herzlich Willkommen ${bar.barname}</h2> 
-			<p>${bar.bbeschreibung}</p>
-			<p>${bar.mbeschreibung}</p>
-			<p>${bar.lbeschreibung}</p>
 			<br> <img src="./Bild?id=${bar.bildId}" class="medium" alt="Bild der Bar">
+			<p>${bar.bbeschreibung}</p>
+			<br>
+			<p>${bar.mbeschreibung}</p>
+			<br>
+			<p>${bar.lbeschreibung}</p>
+			<br>
+
 		</section>
 		
 		<h2>Bewertungen</h2>

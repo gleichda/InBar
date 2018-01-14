@@ -41,7 +41,7 @@
 
 					<c:forEach var="event" items = "${suchergebnisse}">	
 						<tr>
-							<td> ${event.barname} </td>		
+							<td><a href="./BarAnzeigen?id=${event.barid}"> ${event.barname} </a></td>		
 							<td>${event.eventname}</td>
 							<td>${event.startdatum} </td>
 							<td>${event.startzeit}</td>

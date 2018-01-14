@@ -42,15 +42,15 @@ public class ProfilLoeschenServlet extends HttpServlet {
 		final HttpSession session = request.getSession();
 		UserBean selfUser = (UserBean) session.getAttribute("selfUser");
 		try (Connection con = ds.getConnection();
-				PreparedStatement löschenStatement = con.prepareStatement("DELETE FROM benutzer WHERE userid = ?");
+				PreparedStatement loeschenStatement = con.prepareStatement("DELETE FROM benutzer WHERE userid = ?");
 				PreparedStatement barsStatement = con.prepareStatement("SELECT * FROM bar_zu_user WHERE userid = ?")){
 			
 			barsStatement.setInt(1, selfUser.getUserid());
 			ResultSet barRs = barsStatement.executeQuery();
 			
 			if(!barRs.first()) {
-				löschenStatement.setInt(1, selfUser.getUserid());
-				löschenStatement.executeUpdate();
+				loeschenStatement.setInt(1, selfUser.getUserid());
+				loeschenStatement.executeUpdate();
 				session.removeAttribute("selfUser");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("profilGeloescht.jsp");
 				dispatcher.forward(request, response);

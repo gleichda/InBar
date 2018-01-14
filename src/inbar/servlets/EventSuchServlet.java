@@ -5,9 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -20,13 +18,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import inbar.beans.BarBean;
 import inbar.beans.EventBean;
 import inbar.beans.EventZuBarBean;
 
 /**
  * Servlet implementation class Suchservlet
- * @author sabine
+ * @author Sabine
  */
 @WebServlet("/EventSuche")
 public class EventSuchServlet extends HttpServlet {
@@ -94,23 +91,23 @@ public class EventSuchServlet extends HttpServlet {
 		}
 
 		
-		System.out.println("Suche: Suchbegriff: " + suchbegriff);
-		System.out.println("Start Suchzeitraum: " + start);
-		System.out.println("Ende des Suchzeitraums: " + ende );
+		//System.out.println("Suche: Suchbegriff: " + suchbegriff);
+		//System.out.println("Start Suchzeitraum: " + start);
+		//System.out.println("Ende des Suchzeitraums: " + ende );
 
 
 			List<EventBean> eventList = new ArrayList<EventBean>();
 						
 			
 			try (Connection con = ds.getConnection();
-					PreparedStatement statement = con.prepareStatement("SELECT * FROM event\r\n" + 
-							"LEFT JOIN event_zu_bar ON event.eventid = event_zu_bar.eventid\r\n" + 
-							"LEFT JOIN bar ON event_zu_bar.barid = bar.barid WHERE eventname LIKE ?\r\n" +
+					PreparedStatement statement = con.prepareStatement("SELECT * FROM event " + 
+							"LEFT JOIN event_zu_bar ON event.eventid = event_zu_bar.eventid " + 
+							"LEFT JOIN bar ON event_zu_bar.barid = bar.barid WHERE eventname LIKE ? " +
 							"AND event.startdatum BETWEEN ? AND ?"))
 			{
 			
 				//pruefen ob suchbegriff gesetzt ist
-				if (suchbegriff != "" && suchbegriff != null) {
+				if (!suchbegriff.isEmpty() && suchbegriff != null) {
 					statement.setString(1, "%" + suchbegriff + "%");
 				}
 				else {
@@ -118,23 +115,7 @@ public class EventSuchServlet extends HttpServlet {
 				}
 				
 				statement.setDate(2, new java.sql.Date(start.getTime()));
-				statement.setDate(3, new java.sql.Date(start.getTime()));			
-				
-/*				//pruefen ob start gesetzt ist
-				if (startdateString != null && startdateString != "") {
-					statement.setDate(2, new java.sql.Date(start.getTime()));
-				}
-				else {
-					statement.setDate(2, new java.sql.Date(1970-01-01));
-				}
-				
-				//pruefen ob ende gesetzt ist
-				if (enddateString != null && enddateString != "") {
-					statement.setDate(3, new java.sql.Date(start.getTime()));
-				}
-				else {
-					statement.setDate(3, new java.sql.Date(2038-01-18)); //http://www.torsten-horn.de/techdocs/java-date.htm Ende des Wertebereichs unter 32-Bit-Programmierung am 2038-01-19
-				}*/
+				statement.setDate(3, new java.sql.Date(ende.getTime()));			
 				
 				ResultSet rs = statement.executeQuery();
 				
@@ -150,6 +131,7 @@ public class EventSuchServlet extends HttpServlet {
 					event.setEndzeit(rs.getTime("event.endzeit"));
 					event.setEbeschreibung(rs.getString("event.ebeschreibung"));
 					event.setBarname(rs.getString("bar.barname"));
+					event.setBarid(rs.getInt("bar.barid"));
 
 					eventList.add(event);					
 					}
@@ -165,14 +147,6 @@ public class EventSuchServlet extends HttpServlet {
 					RequestDispatcher dispatcher = request.getRequestDispatcher("keinSuchergebnis.jsp");
 					dispatcher.forward(request, response);
 				}
-
-				/*
-				 * Suchservlet und suchergebnisse.jsp teilweise erstellt mit
-				 * Hilfe von
-				 * https://stackoverflow.com/questions/23492233/arraylist-of-
-				 * bean-how-to-access-the-property-of-a-bean-using-el-in-jsp-
-				 * throw
-				 */
 
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
