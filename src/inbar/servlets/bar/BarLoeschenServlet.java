@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import inbar.beans.UserBean;
@@ -21,7 +22,7 @@ import inbar.beans.UserBean;
  * @author david
  * @date 14.01.2018
  */
-@WebServlet("/BarLoeschenServlet")
+@WebServlet("/BarLoeschen")
 public class BarLoeschenServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(lookup = "jdbc/InBar")
@@ -38,12 +39,13 @@ public class BarLoeschenServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserBean selfUser = (UserBean) request.getAttribute("selfUser");
+		final HttpSession session = request.getSession();
+		UserBean selfUser = (UserBean) session.getAttribute("selfUser");
 		int barid = Integer.parseInt(request.getParameter("barid"));
 		
 		try (Connection con = ds.getConnection();
 				PreparedStatement eventStatement = con.prepareStatement("SELECT * FROM event_zu_bar WHERE barid = ?");
-				PreparedStatement barLoeschenStatement = con.prepareStatement("DELETE * FROM bar WHERE barid = ?");
+				PreparedStatement barLoeschenStatement = con.prepareStatement("DELETE FROM bar WHERE barid = ?");
 				PreparedStatement userStatement = con.prepareStatement("SELECT * FROM bar_zu_user WHERE barid = ? AND userid = ?")) 
 		{
 			//Berechtigung des Users pruefen
@@ -58,7 +60,11 @@ public class BarLoeschenServlet extends HttpServlet {
 				while (eventRs.next()) { //Alle events der Bar löschen
 					eventLoeschen(eventRs.getInt("eventid"));
 				}
-				//TODO: bar löschen
+				barLoeschenStatement.setInt(1, barid);
+				barLoeschenStatement.executeUpdate();
+				final RequestDispatcher dispatcher = request.getRequestDispatcher("barGeloescht.jsp");
+				dispatcher.forward(request, response);
+				
 			}
 			else {
 				final RequestDispatcher dispatcher = request.getRequestDispatcher("nichtEingeloggt.jsp");
@@ -73,8 +79,15 @@ public class BarLoeschenServlet extends HttpServlet {
 	}
 	
 	private void eventLoeschen(int eventid) {
-		//TODO: Events Löschen
-		return;
+		try (Connection con = ds.getConnection();
+				PreparedStatement eventLoeschenStatement = con.prepareStatement("DELETE FROM event WHERE eventid = ?"))
+		{
+			eventLoeschenStatement.setInt(1, eventid);
+			eventLoeschenStatement.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace(System.out);
+		}
 	}
 
 }

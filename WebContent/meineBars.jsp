@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./css/style.css" type="text/css" rel="stylesheet">
-<script src="./js/profilLoeschen.js"></script>
+<script src="./js/barLoeschen.js"></script>
 <title>Meine Bars</title>
 </head>
 <body>
