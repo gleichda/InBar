@@ -8,6 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./css/style.css" type="text/css" rel="stylesheet">
+<script src="./js/profilLoeschen.js"></script>
 <title>Meine Bars</title>
 </head>
 <body>
@@ -36,6 +37,7 @@
 				<th>Musik</th>
 				<th></th>
 				<th></th>
+				<th></th>
 			</tr>
 			<c:forEach var="bar" items="${eigeneBars}">
 				<tr>
@@ -58,6 +60,12 @@
 						<form action="eventAnlegen.jsp">
 							<input type="hidden" name="barid" value="${bar.barid}">
     						<button type="submit">Event anlegen</button>
+						</form>
+					</td>
+					<td>
+						<form action="BarLoeschen" method="post" id="barLoeschenForm">
+							<input type="hidden" name="barid" value="${bar.barid}">
+    						<button type="button" id="barLoeschenButton">Bar Löschen</button>
 						</form>
 					</td>
 				</tr>

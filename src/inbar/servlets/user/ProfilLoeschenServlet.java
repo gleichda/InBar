@@ -3,6 +3,7 @@ package inbar.servlets.user;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -40,14 +41,24 @@ public class ProfilLoeschenServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		final HttpSession session = request.getSession();
 		UserBean selfUser = (UserBean) session.getAttribute("selfUser");
-		
 		try (Connection con = ds.getConnection();
-				PreparedStatement statement = con.prepareStatement("DELETE FROM benutzer WHERE userid = ?")){
-			statement.setInt(1, selfUser.getUserid());
-			statement.executeUpdate();
-			session.removeAttribute("selfUser");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("profilGeloescht.jsp");
-			dispatcher.forward(request, response);
+				PreparedStatement löschenStatement = con.prepareStatement("DELETE FROM benutzer WHERE userid = ?");
+				PreparedStatement barsStatement = con.prepareStatement("SELECT * FROM bar_zu_user WHERE userid = ?")){
+			
+			barsStatement.setInt(1, selfUser.getUserid());
+			ResultSet barRs = barsStatement.executeQuery();
+			
+			if(!barRs.first()) {
+				löschenStatement.setInt(1, selfUser.getUserid());
+				löschenStatement.executeUpdate();
+				session.removeAttribute("selfUser");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("profilGeloescht.jsp");
+				dispatcher.forward(request, response);
+			}
+			else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("barsVorhandenLoeschen.jsp");
+				dispatcher.forward(request, response);
+			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace(System.out);
