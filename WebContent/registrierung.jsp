@@ -45,7 +45,7 @@
 			<p>
 				<label for="bild">Laden sie das Profilbild ihrer Bar hoch:</label>
 				<br>
-				<input type="file" name="bild" id="bild" accept="image/*">
+				<input type="file" name="bild" id="bild" accept="image/*" required>
 			</p>
 			<button id="reg_daten" type="submit">Registrieren</button>
 			<!-- formaction muss noch angepasst werden -->
