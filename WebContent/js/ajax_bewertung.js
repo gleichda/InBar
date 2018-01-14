@@ -35,9 +35,11 @@ function sendBewertung(){
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', './NeueBewertung');
 	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-	//xhr.setRequestHeader("Content-length", params.length)
 	xhr.send(params);
 	 document.getElementById("bewertungsForm").reset(); 
+	 
+	 setTimeout(function(){ location.reload(); }, 100);
+	 //Nach dem AJAX neu Laden damit die neue Bewertung angezeigt wird 100 ms warten, da sonst die Bewertung nicht gespeichert wird
 	
 }
 
