@@ -26,7 +26,7 @@ import inbar.beans.EventZuBarBean;
 
 /**
  * Servlet implementation class Suchservlet
- * @author david
+ * @author sabine
  */
 @WebServlet("/EventSuche")
 public class EventSuchServlet extends HttpServlet {
@@ -85,30 +85,31 @@ public class EventSuchServlet extends HttpServlet {
 							"LEFT JOIN bar ON event_zu_bar.barid = bar.barid WHERE eventname LIKE ?\r\n" +
 							"AND event.startdatum BETWEEN ? AND ?"))
 			{
-				if (suchbegriff != "" && suchbegriff != null){
+			
+				//pruefen ob suchbegriff gesetzt ist
+				if (suchbegriff != "" && suchbegriff != null) {
 					statement.setString(1, "%" + suchbegriff + "%");
-					statement.setDate(2, new java.sql.Date(1970-01-01));
-					statement.setDate(3, new java.sql.Date(2333-01-01));
-					System.out.println("Subegriff nicht null");
-					
-				}
-				
-				else if (start != null ) {
-					statement.setString(1, "%");
-					statement.setDate(2, new java.sql.Date(start.getTime()));
-					statement.setDate(3, new java.sql.Date(start.getTime()));
-					System.out.println("Startdatum wurde eingetragen");
-					System.out.println("Suche: Suchbegriff: " + suchbegriff);
-					System.out.println("Start Suchzeitraum: " + start);
-					System.out.println("Ende des Suchzeitraums: " + ende );
 				}
 				else {
 					statement.setString(1, "%");
-					statement.setDate(2, new java.sql.Date(start.getTime()));
-					statement.setDate(3, new java.sql.Date(start.getTime()));
-					System.out.println("Subegriff suchbegriff ist leer und start ist null");
 				}
-
+				
+				//pruefen ob start gesetzt ist
+				if (startdateString != null && startdateString != "") {
+					statement.setDate(2, new java.sql.Date(start.getTime()));
+				}
+				else {
+					statement.setDate(2, new java.sql.Date(1970-01-01));
+				}
+				
+				//pruefen ob ende gesetzt ist
+				if (enddateString != null && enddateString != "") {
+					statement.setDate(3, new java.sql.Date(start.getTime()));
+				}
+				else {
+					statement.setDate(3, new java.sql.Date(2038-01-18)); //http://www.torsten-horn.de/techdocs/java-date.htm Ende des Wertebereichs unter 32-Bit-Programmierung am 2038-01-19
+				}
+				
 				ResultSet rs = statement.executeQuery();
 				
 				while (rs.next()) {

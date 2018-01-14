@@ -54,16 +54,8 @@ public class EventAnlegenServlet extends HttpServlet {
 		final HttpSession session = request.getSession();
 		
 		UserBean user = (UserBean) session.getAttribute("selfUser");
-		//BarBean bar = (BarBean) session.getAttribute("baruser");
 		int bar = Integer.parseInt(request.getParameter("barid"));	
 				
-			try (Connection con = ds.getConnection();
-					PreparedStatement statement = con.prepareStatement("SELECT * from event where eventname LIKE ?"))
-
-			{
-				statement.setString(1, request.getParameter("eventname"));
-				ResultSet rs = statement.executeQuery();
-
 				EventBean event = new EventBean();
 				
 				
@@ -114,10 +106,6 @@ public class EventAnlegenServlet extends HttpServlet {
 				final RequestDispatcher dispatcher = request.getRequestDispatcher("eventAnzeige.jsp");
 				dispatcher.forward(request, response);
 
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-				e.printStackTrace(System.out);
-			}
 		}
 		
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
