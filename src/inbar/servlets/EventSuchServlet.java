@@ -56,7 +56,7 @@ public class EventSuchServlet extends HttpServlet {
 		Date start;
 		Date ende;
 		
-		if (startdateString != "" && startdateString != null) {
+		if (!startdateString.isEmpty() && startdateString != null) {
 			String[] startdateArray = startdateString.split("-");
 			Calendar startcal = Calendar.getInstance();
 			int startyear = Integer.parseInt(startdateArray[0]);
@@ -75,7 +75,7 @@ public class EventSuchServlet extends HttpServlet {
 		}
 		
 		String enddateString = request.getParameter("ende");
-		if (enddateString !="") {
+		if (!enddateString.isEmpty() && enddateString != null) {
 			String[] enddateArray = enddateString.split("-");
 			Calendar endcal = Calendar.getInstance();
 			int endyear = Integer.parseInt(enddateArray[0]);

@@ -61,23 +61,21 @@ public class UserSuchServlet extends HttpServlet {
 			try (Connection con = ds.getConnection();
 					PreparedStatement statement = con.prepareStatement("SELECT * FROM benutzer WHERE benutzername LIKE ? AND vorname LIKE ? AND nachname LIKE ?"))
 			{
-				
-				/*if ((username != "" && username != null)|| (vorname != "" && vorname != null) || (nachname != "" && nachname != null)){ 
-				 * */
-					if (username != "" && username != null) {
+
+					if (!username.isEmpty() && username != null) {
 						statement.setString(1, "%" + username + "%");	
 					}
 					else {
 						statement.setString(1, "%");						
 					}
 					 
-					if (vorname != "" && vorname != null) {
+					if (!vorname.isEmpty() && vorname != null) {
 						statement.setString(2, "%" + vorname + "%");
 					}
 					else {
 						statement.setString(2, "%");
 					}
-					if (nachname != "" && nachname != null) {
+					if (!nachname.isEmpty() && nachname != null) {
 						statement.setString(3, "%" + nachname + "%");
 					}
 					else {
