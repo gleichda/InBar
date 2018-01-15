@@ -67,7 +67,7 @@
 					<td>
 						<form action="BarLoeschen" method="post" id="barLoeschenForm">
 							<input type="hidden" name="barid" value="${bar.barid}">
-    						<button type="button" id="barLoeschenButton">Bar Löschen</button>
+    						<button type="button" id="barLoeschenButton">Bar löschen</button>
 						</form>
 					</td>
 				</tr>
