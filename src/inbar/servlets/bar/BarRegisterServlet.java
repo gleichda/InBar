@@ -99,7 +99,6 @@ public class BarRegisterServlet extends HttpServlet {
 					BildHandler bildHandler = new BildHandler(bild);
 					bild = bildHandler.bildSpeichern(ds); 
 					// Neue BildBean mitgesetzter ID uebernehmen
-					System.out.println("Musikart: " + request.getParameter("musikart"));
 					
 					bar.setMusikId( Integer.parseInt(request.getParameter("musikart")));
 					

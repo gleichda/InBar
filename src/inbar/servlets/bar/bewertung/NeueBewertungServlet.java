@@ -54,10 +54,8 @@ public class NeueBewertungServlet extends HttpServlet {
 				statement.setString(4, kommentar);
 				statement.executeUpdate();
 				
-				System.out.println("In DB geschrieben");
 				final RequestDispatcher dispatcher = request.getRequestDispatcher("dummy.html");
 				dispatcher.forward(request, response);	
-				System.out.println("Dispatcher hat gearbeitet");
 
 			}catch (Exception e) {
 				System.out.println(e.getMessage());

@@ -26,7 +26,7 @@
 	
 	<article>
 	<h1>Ihr Profil konnte nicht gelöscht werden</h1>
-	Sie sind noch Administrator einer Bar. Bitte löschen sie zuerst die Bars unter <a href="MeineBars">meine Bars</a> <!-- TODO: href -->
+	Sie sind noch Administrator einer Bar. Bitte löschen sie zuerst die Bars unter <a href="MeineBars">meine Bars</a>
 	</article>
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>

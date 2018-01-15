@@ -52,7 +52,6 @@ public class BarEventsServlet extends HttpServlet {
 
 				statement.setInt(1, barid);
 				//Ausgabe barid
-				System.out.println("BarEventsServlet: barid = " + barid);;
 				ResultSet rs = statement.executeQuery();
 				while (rs.next()) {
 					EventBean event = new EventBean();
@@ -68,11 +67,9 @@ public class BarEventsServlet extends HttpServlet {
 				}
 				
 				if (!eventList.isEmpty()) {
-					System.out.println("Ergebnisse enthalten");
 					request.setAttribute("barEvents", eventList);
 					request.setAttribute("id", barid);
 					
-					System.out.println("BarEventServlet: Inhalt von barid: " + barid);
 	
 					RequestDispatcher dispatcher = request.getRequestDispatcher("barEventListe.jsp");
 					dispatcher.forward(request, response);

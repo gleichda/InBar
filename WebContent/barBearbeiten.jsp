@@ -92,7 +92,6 @@
 				</p>
 			</div>
 			</fieldset>
-			<!-- TODO: Bild Ändern -->
 			<p>
 				<button id="bar_aendern" type="submit">Speichern</button>
 			</p>

@@ -57,7 +57,6 @@ public class RegisterServlet extends HttpServlet {
 			statement.setString(1, request.getParameter("benutzer"));
 			statement.setString(2, request.getParameter("email"));
 			ResultSet rs = statement.executeQuery();
-			System.out.println(rs.getFetchSize());
 			
 			//pruefen ob der Benutzername schon existiert
 			if (!rs.first()){

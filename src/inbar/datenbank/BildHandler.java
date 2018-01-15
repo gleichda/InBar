@@ -22,14 +22,12 @@ public class BildHandler {
 	}
 
 	public BildBean bildSpeichern(DataSource ds) throws ServletException {
-		System.out.println("Bild speichern aufgerufen");
 
 		String[] generatedKeys = new String[] { "bildid" };
 
 		try (Connection con = ds.getConnection();
 				PreparedStatement bildStatement = con.prepareStatement("INSERT INTO bild(bild) VALUES (?)",
 						generatedKeys)) {
-			System.out.println("Bild in Datenbank speichern");
 			bildStatement.setBytes(1, bild.getBild());
 			bildStatement.executeUpdate();
 
@@ -39,7 +37,6 @@ public class BildHandler {
 				bild.setBildid((int) rs.getLong(1));
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
 			e.printStackTrace(System.out);
 		}
 		
