@@ -50,6 +50,9 @@ public class EventAnlegenServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
+		//15.01 Sabine Test UTF-8 encoding
+		response.setCharacterEncoding("UTF-8");
+		//Ende test
 		
 		final HttpSession session = request.getSession();
 		
