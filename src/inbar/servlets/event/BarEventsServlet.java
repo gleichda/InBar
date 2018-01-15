@@ -17,9 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
-import inbar.beans.BarBean;
 import inbar.beans.EventBean;
-import inbar.beans.UserBean;
 
 /**
  * Servlet implementation class EigeneBars
@@ -42,14 +40,10 @@ public class BarEventsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		final HttpSession session = request.getSession();
 		//15.01 Sabine Test UTF-8 encoding
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		//Ende test
-		UserBean selfUser = (UserBean) session.getAttribute("selfUser");
-		if (selfUser != null) {
-			int userId = selfUser.getUserid();
 			int barid = Integer.parseInt(request.getParameter("id"));	
 			List<EventBean> eventList = new ArrayList<EventBean>();
 			try (Connection con = ds.getConnection();
@@ -90,11 +84,7 @@ public class BarEventsServlet extends HttpServlet {
 				System.out.println(e.getMessage());
 				e.printStackTrace(System.out);
 			}
-		}
-		else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("keineEigenenBars.jsp");
-			dispatcher.forward(request, response);
-		}
+		
 	}
 
 	/**

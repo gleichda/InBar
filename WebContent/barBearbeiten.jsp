@@ -7,7 +7,7 @@
 <link href="./css/style.css" type="text/css" rel="stylesheet">
 <link href="./css/formStyle.css" type="text/css" rel="stylesheet">
 <meta charset="UTF-8">
-<title>IN-Bars Registrierung für Bars</title>
+<title>Bearbeiten der Bar</title>
 </head>
 <body>
 	<header>

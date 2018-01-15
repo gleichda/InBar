@@ -12,11 +12,10 @@
 <script src="./js/passwortValidieren.js"></script>
 <script src="./js/profilLoeschen.js"></script>
 
-<title>Insert title here</title>
+<title>Profil bearbeiten</title>
 </head>
 <body>
 	<noscript>Ihr Browser erlaubt die Ausführung von Javascript nicht. Bitte aktivieren sie Javascript um die vollständigen Funktionalitäten der Website zu verwenden</noscript>
-
 	<header>
 		<%@include file="./fragments/header.jsp" %>
 	</header>

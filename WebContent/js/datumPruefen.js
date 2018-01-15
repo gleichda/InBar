@@ -4,9 +4,9 @@
  * Quelle: https://www.mediaevent.de/javascript/date-datum-zeit.html; https://wiki.selfhtml.org/wiki/JavaScript/Tutorials/Ereignisverarbeitung
  */
 
-//document.addEventListener("DOMContentLoaded", init());
+document.addEventListener("DOMContentLoaded", init);
 //document.querySelector("enddatum").addEventListener("onchange", pruefen);
-window.onload=init;
+//window.onload=init;
 
 
 function pruefen(){

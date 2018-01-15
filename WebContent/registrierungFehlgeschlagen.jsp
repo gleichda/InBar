@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./css/style.css" type="text/css" rel="stylesheet">
-<title>Insert title here</title>
+<title>Registrierung fehlgeschlagen</title>
 </head>
 <body>
 	<header>
@@ -25,7 +25,7 @@
 	</nav>
 	<article>
 		<h1>Registrierung Fehlgeschlagen</h1>
-		Ihr Username ${request.username} ist leider schon vergeben. Bitte
+		Ihr Username ${request.username} oder Ihre E-Mail ist leider schon vergeben. Bitte
 		Versuchen sie einen Anderen.
 	</article>
 	<footer>

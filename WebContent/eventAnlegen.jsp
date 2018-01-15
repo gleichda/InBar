@@ -6,7 +6,7 @@
 <link href="./css/formStyle.css" type="text/css" rel="stylesheet">
 <script src="./js/datumPruefen.js"></script>
 <meta charset="UTF-8">
-<title>IN-Bars Event anlegen</title>
+<title>Event anlegen</title>
 </head>
 <body>
 	<noscript>Ihr Browser erlaubt die Ausführung von Javascript nicht. Bitte aktivieren sie Javascript um die vollständigen Funktionalitäten der Website zu verwenden</noscript>
