@@ -91,3 +91,7 @@ nav ul ul li:last-child {
 }
 
 /* Quelle ende  */
+
+.anav:visited{
+	color: white;
+}

@@ -8,15 +8,14 @@
 <!-- Navigationsleiste, wenn der User NICHT eingeloggt ist -->
 <div id="main_nav">
 	<ul>
-		<li class="nav1"><a href="index.jsp"> Startseite</a></li>
-		<li class="submenu"><a href="barSuche.jsp"> Suche</a>
+		<li class="nav1"><a class="anav" href="index.jsp"> Startseite</a></li>
+		<li class="submenu"><a class="anav" href="barSuche.jsp"> Suche</a>
 			<ul>
-				<li class="nav2"><a href="barSuche.jsp"> Bars suchen</a></li>
-				<li class="nav2"><a href="eventSuche.jsp"> Events suchen</a></li>
-				<li class="nav2"><a href="userSuche.jsp"> User suchen</a></li>
+				<li class="nav2"><a class="anav" href="barSuche.jsp"> Bars suchen</a></li>
+				<li class="nav2"><a class="anav" href="eventSuche.jsp"> Events suchen</a></li>
+				<li class="nav2"><a class="anav" href="userSuche.jsp"> User suchen</a></li>
 			</ul></li>
-		<li class="nav1"><a href="login.jsp"> Login</a></li>
-		<li class="nav1"><a href="kontakt.html"> Kontakt</a></li>
+		<li class="nav1"><a class="anav" href="login.jsp"> Login</a></li>
 	</ul>
 </div>
 

@@ -84,3 +84,11 @@ noscript{
 	background-color: red;
 }
 
+a{
+	color: #709ca9;
+}
+a:visited{
+	color: #c1e5f0;
+}
+
+
