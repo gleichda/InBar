@@ -77,17 +77,17 @@
 			<div id="beschreibung">
 				<p>Die folgenden Texte werden zu dem Profil-Text der Bar:</p>
 				<p>
-					<label for="bbeschreibung">Beschreiben Sie ihre Bar.</label>
+					<label for="bbeschreibung">Beschreiben Sie ihre Bar Hinweis: Sie können auch Standard HTML Tags verwenden um Ihren Text zu formatieren (z.B. &lt;br&gt; für neue Zeile):</label>
 					<textarea name="bbeschreibung" id="bbeschreibung" rows="5" cols="100" required title="Beschreiben Sie Ihre Bar. Wichtig: Geben Sie auch die Öffnungszeiten an">${bar.bbeschreibung}</textarea>
 					
 				</p>
 				<br>
 				<p>
-					<label for="mbeschreibung">Beschreiben Sie die Musik, die bei Ihnen gespielt wird: </label>
+					<label for="mbeschreibung">Beschreiben Sie die Musik, die bei Ihnen gespielt wird Hinweis: Sie können auch Standard HTML Tags verwenden um Ihren Text zu formatieren (z.B. &lt;br&gt; für neue Zeile): </label>
 					<textarea name="mbeschreibung" id="mbeschreibung" rows="5" cols="100" required title="Geben Sie zum Beispiel Bands an, welche regelmäßig bei Ihnen gespielt werden oder ob auch Live-Auftritte stattfinden.">${bar.mbeschreibung}</textarea>
 				</p>
 				<p>
-					<label for="lbeschreibung">Beschreiben Sie, wie ihre Bar erreicht werden kann: </label>
+					<label for="lbeschreibung">Beschreiben Sie, wie ihre Bar erreicht werden kann Hinweis: Sie können auch Standard HTML Tags verwenden um Ihren Text zu formatieren (z.B. &lt;br&gt; für neue Zeile): </label>
 					<textarea name="lbeschreibung" id="lbeschreibung" rows="5" cols="100" required title="Eine kurze Lagebeschreibung Ihrer Bar. Informationen über Parkplätze und Ess-Möglichkeiten können auch von Interesse sein.">${bar.lbeschreibung}</textarea>
 				</p>
 			</div>
