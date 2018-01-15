@@ -33,7 +33,6 @@
 		</div>
 		<table id="suchergebnisse">
 			<tr>
-				<th>BarID</th>
 				<th>Name</th>
 				<th>Adresse</th>
 				<th>Beschreibung</th>
@@ -42,7 +41,6 @@
 			</tr>
 			<c:forEach var="bar" items="${suchergebnisse}">
 				<tr>
-					<td>${bar.barid}</td>
 					<td><a href="./BarAnzeigen?id=${bar.barid}">${bar.barname}</a></td>
 					<td>${bar.strasse} ${bar.hausnummer} <br>
 						${bar.plz} ${bar.ort}
