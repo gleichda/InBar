@@ -4,9 +4,9 @@
  * Quelle: https://www.mediaevent.de/javascript/date-datum-zeit.html; https://wiki.selfhtml.org/wiki/JavaScript/Tutorials/Ereignisverarbeitung
  */
 
-document.addEventListener("DOMContentLoaded", init);
+//document.addEventListener("DOMContentLoaded", init);
 //document.querySelector("enddatum").addEventListener("onchange", pruefen);
-//window.onload=init;
+window.onload=init;
 
 
 function pruefen(){
@@ -49,7 +49,7 @@ function init(){
 	console.log("init")
 	document.getElementById("enddatum").addEventListener("change", pruefen); // Ausführen, wenn der Wert des Form-Elements geändert wird.
 	console.log("enddatum")
-	document.getElementById("ende").addEventListener("onchange", pruefen);
+	document.getElementById("ende").addEventListener("change", pruefen);
 }
 
 

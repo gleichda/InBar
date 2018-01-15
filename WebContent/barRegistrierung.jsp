@@ -73,7 +73,7 @@
 			</p>
 			<p> Musikart:
 				<!-- TODO: DB in JSP Seite?? -->
-				<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/inbar" user="root" password="master42" />
+				<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/inbar" user="root"/>
 				<sql:query dataSource="${ds}" var="musikarten">SELECT * FROM musikarten;</sql:query>
 				
 				<select name="musikart">
