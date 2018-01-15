@@ -49,7 +49,7 @@ function init(){
 	console.log("init")
 	document.getElementById("enddatum").addEventListener("change", pruefen); // Ausführen, wenn der Wert des Form-Elements geändert wird.
 	console.log("enddatum")
-	document.getElementById("endzeit").addEventListener("onchange", pruefen);
+	document.getElementById("ende").addEventListener("onchange", pruefen);
 }
 
 
