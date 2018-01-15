@@ -8,21 +8,20 @@
 <div id="main_nav">
 	<ul>
 		<li class="nav1"><a href="index.jsp"> Startseite</a></li>
-		<li class="submenu"><a href="barSuche.jsp"> Suche</a>
+		<li class="submenu"><a class="anav" href="barSuche.jsp"> Suche</a>
 			<ul>
-				<li class="nav2"><a href="barSuche.jsp"> Bars suchen</a></li>
-				<li class="nav2"><a href="eventSuche.jsp"> Events suchen</a></li>
-				<li class="nav2"><a href="userSuche.jsp"> User suchen</a></li>
+				<li class="nav2"><a class="anav" href="barSuche.jsp"> Bars suchen</a></li>
+				<li class="nav2"><a class="anav" href="eventSuche.jsp"> Events suchen</a></li>
+				<li class="nav2"><a class="anav" href="userSuche.jsp"> User suchen</a></li>
 			</ul></li>
 		<li class="submenu"><a>Profil</a>
 			<ul>
-				<li class="nav2"><a href="ProfilAnzeigen"> MeinProfil</a></li>
-				<li class="nav2"><a href="profilBearbeiten.jsp">Profil bearbeiten</a></li>
-				<li class="nav2"><a href="MeineBars">Meine Bars</a></li>
-				<li class="nav2"><a href="./Logout">Logout</a></li>
+				<li class="nav2"><a class="anav" href="ProfilAnzeigen"> MeinProfil</a></li>
+				<li class="nav2"><a class="anav" href="profilBearbeiten.jsp">Profil bearbeiten</a></li>
+				<li class="nav2"><a class="anav" href="MeineBars">Meine Bars</a></li>
+				<li class="nav2"><a class="anav" href="./Logout">Logout</a></li>
 			</ul>
 		</li>
-		<li class="nav1"><a href="barRegistrierung.jsp">Bar anlegen</a></li>
-		<li class="nav1"><a href="kontakt.html"> Kontakt</a></li>
+		<li class="nav1"><a class="anav" href="barRegistrierung.jsp">Bar anlegen</a></li>
 	</ul>
 </div>

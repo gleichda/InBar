@@ -21,6 +21,7 @@ if (startdatum.value === enddatum.value){ //wenn Start und Ende am gleichen Tag 
 	if (startzeit.value < endzeit.value){
 		console.log("Start- und Enddatum sind gleich. Startzeit kleiner Endzeit.")
 		endzeit.setCustomValidity("Start- und Enddatum sind gleich. Startzeit kleiner Endzeit.");
+		endzeit.setCustomValidity("");
 	}
 	else if (startzeit.value> endzeit.value){
 		console.log("Start- und Enddatum sind gleich. Startzeit größer Endzeit. Falscher Wert.")

@@ -90,10 +90,6 @@ public class EventSuchServlet extends HttpServlet {
 			ende = endcal.getTime();
 		}
 
-		
-		//System.out.println("Suche: Suchbegriff: " + suchbegriff);
-		//System.out.println("Start Suchzeitraum: " + start);
-		//System.out.println("Ende des Suchzeitraums: " + ende );
 
 
 			List<EventBean> eventList = new ArrayList<EventBean>();
@@ -136,9 +132,7 @@ public class EventSuchServlet extends HttpServlet {
 					eventList.add(event);					
 					}
 
-				System.out.println("EventList Size:" + eventList.size());
 				if (!eventList.isEmpty()) {
-					System.out.println("Ergebnisse enthalten");
 					request.setAttribute("suchergebnisse", eventList);
 
 					RequestDispatcher dispatcher = request.getRequestDispatcher("eventSuchergebnisse.jsp");

@@ -42,11 +42,14 @@
 			<div>
 				<label for="eventname">Name des Events: </label> <input type="text"
 					name="eventname" id="eventname" value="" title="Geben Sie Ihrem Event einen Namen.">
-				<label for="startdatum"> Bitte das Start-Datum waehlen</label> <input type="date" name="startdatum" id="startdatum" value="" title="Datum an dem das Event startet.">
-				<label for="start"> Bitte Startuhrzeit auswaehlen</label> <input type="time" name="start" id="start" value="" title="Uhrzeit um die das Event startet.">	
-				<label for="enddatum"> Bitte das End-Datum waehlen</label> <input type="date" name="enddatum" id="enddatum" value="" title="Tag an dem das Event endet. Achtung: Das End-Datum muss nach dem Start-Datum liegen.">						
-				<label for="ende"> Bitte Enduhrzeit auswaehlen </label> <input type="time" name="ende" id="ende" value="" title="Uhrzeit um die das Event endet. Achtung: Wenn Start und Ende am gleichen Datum ist, muss der Endzeitpunkt nach dem Startzeitpunkt liegen.">
-				<!-- TODO: Aktuelles Datum vorschlagen https://stackoverflow.com/questions/6982692/html5-input-type-date-default-value-to-today -->				
+				<label for="startdatum"> Bitte das Start-Datum waehlen</label> 
+				<input type="date" name="startdatum" id="startdatum" value="" title="Datum an dem das Event startet." required>
+				<label for="start"> Bitte Startuhrzeit auswaehlen</label> 
+				<input type="time" name="start" id="start" value="" title="Uhrzeit um die das Event startet." required>	
+				<label for="enddatum"> Bitte das End-Datum waehlen</label> 
+				<input type="date" name="enddatum" id="enddatum" value="" title="Tag an dem das Event endet. Achtung: Das End-Datum muss nach dem Start-Datum liegen." required>						
+				<label for="ende"> Bitte Enduhrzeit auswaehlen </label> 
+				<input type="time" name="ende" id="ende" value="" title="Uhrzeit um die das Event endet. Achtung: Wenn Start und Ende am gleichen Datum ist, muss der Endzeitpunkt nach dem Startzeitpunkt liegen." required>
 			</div>
 			<br>
 			<textarea name="ebeschreibung" id="ebeschreibung" placeholder="Beschreiben Sie ihr Event." rows="5" cols="100" title="Beschreiben Sie das Event."></textarea>

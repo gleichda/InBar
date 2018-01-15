@@ -30,7 +30,8 @@ import inbar.datenbank.BildHandler;
  * @author Sabine
  */
 @WebServlet("/RegisterServlet")
-@MultipartConfig 
+@MultipartConfig(
+		maxFileSize=1024*1024*5) 
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
@@ -57,7 +58,6 @@ public class RegisterServlet extends HttpServlet {
 			statement.setString(1, request.getParameter("benutzer"));
 			statement.setString(2, request.getParameter("email"));
 			ResultSet rs = statement.executeQuery();
-			System.out.println(rs.getFetchSize());
 			
 			//pruefen ob der Benutzername schon existiert
 			if (!rs.first()){

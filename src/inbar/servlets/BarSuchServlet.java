@@ -47,7 +47,6 @@ public class BarSuchServlet extends HttpServlet {
 		int musikart = Integer.parseInt(request.getParameter("musikart"));
 		String suchbegriff = request.getParameter("suchbegriff");
 		
-		System.out.println("Suche: Suchbegriff: " + suchbegriff + " Musikart: " + musikart);
 
 
 			List<BarBean> barsList = new ArrayList<BarBean>();
@@ -80,9 +79,7 @@ public class BarSuchServlet extends HttpServlet {
 					bar.setLbeschreibung(rs.getString("bar.lbeschreibung"));
 					barsList.add(bar);}
 				}
-				System.out.println("BarsList Size:" + barsList.size());
 				if (!barsList.isEmpty()) {
-					System.out.println("Ergebnisse enthalten");
 					request.setAttribute("suchergebnisse", barsList);
 
 					RequestDispatcher dispatcher = request.getRequestDispatcher("suchergebnisse.jsp");

@@ -72,8 +72,7 @@
 				<input type="email" name="barmail" id="barmail" required>
 			</p>
 			<p> Musikart:
-				<!-- TODO: DB in JSP Seite?? -->
-				<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/inbar" user="root"/>
+				<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/inbar" user="root" password="master42"/>
 				<sql:query dataSource="${ds}" var="musikarten">SELECT * FROM musikarten;</sql:query>
 				
 				<select name="musikart">
@@ -103,7 +102,7 @@
 			</div>
 			</fieldset>
 			<p>
-				<label for="bild">Laden sie das Profilbild ihrer Bar hoch:</label>
+				<label for="bild">Laden sie das Profilbild ihrer Bar hoch (max 5MB):</label>
 				<br>
 				<input type="file" name="bild" id="bild" accept="image/*">
 			</p>

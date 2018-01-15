@@ -30,7 +30,8 @@ import inbar.beans.BildBean;
  *
  */
 @WebServlet("/BarRegisterServlet")
-@MultipartConfig
+@MultipartConfig(
+		maxFileSize=1024*1024*5)
 public class BarRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -99,7 +100,6 @@ public class BarRegisterServlet extends HttpServlet {
 					BildHandler bildHandler = new BildHandler(bild);
 					bild = bildHandler.bildSpeichern(ds); 
 					// Neue BildBean mitgesetzter ID uebernehmen
-					System.out.println("Musikart: " + request.getParameter("musikart"));
 					
 					bar.setMusikId( Integer.parseInt(request.getParameter("musikart")));
 					

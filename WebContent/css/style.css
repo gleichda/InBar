@@ -59,8 +59,8 @@ td{
 tr {
 	border-bottom-style: inset;
 }
-img.small{width: 100px; height: 100px;}
-img.medium{width: 200px; height: 200px;}
+img.small{width: auto; height: 100px;}
+img.medium{width: auto; height: 200px;}
 
 
 /* ab hier 
@@ -76,7 +76,6 @@ button{
     font-size: 16px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     border-radius: 6px;
-    min-width: 200px;
     white-space:nowrap;
 }
 noscript{
@@ -84,3 +83,13 @@ noscript{
 	font-size: 20px;
 	background-color: red;
 }
+
+a{
+	color: #709ca9;
+	font-weight: bold;
+}
+a:visited{
+	color: #c1e5f0;
+}
+
+

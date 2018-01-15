@@ -5,8 +5,6 @@
 <link href="./css/footerStyle.css" type="text/css" rel="stylesheet">
 	<div id=footer>
 	<ul>
-		<li><a href="datenschutz.jsp"> Datenschutz</a></li>
 		<li><a href="impressum.jsp"> Impressum</a></li>
-		<li><a href="kontakt.html"> Kontakt</a></li>
 	</ul>
 	</div>

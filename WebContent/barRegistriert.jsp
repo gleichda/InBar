@@ -35,7 +35,6 @@
 	<br> ${baruser.lbeschreibung}
 	<br> ${baruser.bildId}
 	<br> <img src="./Bild?id=${baruser.bildId}" alt="Bild der Bar" class="medium">
-	<!--  TODO: Bild größe anpassen -->
 	</article>
 	<footer>
 		<%@include file="./fragments/fusszeile.jsp" %>

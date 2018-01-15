@@ -91,3 +91,21 @@ nav ul ul li:last-child {
 }
 
 /* Quelle ende  */
+
+/* ab hier: @author david*/
+
+nav ul li ul li a:hover{
+  background: #3F4F60;
+}
+
+.anav{
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.anav:visited{
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+}

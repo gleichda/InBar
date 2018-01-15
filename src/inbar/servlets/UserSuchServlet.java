@@ -53,7 +53,6 @@ public class UserSuchServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String vorname = request.getParameter("vorname");
 		String nachname = request.getParameter("nachname");
-		System.out.println("Suche: Username: " + username + " Vorname: " + vorname);
 
 		if (!username.isEmpty() || !vorname.isEmpty() || !nachname.isEmpty()) {
 			List<UserBean> userList = new ArrayList<UserBean>();
@@ -82,19 +81,9 @@ public class UserSuchServlet extends HttpServlet {
 						statement.setString(3, "%");
 					}
 					
-					System.out.println("test1");
-				/*}
-				else {
-					statement.setString(1, "%");
-					statement.setString(2, "%");
-					statement.setString(3, "%");
-					System.out.println("test2");
-				}
-				*/
 				
 				ResultSet rs = statement.executeQuery();
 				while (rs.next()) {	
-					System.out.println("whileSchleife");
 					UserBean user = new UserBean();
 					user.setUserid(rs.getInt("userid"));
 					user.setUsername(rs.getString("benutzername"));
@@ -103,17 +92,13 @@ public class UserSuchServlet extends HttpServlet {
 					user.setEmail(rs.getString("email"));
 					userList.add(user);}
 				
-				System.out.println(username);
 				
-				System.out.println("UserList Size:" + userList.size());
 				if (!userList.isEmpty()) {
-					System.out.println("Ergebnisse enthalten");
 					request.setAttribute("suchergebnisse", userList);
 
 					RequestDispatcher dispatcher = request.getRequestDispatcher("usersuchergebnisse.jsp");
 					dispatcher.forward(request, response);
 				} else {
-					System.out.println("Nichts gefunden.");
 					RequestDispatcher dispatcher = request.getRequestDispatcher("keinSuchergebnis.jsp");
 					dispatcher.forward(request, response);
 				}
@@ -124,7 +109,6 @@ public class UserSuchServlet extends HttpServlet {
 			}
 		}
 		else {
-			System.out.println("Keine Eingabe");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("userSucheKeineEingabe.jsp");
 			dispatcher.forward(request, response);
 		}
