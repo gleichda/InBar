@@ -43,12 +43,12 @@
 				<tr>
 					<td>${bar.barid}</td>
 					<td><a href="./BarAnzeigen?id=${bar.barid}">${bar.barname}</a></td>
-					<td>"${bar.strasse}" "${bar.hausnummer}" <br>
-						"${bar.plz}" "${bar.ort}"
+					<td>${bar.strasse} ${bar.hausnummer} <br>
+						${bar.plz} ${bar.ort}
 					</td>
-					<td>"${bar.bbeschreibung}"</td>
-					<td>"${bar.lbeschreibung}"</td>
-					<td>"${bar.mbeschreibung}"</td>
+					<td>${bar.bbeschreibung}</td>
+					<td>${bar.lbeschreibung}</td>
+					<td>${bar.mbeschreibung}</td>
 					<td>
 						<form action="BarAnzeigen">
 							<input type="hidden" name="barid" value="${bar.barid}">

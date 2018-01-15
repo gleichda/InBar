@@ -42,6 +42,12 @@ public class EventBearbeitenServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		final HttpSession session = request.getSession();
+		
+		//15.01 Sabine Test UTF-8 encoding
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		//Ende test
+		
 		//Falls der User nicht eingeloggt ist wird er auf die nicht Eingeloggt Seite verwiesen weil selfUser dann NULL zurück gibt
 		UserBean selfUser = (UserBean) session.getAttribute("selfUser");
 		if (selfUser == null) {

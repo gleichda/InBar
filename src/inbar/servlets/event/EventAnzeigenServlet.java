@@ -40,7 +40,10 @@ public class EventAnzeigenServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		//15.01 Sabine Test UTF-8 encoding
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		//Ende test
 		
 		if (request.getParameter("id") != null) {
 			int eventID = Integer.parseInt(request.getParameter("eventid"));

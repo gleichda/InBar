@@ -26,7 +26,7 @@
 
 	<article>
 		<h2>Willkommen bei IN*Bars</h2>
-		<p>Wir bieten eine Plattform über die Sie Bars, Kneipen und Lokale in Ihrer Nähe finden und die Ihren Interessen entsprechen.</p>
+		<p>Wir bieten eine Plattform an, über die Sie Bars, Kneipen und Lokale in Ihrer Nähe finden können und die Ihren Interessen entsprechen.</p>
 		
 
 	</article>
