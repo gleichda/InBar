@@ -10,17 +10,11 @@ window.onload=init;
 
 
 function pruefen(){
-	var heute = new Date;
 	var startdatum = document.getElementById("startdatum");
 	var enddatum = document.getElementById("enddatum");
 	var startzeit = document.getElementById("start");
 	var endzeit = document.getElementById("ende");
-	
-	startdatum.required = true;
-	enddatum.required = true;
-	startzeit.required = true;
-	endzeit.required = true;
-	
+		
 
 if (startdatum.value === enddatum.value){ //wenn Start und Ende am gleichen Tag ist, muss die Startzeit vor der Endzeit liegen.
 	enddatum.setCustomValidity("");
