@@ -92,6 +92,16 @@ nav ul ul li:last-child {
 
 /* Quelle ende  */
 
+/* ab hier: @author david*/
+
+.anav{
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+}
+
 .anav:visited{
 	color: white;
+	font-weight: bold;
+	font-size: 18px;
 }
