@@ -30,7 +30,8 @@ import inbar.datenbank.BildHandler;
  * @author Sabine
  */
 @WebServlet("/RegisterServlet")
-@MultipartConfig 
+@MultipartConfig(
+		maxFileSize=1024*1024*5) 
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     

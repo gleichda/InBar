@@ -30,7 +30,8 @@ import inbar.beans.BildBean;
  *
  */
 @WebServlet("/BarRegisterServlet")
-@MultipartConfig
+@MultipartConfig(
+		maxFileSize=1024*1024*5)
 public class BarRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

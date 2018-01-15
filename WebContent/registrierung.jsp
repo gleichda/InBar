@@ -45,7 +45,7 @@
 				<input type="password" name="passwort" id="passwort_wiederholen" required>
 			<br>
 			<p>
-				<label for="bild">Laden sie das Profilbild ihrer Bar hoch:</label>
+				<label for="bild">Laden sie das Profilbild ihrer Bar hoch (max 5MB):</label>
 				<br>
 				<input type="file" name="bild" id="bild" accept="image/*" required>
 			</p>
