@@ -13,6 +13,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<noscript>Ihr Browser erlaubt die Ausführung von Javascript nicht. Bitte aktivieren sie Javascript um die vollständigen Funktionalitäten der Website zu verwenden</noscript>
+	
 	<header>
 		<%@include file="./fragments/header.jsp" %>
 	</header>
