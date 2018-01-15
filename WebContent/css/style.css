@@ -63,3 +63,18 @@ tr {
 }
 img.small{width: 100px; height: 100px;}
 img.medium{width: 200px; height: 200px;}
+
+
+/* @author david */
+button{
+	background-color: #709ca9;
+    padding: 15px 36px;
+    margin: 3px 4px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 6px;
+}
