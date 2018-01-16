@@ -37,7 +37,7 @@
 			<br>
 			<div>
 				<p> Musikart:
-				<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/inbar" user="root"/>
+				<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/inbar" user="root" password="master42"/>
 				<sql:query dataSource="${ds}" var="musikarten">SELECT * FROM musikarten;</sql:query>
 				
 				<select name="musikart">

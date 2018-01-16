@@ -37,27 +37,32 @@
 		<form id="eventBearbeiten" action="EventBearbeiten">
 			<p>
 				<label for="eventname">Name des Events: </label> 
-				<input type="text" name="eventname" id="eventname" value="${event.eventname}"> 
-<%-- 				<input type="text" name="eventid" id="eventid" value="${event.eventid}"> --%>
+				<input type="text" name="eventname" id="eventname" value="${event.eventname}">  
+				<span></span>
 			</p>
 			<br>
 			
 			<p>
 				<label for="startdatum"> Startdatum: </label> 
-				<input type="date" name="startdatum" id="startdatum" value="${event.startdatum}" required> 
+				<input type="date" name="startdatum" id="startdatum" value="${event.startdatum}" required>  
+				<span></span>
 				<label for="startzeit"> Startzeitpunkt: </label>
-				<input type="time" name="startzeit" id="startzeit" value="${event.startzeit}" required>
+				<input type="time" name="startzeit" id="startzeit" value="${event.startzeit}" required> 
+				<span></span>
 			</p>
 			<p>
 				<label for="enddatum"> Enddatum: </label> 
-				<input type="date" name="enddatum" id="enddatum" value="${event.enddatum}" required> 
+				<input type="date" name="enddatum" id="enddatum" value="${event.enddatum}" required>  
+				<span></span>
 				<label for="endzeit"> Endzeitpunkt: </label>
-				<input type="time" name="endzeit" id="endzeit" value="${event.endzeit}" required>
+				<input type="time" name="endzeit" id="endzeit" value="${event.endzeit}" required> 
+				<span></span>
 			</p>
 			<br>
 			<p>
 				<label for = "ebeschreibung"> Eventbeschreibung: </label>
-				<input type="text" name="ebeschreibung" id="ebeschreibung" value ="${event.ebeschreibung}"> 
+				<input type="text" name="ebeschreibung" id="ebeschreibung" value ="${event.ebeschreibung}">  
+				<span></span>
 
 			<p>
 				<input type="hidden" name="id" value="${bar.barid}">

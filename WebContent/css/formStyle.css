@@ -19,3 +19,26 @@ textarea {
 input[type="checkbox"], input[type="radio"] {
 	width: auto;
 }
+
+/* @author david 
+ * kopiert und angepasst aus Skript CSS S84 */
+ 
+ input:required + span::after{
+ 	color: red;
+ 	content: " *"
+ }
+ 
+  textarea:required + span::after{
+ 	color: red;
+ 	content: " *"
+ }
+ 
+  input[type="email"]:valid + span::after{
+ 	color: green;
+ 	content: " ✓"
+ }
+
+  textarea:valid + span::after{
+ 	color: green;
+ 	content: " ✓"
+ }

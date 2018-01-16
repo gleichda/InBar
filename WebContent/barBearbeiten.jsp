@@ -34,43 +34,53 @@
 		<form id="barBearbeiten" action="BarBearbeiten" method="post">
 			<p>
 				<label for="barname">Name der Bar: </label> 
-				<input type="text" name="barname" id="barname" value="${bar.barname }" title="Der Name Ihrer Bar"> 
-				<input type="text" name="barid" id="barid" value="${bar.barid }">
+				<input type="text" name="barname" id="barname" value="${bar.barname }" title="Der Name Ihrer Bar">  
+				<span></span>
+				<input type="text" name="barid" id="barid" value="${bar.barid }"> 
+				<span></span>
 			</p>
 			<br>
 			<br>
 			<fieldset><legend>Informationen zum Geschäftsführer</legend>
 			<p>
 				<label for="vorname"> Geschäftsführer: </label> 
-				<input type="text" name="vorname" id="vorname" value="${bar.vorname}" required title="Geben Sie den Vornamen Ihres Geschäftsführer ein."> 
-				<input type="text" name="nachname" id="nachname" value="${bar.nachname}" required title="Geben Sie den Nachnamen Ihres Geschäftsführers ein.">
+				<input type="text" name="vorname" id="vorname" value="${bar.vorname}" required title="Geben Sie den Vornamen Ihres Geschäftsführer ein.">  
+				<span></span>
+				<input type="text" name="nachname" id="nachname" value="${bar.nachname}" required title="Geben Sie den Nachnamen Ihres Geschäftsführers ein."> 
+				<span></span>
 			</p>
 			<p>
 				<label for="chefmail" > E-Mail-Adresse des Geschäftsführers:</label> 
-				<input type="email" name="chefmail" id="chefmail" value="${bar.chefmail}" required title="Geben Sie die E-Mail-Adresse des Geschäftsführers ein.">
+				<input type="email" name="chefmail" id="chefmail" value="${bar.chefmail}" required title="Geben Sie die E-Mail-Adresse des Geschäftsführers ein."> 
+				<span></span>
 			</p>
 			</fieldset>
 			<br>
 			<fieldset><legend>Informationen über die Bar</legend>
 			<p>
 				<label for="strasse">Strasse: </label> 
-				<input type="text" name="strasse" id="strasse" value="${bar.strasse}" required title="Geben Sie den Strassennamen Ihrer Bar an.">
+				<input type="text" name="strasse" id="strasse" value="${bar.strasse}" required title="Geben Sie den Strassennamen Ihrer Bar an."> 
+				<span></span>
 			</p>
 			<p>
 				<label for="hausnummer">Hausnummer: </label> 
-				<input type="text" name="hausnummer" id="hausnummer" value="${bar.hausnummer}" required title="Geben Sie die Hausnummer Ihrer Bar an.">
+				<input type="text" name="hausnummer" id="hausnummer" value="${bar.hausnummer}" required title="Geben Sie die Hausnummer Ihrer Bar an."> 
+				<span></span>
 			</p>
 			<p>
 				<label for="plz">PLZ: </label> 
-				<input type="text" name="plz" id="plz" value="${bar.plz}" required title="Geben Sie die entsprechende Postleitzahl ein.">
+				<input type="text" name="plz" id="plz" value="${bar.plz}" required title="Geben Sie die entsprechende Postleitzahl ein."> 
+				<span></span>
 			</p>
 			<p>
 				<label for="ort">Ort: </label> 
-				<input type="text" name="ort" id="ort" value="${bar.ort}" required title="Geben Sie den Ort ein, in dem sich Ihre Bar befindet.">
+				<input type="text" name="ort" id="ort" value="${bar.ort}" required title="Geben Sie den Ort ein, in dem sich Ihre Bar befindet."> 
+				<span></span>
 			</p>
 			<p>
 				<label for="barmail">Mail-Adresse der Bar: </label> 
-				<input type="email" name="barmail" id="barmail" value="${bar.barmail}" required title="Geben Sie die Kontakt-E-Mail Ihrer Bar an.">
+				<input type="email" name="barmail" id="barmail" value="${bar.barmail}" required title="Geben Sie die Kontakt-E-Mail Ihrer Bar an."> 
+				<span></span>
 			</p>
 			</fieldset>
 			<fieldset><legend>Profiltext</legend>
@@ -78,17 +88,20 @@
 				<p>Die folgenden Texte werden zu dem Profil-Text der Bar:</p>
 				<p>
 					<label for="bbeschreibung">Beschreiben Sie ihre Bar Hinweis: Sie können auch Standard HTML Tags verwenden um Ihren Text zu formatieren (z.B. &lt;br&gt; für neue Zeile):</label>
-					<textarea name="bbeschreibung" id="bbeschreibung" rows="5" cols="100" required title="Beschreiben Sie Ihre Bar. Wichtig: Geben Sie auch die Öffnungszeiten an">${bar.bbeschreibung}</textarea>
+					<textarea name="bbeschreibung" id="bbeschreibung" rows="5" cols="100" required title="Beschreiben Sie Ihre Bar. Wichtig: Geben Sie auch die Öffnungszeiten an">${bar.bbeschreibung}</textarea> 
+					<span></span>
 					
 				</p>
 				<br>
 				<p>
 					<label for="mbeschreibung">Beschreiben Sie die Musik, die bei Ihnen gespielt wird Hinweis: Sie können auch Standard HTML Tags verwenden um Ihren Text zu formatieren (z.B. &lt;br&gt; für neue Zeile): </label>
-					<textarea name="mbeschreibung" id="mbeschreibung" rows="5" cols="100" required title="Geben Sie zum Beispiel Bands an, welche regelmäßig bei Ihnen gespielt werden oder ob auch Live-Auftritte stattfinden.">${bar.mbeschreibung}</textarea>
+					<textarea name="mbeschreibung" id="mbeschreibung" rows="5" cols="100" required title="Geben Sie zum Beispiel Bands an, welche regelmäßig bei Ihnen gespielt werden oder ob auch Live-Auftritte stattfinden.">${bar.mbeschreibung}</textarea> 
+					<span></span>
 				</p>
 				<p>
 					<label for="lbeschreibung">Beschreiben Sie, wie ihre Bar erreicht werden kann Hinweis: Sie können auch Standard HTML Tags verwenden um Ihren Text zu formatieren (z.B. &lt;br&gt; für neue Zeile): </label>
-					<textarea name="lbeschreibung" id="lbeschreibung" rows="5" cols="100" required title="Eine kurze Lagebeschreibung Ihrer Bar. Informationen über Parkplätze und Ess-Möglichkeiten können auch von Interesse sein.">${bar.lbeschreibung}</textarea>
+					<textarea name="lbeschreibung" id="lbeschreibung" rows="5" cols="100" required title="Eine kurze Lagebeschreibung Ihrer Bar. Informationen über Parkplätze und Ess-Möglichkeiten können auch von Interesse sein.">${bar.lbeschreibung}</textarea> 
+					<span></span>
 				</p>
 			</div>
 			</fieldset>

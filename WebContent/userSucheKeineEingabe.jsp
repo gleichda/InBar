@@ -36,19 +36,22 @@
 			<div>
 			<!-- Textfeld zur Suche nach dem Usernamen -->
 			<label for="username">Username: </label>
-			<input type="text" name="username" id="username" placeholder="Username" autofocus>
+			<input type="text" name="username" id="username" placeholder="Username" autofocus> 
+				<span></span>
 			</div>
 			<br>
 			<div>
 			<!-- Textfeld zur Suche nach dem Vornamen -->
 			<label for="vorname">Vorname: </label>
-			<input type="text" name="vorname" id="vorname" placeholder="Vorname">
+			<input type="text" name="vorname" id="vorname" placeholder="Vorname"> 
+				<span></span>
 			</div>
 			<br>
 			<div>
 			<!-- Textfeld zur Suche nach dem Nachnamen -->
 			<label for="nachname">Nachname: </label>
-			<input type="text" name="nachname" id="nachname" placeholder="Nachname">
+			<input type="text" name="nachname" id="nachname" placeholder="Nachname"> 
+				<span></span>
 			</div>
 			<br>
 

@@ -35,44 +35,53 @@
 			<p>
 				<label for="barname">Name der Bar: </label> 
 				<input type="text" name="barname" id="barname" required> 
+				<span></span>
 			</p>
 			<br>
 			<br>
 			<fieldset><legend>Informationen zum Geschäftsführer</legend>
 			<p>
 				<label for="vorname"> Geschäftsführer: </label> 
-				<input type="text" name="vorname" id="vorname" placeholder="Vorname"  required> 
-				<input type="text" name="nachname" id="nachname" placeholder="Nachname"  required>
+				<input type="text" name="vorname" id="vorname" placeholder="Vorname"  required>  
+				<span></span>
+				<input type="text" name="nachname" id="nachname" placeholder="Nachname"  required> 
+				<span></span>
 			</p>
 			<p>
 				<label for="chefmail"> E-Mail-Adresse des Geschäftsführers:</label> 
-				<input type="email" name="chefmail" id="chefmail" required>
+				<input type="email" name="chefmail" id="chefmail" required> 
+				<span></span>
 			</p>
 			</fieldset>
 			<br>
 			<fieldset><legend>Informationen über die Bar</legend>
 			<p>
 				<label for="strasse">Strasse: </label> 
-				<input type="text" name="strasse" id="strasse" required>
+				<input type="text" name="strasse" id="strasse" required> 
+				<span></span>
 			</p>
 			<p>
 				<label for="hausnummer">Hausnummer: </label> 
-				<input type="text" name="hausnummer" id="hausnummer" required>
+				<input type="text" name="hausnummer" id="hausnummer" required> 
+				<span></span>
 			</p>
 			<p>
 				<label for="plz">PLZ: </label> 
-				<input type="text" name="plz" id="plz" required>
+				<input type="text" name="plz" id="plz" required> 
+				<span></span>
 			</p>
 			<p>
 				<label for="ort">Ort: </label> 
-				<input type="text" name="ort" id="ort" required>
+				<input type="text" name="ort" id="ort" required> 
+				<span></span>
 			</p>
 			<p>
 				<label for="barmail">Mail-Adresse der Bar: </label> 
-				<input type="email" name="barmail" id="barmail" required>
+				<input type="email" name="barmail" id="barmail" required> 
+				<span></span>
 			</p>
 			<p> Musikart:
-				<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/inbar" user="root" />
+				<sql:setDataSource var="ds" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/inbar" user="root" password="master42" />
 				<sql:query dataSource="${ds}" var="musikarten">SELECT * FROM musikarten;</sql:query>
 				
 				<select name="musikart">
@@ -88,23 +97,27 @@
 				<p>Die folgenden Texte werden zu dem Profil-Text der Bar:</p>
 				<p>
 					<label for="bbeschreibung">Beschreiben Sie ihre Bar. Hinweis: Sie können auch Standard HTML Tags verwenden um Ihren Text zu formatieren (z.B. &lt;br&gt; für neue Zeile):</label>
-					<textarea name ="text" id="bbeschreibung" placeholder="Beschreiben Sie ihre Bar." rows="5" cols="100" required></textarea>
+					<textarea name ="text" id="bbeschreibung" placeholder="Beschreiben Sie ihre Bar." rows="5" cols="100" required></textarea> 
+				<span></span>
 				</p>
 				<br>
 				<p>
 					<label for="mbeschreibung">Beschreiben Sie die Musik, die bei Ihnen gespielt wird Hinweis: Sie können auch Standard HTML Tags verwenden um Ihren Text zu formatieren (z.B. &lt;br&gt; für neue Zeile): </label>
-					<textarea name="mbeschreibung" id="mbeschreibung" placeholder="Beschreiben Sie die Musik die bei Ihnen gespielt wird." rows="5" cols="100" required></textarea>
+					<textarea name="mbeschreibung" id="mbeschreibung" placeholder="Beschreiben Sie die Musik die bei Ihnen gespielt wird." rows="5" cols="100" required></textarea> 
+					<span></span>
 				</p>
 				<p>
 					<label for="lbeschreibung">Beschreiben Sie, wie ihre Bar erreicht werden kann Hinweis: Sie können auch Standard HTML Tags verwenden um Ihren Text zu formatieren (z.B. &lt;br&gt; für neue Zeile): </label>
-					<textarea name="lbeschreibung" id="lbeschreibung" placeholder="Beschreiben Sie die Lage Ihrer Bar und wie man sie erreichen kann." rows="5" cols="100" required></textarea>
+					<textarea name="lbeschreibung" id="lbeschreibung" placeholder="Beschreiben Sie die Lage Ihrer Bar und wie man sie erreichen kann." rows="5" cols="100" required></textarea> 
+					<span></span>
 				</p>
 			</div>
 			</fieldset>
 			<p>
 				<label for="bild">Laden sie das Profilbild ihrer Bar hoch (max 5MB):</label>
 				<br>
-				<input type="file" name="bild" id="bild" accept="image/*">
+				<input type="file" name="bild" id="bild" accept="image/*"> 
+				<span></span>
 			</p>
 			<p>
 				<button id="reg_daten" type="submit">Registrieren</button>

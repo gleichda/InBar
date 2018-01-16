@@ -33,29 +33,28 @@
 		<form action="ProfilBearbeiten" method="post">
 			<p>
 				<label>Vorname:</label> 
-				<input type="text" name="vorname" value="${selfUser.vorname}" required > 
+				<input type="text" name="vorname" value="${selfUser.vorname}" required >  
+				<span></span>
 			</p>
 			<p>
 				<label>Nachname:</label> 
-				<input type="text" name="nachname" value="${selfUser.nachname}" required> 
+				<input type="text" name="nachname" value="${selfUser.nachname}" required>  
+				<span></span>
 			</p>
 			<p>
 				<label>E-Mail Adresse:</label> 
-				<input type="email" name="email" value="${selfUser.email}" required> 
+				<input type="email" name="email" value="${selfUser.email}" required>  
+				<span></span>
 			</p>
 			<p>
 				<label>Passwort:</label> 
-				<input type="password" name="passwort" id="passwort"> 
+				<input type="password" name="passwort" id="passwort">  
+				<span></span>
 			</p>
 			<p>
 				<label>Passwort wiederholen:</label> 
-				<input type="password" name="passwort_wiederholen" id=passwort_wiederholen> 
-			</p>
-			
-			<p>
-				<label for="bild">Laden sie das Profilbild ihrer Bar hoch:</label>
-				<br>
-				<input type="file" name="bild" id="bild" accept="image/*">
+				<input type="password" name="passwort_wiederholen" id=passwort_wiederholen>  
+				<span></span>
 			</p>
 			
 			<button id="aendern" type="submit">Absenden</button>

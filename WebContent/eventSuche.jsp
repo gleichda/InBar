@@ -35,19 +35,22 @@
 			<div>
 			<!-- Textfeld zur Suche nach dem Eventnamen -->
 			<label for="suchbegriff">Suchbegriff: </label>
-			<input type="text" name="suchbegriff" id="suchbegriff" placeholder="Suchbegriff" autofocus>
+			<input type="text" name="suchbegriff" id="suchbegriff" placeholder="Suchbegriff" autofocus> 
+				<span></span>
 			</div>
 			<br>
 			<div>
 			<!-- Textfeld zur Suche nach dem Startdatum -->
 			<label for="start">Von: </label>
-			<input type="date" name="start" id="start">
+			<input type="date" name="start" id="start"> 
+				<span></span>
 			</div>
 			<br>
 			<div>
 			<!-- Textfeld zur Suche nach dem Enddatum -->
 			<label for="ende">Bis: </label>
-			<input type="date" name="ende" id="ende">
+			<input type="date" name="ende" id="ende"> 
+				<span></span>
 			</div>
 			<br>
 

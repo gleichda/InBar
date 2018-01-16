@@ -29,13 +29,6 @@
 		<p>
 			Hier koennen Sie ein neues Event anlegen
 		</p>
-<!-- 		06.01 start Sabine input hidden um die Bar-ID zu erhalten -->
-<%-- 		<form action="BarAnzeigen">
-				<input type="hidden" name="id" value="${bar.barid}">
-				<input type="hidden" name="bearbeiten" value="1">
-    			<button type="submit">Bearbeiten</button>
-		</form> --%>
-<!-- 		06.01 ende Sabine input hidden um die Bar-ID zu erhalten -->
 		<form id="eventAnlegen" action="EventAnlegenServlet" method="post"
 			enctype="multipart/form-data">
 
@@ -43,16 +36,21 @@
 				<label for="eventname">Name des Events: </label> <input type="text"
 					name="eventname" id="eventname" value="" title="Geben Sie Ihrem Event einen Namen.">
 				<label for="startdatum"> Bitte das Start-Datum waehlen</label> 
-				<input type="date" name="startdatum" id="startdatum" value="" title="Datum an dem das Event startet." required>
+				<input type="date" name="startdatum" id="startdatum" value="" title="Datum an dem das Event startet." required> 
+				<span></span>
 				<label for="start"> Bitte Startuhrzeit auswaehlen</label> 
-				<input type="time" name="start" id="start" value="" title="Uhrzeit um die das Event startet." required>	
+				<input type="time" name="start" id="start" value="" title="Uhrzeit um die das Event startet." required> 
+				<span></span>	
 				<label for="enddatum"> Bitte das End-Datum waehlen</label> 
-				<input type="date" name="enddatum" id="enddatum" value="" title="Tag an dem das Event endet. Achtung: Das End-Datum muss nach dem Start-Datum liegen." required>						
+				<input type="date" name="enddatum" id="enddatum" value="" title="Tag an dem das Event endet. Achtung: Das End-Datum muss nach dem Start-Datum liegen." required> 
+				<span></span>						
 				<label for="ende"> Bitte Enduhrzeit auswaehlen </label> 
-				<input type="time" name="ende" id="ende" value="" title="Uhrzeit um die das Event endet. Achtung: Wenn Start und Ende am gleichen Datum ist, muss der Endzeitpunkt nach dem Startzeitpunkt liegen." required>
+				<input type="time" name="ende" id="ende" value="" title="Uhrzeit um die das Event endet. Achtung: Wenn Start und Ende am gleichen Datum ist, muss der Endzeitpunkt nach dem Startzeitpunkt liegen." required> 
+				<span></span>
 			</div>
 			<br>
-			<textarea name="ebeschreibung" id="ebeschreibung" placeholder="Beschreiben Sie ihr Event." rows="5" cols="100" title="Beschreiben Sie das Event."></textarea>
+			<textarea name="ebeschreibung" id="ebeschreibung" placeholder="Beschreiben Sie ihr Event." rows="5" cols="100" title="Beschreiben Sie das Event."></textarea> 
+			<span></span>
 			<br>
 
 			<input type="hidden" name="barid" value="${param.barid}">
