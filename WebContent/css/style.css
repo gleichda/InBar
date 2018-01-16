@@ -54,6 +54,7 @@ th {
 }
 td{
 	border-bottom-style:inset;
+	padding: 8px;
 }
 tr {
 	border-bottom-style: inset;
@@ -76,6 +77,7 @@ button{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     border-radius: 6px;
     white-space:nowrap;
+    width: 150px;
 }
 noscript{
 	color: white;

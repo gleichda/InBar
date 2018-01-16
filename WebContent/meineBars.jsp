@@ -57,14 +57,12 @@
 							<input type="hidden" name="bearbeiten" value="1">
     						<button type="submit">Bearbeiten</button>
 						</form>
-					</td>
-					<td>
+
 						<form action="eventAnlegen.jsp">
 							<input type="hidden" name="barid" value="${bar.barid}">
     						<button type="submit">Event anlegen</button>
 						</form>
-					</td>
-					<td>
+
 						<form action="BarLoeschen" method="post" id="barLoeschenForm">
 							<input type="hidden" name="barid" value="${bar.barid}">
     						<button type="button" id="barLoeschenButton">Bar löschen</button>
