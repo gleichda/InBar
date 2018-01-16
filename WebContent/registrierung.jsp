@@ -7,6 +7,7 @@
 <link href="./css/style.css" type="text/css" rel="stylesheet">
 <link href="./css/formStyle.css" type="text/css" rel="stylesheet">
 <script src="./js/passwortValidieren.js"></script>
+<script src="./js/fileSize.js"></script>
 <meta charset="UTF-8">
 <title>IN-Bars Registrierung</title>
 </head>
