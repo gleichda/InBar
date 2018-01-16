@@ -1,5 +1,6 @@
 /**
- * 
+ * @author david
+ * @date 16.01.2018
  */
 
 function fileSizeCheck(){
