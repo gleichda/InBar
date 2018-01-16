@@ -52,7 +52,7 @@ public class BarSuchServlet extends HttpServlet {
 			List<BarBean> barsList = new ArrayList<BarBean>();
 			try (Connection con = ds.getConnection();
 					PreparedStatement statement = con.prepareStatement(
-							"SELECT * FROM ((musik_zu_bar INNER JOIN bar ON bar.barid=musik_zu_bar.barid) INNER JOIN musikarten ON musik_zu_bar.musikid=musikarten.musikid) WHERE bar.barname LIKE ?")) 
+							"SELECT * FROM ((bar LEFT JOIN musik_zu_bar ON bar.barid=musik_zu_bar.barid) LEFT JOIN musikarten ON musik_zu_bar.musikid=musikarten.musikid) WHERE bar.barname LIKE ?")) 
 			{
 				if (suchbegriff != "" && suchbegriff != null){
 					statement.setString(1, "%" + suchbegriff + "%");
