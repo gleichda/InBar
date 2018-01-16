@@ -32,13 +32,24 @@
 		
 		<section >
 			<h2>${bar.barname}</h2>
-			<br> <img src="./Bild?id=${bar.bildId}" class="medium" alt="Bild der Bar">
+			<br>
+			<h4>Adresse:</h4>
+			<p>
+				${bar.strasse } ${bar.hausnummer }<br>
+				${bar.plz} ${bar.ort }
+			</p>
+			<p><a href="mailto:${bar.barmail }">Mailen Sie uns</a></p>
+			<h4>Beschreibung der Bar</h4>
 			<p>${bar.bbeschreibung}</p>
 			<br>
+			<h4>Unsere Musik</h4>
 			<p>${bar.mbeschreibung}</p>
 			<br>
+			<h4>So finden Sie uns:</h4>
 			<p>${bar.lbeschreibung}</p>
-			<br>
+			<br> 
+			<img src="./Bild?id=${bar.bildId}" class="medium" alt="Bild der Bar">
+			<br>			
 
 		</section>
 		<br>
