@@ -43,7 +43,6 @@ public class BarAnzeigenServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getParameter("id") != null) {
 			int barID = Integer.parseInt(request.getParameter("id"));
-			System.out.println("Anzeige von Bar Nummer: " + barID);
 
 			try (Connection con = ds.getConnection();
 					PreparedStatement barStatement = con.prepareStatement("SELECT * FROM bar LEFT JOIN bar_zu_bild ON bar.barid=bar_zu_bild.barid where bar.barid = ?");

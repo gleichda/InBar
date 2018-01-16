@@ -1,12 +1,9 @@
 package inbar.servlets.event;
 
-//import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-//import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-//import java.sql.Statement;
 import java.util.Calendar;
 
 import javax.annotation.Resource;
@@ -17,14 +14,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-//import javax.servlet.http.Part;
 import javax.sql.DataSource;
 
-//import inbar.beans.BildBean;
 import inbar.beans.EventBean;
-import inbar.beans.UserBean;
-//import inbar.datenbank.BildHandler;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -54,9 +46,7 @@ public class EventAnlegenServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		//Ende test
 		
-		final HttpSession session = request.getSession();
 		
-		UserBean user = (UserBean) session.getAttribute("selfUser");
 		int bar = Integer.parseInt(request.getParameter("barid"));	
 				
 				EventBean event = new EventBean();
