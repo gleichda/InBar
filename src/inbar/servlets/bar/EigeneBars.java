@@ -70,7 +70,6 @@ public class EigeneBars extends HttpServlet {
 					barsList.add(bar);
 				}
 				if (!barsList.isEmpty()) {
-					System.out.println("Ergebnisse enthalten");
 					request.setAttribute("eigeneBars", barsList);
 	
 					RequestDispatcher dispatcher = request.getRequestDispatcher("meineBars.jsp");

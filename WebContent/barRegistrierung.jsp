@@ -118,7 +118,7 @@
 			<p>
 				<label for="bild">Laden sie das Profilbild ihrer Bar hoch (max 5MB):</label>
 				<br>
-				<input type="file" name="bild" id="bild" accept="image/*"> 
+				<input type="file" name="bild" id="bild" accept="image/*" required> 
 				<span></span>
 			</p>
 			<p>
