@@ -1,4 +1,4 @@
-@CHARSET "UTF-8";
+@charset "UTF-8";
 /* @author Sabine*/
 
 *{
@@ -54,7 +54,6 @@ th {
 }
 td{
 	border-bottom-style:inset;
-	border-collapse:inset;
 }
 tr {
 	border-bottom-style: inset;

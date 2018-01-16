@@ -1,7 +1,5 @@
+@charset "UTF-8";
 /*@author Sabine*/
-@CHARSET "UTF-8";
-
-
 
 label{
 	display: block;
@@ -9,7 +7,7 @@ label{
 
 input {
 	width: 20em;
-	font-color: black;
+	color: black;
 }
 
 textarea {
