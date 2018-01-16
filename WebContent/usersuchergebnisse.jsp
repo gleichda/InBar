@@ -50,7 +50,7 @@
 					<td><a href="./ProfilAnzeigen?id=${user.userid}">${user.username}</a></td>
 					<td>${user.vorname}</td>
 					<td>${user.nachname}</td>
-					<td>${user.email}</td>
+					<td><a href="mailto:${user.email}">${user.email}</a></td>
 				</tr>
 			</c:forEach>
 		</table>

@@ -27,7 +27,7 @@
 		<h1>Ihr Login war erfolgreich</h1>
 		<h2>Herzlich Willkommen ${selfUser.vorname}</h2>
 		
-			<p> <a href=profilAnzeigen.jsp >Weiter zu meinem Profil</a></p>
+			<p> <a href=ProfilAnzeigen>Weiter zu meinem Profil</a></p>
 	</article>	
 		
 	<footer>
