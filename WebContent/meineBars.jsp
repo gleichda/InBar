@@ -38,8 +38,7 @@
 				<th>Lage</th>
 				<th>Musik</th>
 				<th></th>
-				<th></th>
-				<th></th>
+
 			</tr>
 			<c:forEach var="bar" items="${eigeneBars}">
 				<tr>

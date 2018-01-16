@@ -2,28 +2,13 @@
 /*@author Sabine*/
 #footer{
 	box-sizing: border-box;
-	float: left;
 	width: 100%;
-	
 }
 
 #footer a{
 	display: block;
 	text-decoration: none;
-}
-
-#footer ul{
-	float: left;
-}
-
-#footer ul li {
-	float: left;
-	list-style: none;
-	background-color: #BDBDBD;
-	opacity: 0.8;	
-
-	margin-right: 5px;
-	border-style: groove;	
+	font-weight: lighter;
 }
 
 #footer ul li a{

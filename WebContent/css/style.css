@@ -37,31 +37,51 @@ div{
 footer{
 	order:5;
 	color: white;
+	/*Setzt die Fusszeile an den unteren Rand*/
+  	position: absolute;
+	bottom:0;
 }
 
 table{
 	border-collapse: collapse;
-	border-left-style: inset;
-	border-right-style: inset;
+	//border-left-style: inset;
+	//border-right-style: inset;
 	color: gainsboro;
 	text-align:center;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 }
 th {
 	min-width:100px;
-	border-top-style: inset;
+	//border-top-style: inset;
 	border-bottom-style: inset;
-	background-color: #172318;
+	background-color: #0A2239;	
+	font-size:1.25em;
 }
+
 td{
-	border-bottom-style:inset;
+	//border-bottom-style:inset;
 	padding: 8px;
 }
+/*
+td:nth-child(odd){ /*Erste, dritte und fünfte Spalte*/
+	background-color:#0A2239;
+}
+td:nth-child(even){ /*Zweite und dritte Spalte*/
+	background-color:#0A2229;
+}
+*/
 tr {
 	border-bottom-style: inset;
 }
-img.small{width: auto; height: 100px;}
-img.medium{width: auto; height: 200px;}
 
+tr:nth-child(odd){
+		background-color:#0A2239;
+}
+img.small{width: auto; height: 100px;}
+img.medium{width: auto; height: 200px; float:right}
+img.big{width: auto; height: 300px}
+img.glas{width:auto; height: 0.8em}
 
 /* ab hier 
 @author david */

@@ -31,8 +31,9 @@
 		
 		
 		<section >
+			<img src="./Bild?id=${bar.bildId}" class="medium" alt="Bild der Bar">		
 			<h2>${bar.barname}</h2>
-			<br>
+
 			<h4>Adresse:</h4>
 			<p>
 				${bar.strasse } ${bar.hausnummer }<br>
@@ -48,7 +49,7 @@
 			<h4>So finden Sie uns:</h4>
 			<p>${bar.lbeschreibung}</p>
 			<br> 
-			<img src="./Bild?id=${bar.bildId}" class="medium" alt="Bild der Bar">
+
 			<br>			
 
 		</section>
