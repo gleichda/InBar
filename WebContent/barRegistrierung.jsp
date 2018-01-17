@@ -102,7 +102,6 @@
 					<textarea name ="text" id="bbeschreibung" placeholder="Beschreiben Sie ihre Bar." rows="5" cols="100" required></textarea> 
 				<span></span>
 				</p>
-				<br>
 				<p>
 					<label for="mbeschreibung">Beschreiben Sie die Musik, die bei Ihnen gespielt wird Hinweis: Sie können auch Standard HTML Tags verwenden um Ihren Text zu formatieren (z.B. &lt;br&gt; für neue Zeile): </label>
 					<textarea name="mbeschreibung" id="mbeschreibung" placeholder="Beschreiben Sie die Musik die bei Ihnen gespielt wird." rows="5" cols="100" required></textarea> 

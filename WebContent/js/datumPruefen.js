@@ -31,7 +31,7 @@ if (startdatum.value === enddatum.value){ //wenn Start und Ende am gleichen Tag 
 
 if (startdatum.value > enddatum.value){
 	console.log("Startdatum vor Enddatum.");
-	enddatum.setCustomValidity("Startdatum vor Enddatum.");
+	enddatum.setCustomValidity("Enddatum vor Startdatum.");
 }
 
 if (startdatum.value < enddatum.value){

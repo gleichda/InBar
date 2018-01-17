@@ -61,7 +61,7 @@ public class ProfilAnzeigenServlet extends HttpServlet {
 			
 			else {
 				try (Connection con = ds.getConnection();
-						PreparedStatement statement = con.prepareStatement("SELECT * FROM benutzer WHERE userid = ?")) {
+						PreparedStatement statement = con.prepareStatement("select * from benutzer LEFT JOIN user_zu_bild ON benutzer.userid=user_zu_bild.userid WHERE benutzer.userid = ?")) {
 					statement.setInt(1, userid);
 					ResultSet rs = statement.executeQuery();
 					if (rs.next()) {
@@ -72,6 +72,7 @@ public class ProfilAnzeigenServlet extends HttpServlet {
 						user.setNachname(rs.getString("nachname"));
 						user.setEmail(rs.getString("email"));
 						user.setPassword(rs.getString("passwort"));
+						user.setBildId(rs.getInt("bildid"));
 						request.setAttribute("user", user);
 						final RequestDispatcher dispatcher = request.getRequestDispatcher("profilAnzeigen.jsp");
 						dispatcher.forward(request, response);

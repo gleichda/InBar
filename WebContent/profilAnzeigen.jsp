@@ -31,12 +31,12 @@
 		<c:if test="${empty param.id }">
 			<h2>Dein Profil</h2>
 		</c:if>
+		<img src="./Bild?id=${user.bildId}" alt="Profilbild" class="medium">
 		Username: ${user.username} <br>
 		Name: ${user.vorname } ${user.nachname } <br>
 		Email: <a href="mailto:${user.email}">${user.email }</a><br>
 		
-		
-		<br> <img src="./Bild?id=${user.bildId}" alt="Profilbild" class="small">
+		 
 		
 		
 	</article>

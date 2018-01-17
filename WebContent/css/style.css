@@ -37,8 +37,6 @@ div{
 footer{
 	order:5;
 	color: white;
-	/*Setzt die Fusszeile an den unteren Rand*/
-  	position: absolute;
 	bottom:0;
 }
 
@@ -78,7 +76,7 @@ tr {
 tr:nth-child(odd){
 		background-color:#0A2239;
 }
-img.small{width: auto; height: 100px;}
+img.small{width: auto; height: 100px; float:right}
 img.medium{width: auto; height: 200px; float:right}
 img.big{width: auto; height: 300px}
 img.glas{width:auto; height: 0.8em}

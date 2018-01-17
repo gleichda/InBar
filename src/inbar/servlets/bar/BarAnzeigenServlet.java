@@ -105,6 +105,7 @@ public class BarAnzeigenServlet extends HttpServlet {
 					 * werden soll, ansonsten wird die Bar nur angezeigt
 					 */
 					if (request.getParameter("bearbeiten") != null) {
+						System.out.println("Bar Bearbeiten");
 						final RequestDispatcher dispatcher = request.getRequestDispatcher("barBearbeiten.jsp");
 						dispatcher.forward(request, response);
 					}

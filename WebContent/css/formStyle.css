@@ -21,13 +21,17 @@ input[type="checkbox"], input[type="radio"] {
 /* @author david 
  * kopiert und angepasst aus Skript CSS S84 */
  
+ input[type="file"]{
+ color: white;
+ }
+ 
  input:required + span::after{
- 	color: red;
+ 	color: white;
  	content: " *"
  }
  
   textarea:required + span::after{
- 	color: red;
+ 	color: white;
  	content: " *"
  }
  
@@ -39,4 +43,4 @@ input[type="checkbox"], input[type="radio"] {
   textarea:valid + span::after{
  	color: green;
  	content: " ✓"
- }
+ }#
